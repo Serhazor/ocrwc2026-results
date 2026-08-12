@@ -34,3 +34,7 @@ python3 -m http.server 3000
 ```
 
 Then open `http://localhost:3000`.
+
+## Flag artwork
+
+Country flags are provided by [flag-icons](https://github.com/lipis/flag-icons) via jsDelivr and are used under the MIT License. ISO country codes remain visible as a fallback if an image cannot be loaded.
