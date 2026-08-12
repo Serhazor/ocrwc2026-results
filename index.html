@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Interactive results archive for the 2026 OCR World Championships in Ireland." />
+  <meta name="theme-color" content="#07120f" />
+  <title>2026 OCR World Championships Results</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#overview" aria-label="2026 OCR World Championships results home">
+        <span class="brand-mark">OCR</span>
+        <span><strong>World Championships 2026</strong><small>Results Archive · Ireland</small></span>
+      </a>
+      <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a href="#overview" data-route="overview">Overview</a>
+        <a href="#results" data-route="results">Results</a>
+        <a href="#athletes" data-route="athletes">Athletes</a>
+        <a href="#countries" data-route="countries">Countries</a>
+        <a href="#medals" data-route="medals">Medal Tables</a>
+        <a href="#insights" data-route="insights">Insights</a>
+        <a href="#notes" data-route="notes">Data Notes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <div class="loading">Loading championship data…</div>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>2026 OCR World Championships</strong> · Interactive results archive</div>
+    <div class="muted">Built from supplied timing exports. Calculated podium methodology is documented under Data Notes.</div>
+  </footer>
+
+  <script src="/data/championship-data.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
