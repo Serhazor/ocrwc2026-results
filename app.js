@@ -87,11 +87,11 @@
       if (r.directFinal) return 'Direct final';
       return r.stage || 'Qualification';
     }
-    if (r.eventId === '400m') return `Qualification${r.qualifyingRank ? ` · rank ${r.qualifyingRank}` : ''}`;
+    if (r.eventId === '400m') {
+      if (r.directFinal) return 'Direct final';
+      return r.stage || 'Qualification';
+    }
     return r.status;
-  }
-  function noteFor400() {
-    return `<div class="notice danger"><strong>400m individual finals are missing from the supplied data</strong>${esc(D.meta.combinedMedalNote)}</div>`;
   }
 
   function renderOverview() {
@@ -119,9 +119,8 @@
         ${metric('Linked athletes', num(D.athletes.length), 'Across all supplied datasets')}
         ${metric('Nations', num(D.countries.length), 'Countries and territories')}
         ${metric('Result records', num(D.results.length), 'Individual + team records')}
-        ${metric('Available medals', num(D.medals.length), 'Excludes individual 400m medals')}
+        ${metric('Available medals', num(D.medals.length), 'Across all supplied events')}
       </div>
-      ${noteFor400()}
       <section class="section">
         <div class="section-head"><div><h2>Events</h2><p>Open an event for its summary, facts, medal table and results.</p></div></div>
         <div class="event-grid">
@@ -133,7 +132,7 @@
       </section>
       <section class="section grid-2">
         <div class="panel">
-          <div class="section-head"><div><h2>Combined medal leaders</h2><p>Available/calculable events.</p></div><a class="btn" href="#medals">Full table</a></div>
+          <div class="section-head"><div><h2>Combined medal leaders</h2><p>All supplied events.</p></div><a class="btn" href="#medals">Full table</a></div>
           ${medalTableHtml(combined.slice(0,8), false)}
         </div>
         <div class="panel">
@@ -172,7 +171,6 @@
     app.innerHTML = `
       ${backLink('#overview','Overview')}
       <div class="profile-head"><div><span class="event-badge">${e.kind === 'team' ? 'Team event' : 'Individual event'}</span><h1>${esc(e.name)}</h1><p class="muted">${esc(e.description)}</p></div><a class="btn primary" href="#results/${id}">View all ${esc(e.name)} results</a></div>
-      ${id==='400m' ? noteFor400() : ''}
       <div class="metric-grid">
         ${metric('Entries',num(s.entries))}${metric('Nations',num(s.countries))}${metric('Categories',num(s.categories))}
         ${fastest ? metric('Fastest supplied time',fastest.time,`${fastest.name} · ${fastest.country}`) : metric('Fastest supplied time','—')}
@@ -200,7 +198,7 @@
           <div class="field"><label for="f-event">Event</label><select id="f-event"><option value="">All events</option>${D.events.map(e=>`<option value="${e.id}" ${initialEvent===e.id?'selected':''}>${esc(e.name)}</option>`).join('')}</select></div>
           <div class="field"><label for="f-country">Country</label><select id="f-country"><option value="">All countries</option>${D.countries.map(c=>`<option value="${esc(c.countryIso)}">${esc(c.countryIso)} · ${esc(c.country)}</option>`).join('')}</select></div>
           <div class="field"><label for="f-category">Category</label><select id="f-category"><option value="">All categories</option></select></div>
-          <div class="field"><label for="f-status">Status</label><select id="f-status"><option value="">All statuses</option><option>Ranked</option><option>DNC</option><option>DNS</option><option>DNF</option><option>No Time</option></select></div>
+          <div class="field"><label for="f-status">Status / stage</label><select id="f-status"><option value="">All statuses / stages</option><option>Qualification</option><option>Round of 16</option><option>Quarter Final</option><option>Semi Final</option><option>Round of 12</option><option>Round of 6</option><option>Final</option><option>Direct final</option><option>Ranked</option><option>DNC</option><option>DNS</option><option>DNF</option><option>No Time</option></select></div>
         </div>
         <div class="filters" style="grid-template-columns:1fr 1fr 3fr">
           <div class="field"><label for="f-sort">Sort</label><select id="f-sort"><option value="place">Place / rank</option><option value="time">Time</option><option value="name">Name</option><option value="country">Country</option><option value="category">Category</option></select></div>
@@ -287,8 +285,8 @@
 
   function renderMedals(initial='combined') {
     setTitle('Medal Tables'); const ids=['combined',...eventOrder];
-    app.innerHTML=`<div class="section-head"><div><div class="eyebrow">Podiums</div><h1>Medal Tables</h1><p>Switch between individual events, relays and the available combined championship table.</p></div></div><div class="panel"><div class="field" style="max-width:360px;margin-bottom:16px"><label>Medal table</label><select id="m-event">${ids.map(id=>`<option value="${id}" ${id===initial?'selected':''}>${id==='combined'?'Combined · available events':esc(eventName(id))}</option>`).join('')}</select></div><div id="medal-note"></div><div id="medal-table"></div></div>`;
-    const sel=document.getElementById('m-event');const apply=()=>{const id=sel.value;document.getElementById('medal-note').innerHTML=id==='400m'?noteFor400():(id==='combined'?`<div class="notice"><strong>Combined table scope</strong>${esc(D.meta.combinedMedalNote)}</div>`:'');document.getElementById('medal-table').innerHTML=medalTableHtml(D.medalTables[id]||[]);};sel.addEventListener('change',apply);apply();
+    app.innerHTML=`<div class="section-head"><div><div class="eyebrow">Podiums</div><h1>Medal Tables</h1><p>Switch between individual events, relays and the combined championship table.</p></div></div><div class="panel"><div class="field" style="max-width:360px;margin-bottom:16px"><label>Medal table</label><select id="m-event">${ids.map(id=>`<option value="${id}" ${id===initial?'selected':''}>${id==='combined'?'Combined · all events':esc(eventName(id))}</option>`).join('')}</select></div><div id="medal-note"></div><div id="medal-table"></div></div>`;
+    const sel=document.getElementById('m-event');const apply=()=>{const id=sel.value;document.getElementById('medal-note').innerHTML=id==='combined'?`<div class="notice"><strong>Combined table scope</strong>${esc(D.meta.combinedMedalNote)}</div>`:'';document.getElementById('medal-table').innerHTML=medalTableHtml(D.medalTables[id]||[]);};sel.addEventListener('change',apply);apply();
   }
 
   function renderInsights() {

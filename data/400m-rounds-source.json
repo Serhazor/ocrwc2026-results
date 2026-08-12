@@ -1,0 +1,2112 @@
+{
+  "sourceFiles": {
+    "roundOf12": "400m Elite Round of 12 RESULTS.xlsx",
+    "roundOf6": "400m Round of 6 RESULTS.xlsx",
+    "finals": "400m Finals RESULTS.xlsx"
+  },
+  "roundOf12": [
+    {
+      "sourceRow": 2,
+      "rank": "1.",
+      "nationality": "Italia",
+      "name": "FLAVIO PELLEREI",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:56.105"
+    },
+    {
+      "sourceRow": 3,
+      "rank": "2.",
+      "nationality": "Danmark",
+      "name": "Leon Kofoed",
+      "category": "Male Elite",
+      "outcome": "adv. on time",
+      "time": "1:56.222"
+    },
+    {
+      "sourceRow": 4,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Kai Beckstrand",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:56.429"
+    },
+    {
+      "sourceRow": 5,
+      "rank": "1.",
+      "nationality": "Belgique",
+      "name": "Hannes Vanhullebusch",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:57.285"
+    },
+    {
+      "sourceRow": 6,
+      "rank": "1.",
+      "nationality": "Sverige",
+      "name": "Daniel Ekström",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:58.746"
+    },
+    {
+      "sourceRow": 7,
+      "rank": "2.",
+      "nationality": "United Kingdom",
+      "name": "Oliver Addy",
+      "category": "Male Elite",
+      "outcome": "adv. on time",
+      "time": "1:59.519"
+    },
+    {
+      "sourceRow": 8,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Luke Beckstrand",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "1:59.956"
+    },
+    {
+      "sourceRow": 9,
+      "rank": "2.",
+      "nationality": "Danmark",
+      "name": "Theo Ottesen",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "2:10.511"
+    },
+    {
+      "sourceRow": 10,
+      "rank": "3.",
+      "nationality": "Sverige",
+      "name": "Lukas Hagstrom",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "2:22.390"
+    },
+    {
+      "sourceRow": 11,
+      "rank": "1.",
+      "nationality": "Polska",
+      "name": "Patrycja Teska",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:28.066"
+    },
+    {
+      "sourceRow": 12,
+      "rank": "1.",
+      "nationality": "Sverige",
+      "name": "Maja Wellner",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:29.523"
+    },
+    {
+      "sourceRow": 13,
+      "rank": "1.",
+      "nationality": "Polska",
+      "name": "Katarzyna Jonaczyk",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:32.581"
+    },
+    {
+      "sourceRow": 14,
+      "rank": "1.",
+      "nationality": "Norge",
+      "name": "Signy Karoline Wingaard Kolstø",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:34.230"
+    },
+    {
+      "sourceRow": 15,
+      "rank": "3.",
+      "nationality": "France",
+      "name": "Dimitri Houlès",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "2:35.777"
+    },
+    {
+      "sourceRow": 16,
+      "rank": "2.",
+      "nationality": "Nederland/Holland",
+      "name": "Zilver Werps",
+      "category": "Female Elite",
+      "outcome": "adv. on time",
+      "time": "2:35.917"
+    },
+    {
+      "sourceRow": 17,
+      "rank": "2.",
+      "nationality": "Italia",
+      "name": "Chiara Proietti",
+      "category": "Female Elite",
+      "outcome": "adv. on time",
+      "time": "2:39.194"
+    },
+    {
+      "sourceRow": 18,
+      "rank": "3.",
+      "nationality": "Sverige",
+      "name": "Linnea Stenson",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:42.729"
+    },
+    {
+      "sourceRow": 19,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "Jessy Belanger",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "2:43.640"
+    },
+    {
+      "sourceRow": 20,
+      "rank": "2.",
+      "nationality": "Deutschland",
+      "name": "Lotta Kokemohr",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:46.405"
+    },
+    {
+      "sourceRow": 21,
+      "rank": "2.",
+      "nationality": "Ukrayina",
+      "name": "Svitlana Slychko",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:47.461"
+    },
+    {
+      "sourceRow": 22,
+      "rank": "3.",
+      "nationality": "Rossiya",
+      "name": "Anastasia Mikhina",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:54.554"
+    },
+    {
+      "sourceRow": 23,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "Beatrice Moyen-Slyvestre",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "3:11.902"
+    },
+    {
+      "sourceRow": 24,
+      "rank": "3.",
+      "nationality": "Italia",
+      "name": "MICHELLE MONTI",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "3:22.925"
+    }
+  ],
+  "roundOf6": [
+    {
+      "sourceRow": 2,
+      "rank": "1.",
+      "nationality": "Sverige",
+      "name": "Daniel Ekström",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:50.554"
+    },
+    {
+      "sourceRow": 3,
+      "rank": "2.",
+      "nationality": "Italia",
+      "name": "FLAVIO PELLEREI",
+      "category": "Male Elite",
+      "outcome": "adv. on time",
+      "time": "1:53.328"
+    },
+    {
+      "sourceRow": 4,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Kai Beckstrand",
+      "category": "Male Elite",
+      "outcome": "advances",
+      "time": "1:54.054"
+    },
+    {
+      "sourceRow": 5,
+      "rank": "2.",
+      "nationality": "United Kingdom",
+      "name": "Oliver Addy",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "1:54.460"
+    },
+    {
+      "sourceRow": 6,
+      "rank": "3.",
+      "nationality": "Danmark",
+      "name": "Leon Kofoed",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "1:57.382"
+    },
+    {
+      "sourceRow": 7,
+      "rank": "3.",
+      "nationality": "Belgique",
+      "name": "Hannes Vanhullebusch",
+      "category": "Male Elite",
+      "outcome": "4",
+      "time": "2:03.144"
+    },
+    {
+      "sourceRow": 8,
+      "rank": "1.",
+      "nationality": "Polska",
+      "name": "Katarzyna Jonaczyk",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:25.331"
+    },
+    {
+      "sourceRow": 9,
+      "rank": "1.",
+      "nationality": "Polska",
+      "name": "Patrycja Teska",
+      "category": "Female Elite",
+      "outcome": "advances",
+      "time": "2:25.492"
+    },
+    {
+      "sourceRow": 10,
+      "rank": "2.",
+      "nationality": "Norge",
+      "name": "Signy Karoline Wingaard Kolstø",
+      "category": "Female Elite",
+      "outcome": "adv. on time",
+      "time": "2:25.996"
+    },
+    {
+      "sourceRow": 11,
+      "rank": "2.",
+      "nationality": "Nederland/Holland",
+      "name": "Zilver Werps",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:30.113"
+    },
+    {
+      "sourceRow": 12,
+      "rank": "3.",
+      "nationality": "Italia",
+      "name": "Chiara Proietti",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:42.077"
+    },
+    {
+      "sourceRow": 13,
+      "rank": "3.",
+      "nationality": "Sverige",
+      "name": "Maja Wellner",
+      "category": "Female Elite",
+      "outcome": "4",
+      "time": "2:45.937"
+    },
+    {
+      "sourceRow": 14,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Brandon Avila",
+      "category": "M14-15",
+      "outcome": "advances",
+      "time": "1:41.944"
+    },
+    {
+      "sourceRow": 15,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Cameron Godbout",
+      "category": "M14-15",
+      "outcome": "advances",
+      "time": "1:43.437"
+    },
+    {
+      "sourceRow": 16,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Alex Ascone",
+      "category": "M14-15",
+      "outcome": "adv. on time",
+      "time": "1:45.386"
+    },
+    {
+      "sourceRow": 17,
+      "rank": "2.",
+      "nationality": "Italia",
+      "name": "Davide Bozzo",
+      "category": "M14-15",
+      "outcome": "4",
+      "time": "1:47.476"
+    },
+    {
+      "sourceRow": 18,
+      "rank": "3.",
+      "nationality": "Rossiya",
+      "name": "Danila Kosinov",
+      "category": "M14-15",
+      "outcome": "4",
+      "time": "1:50.129"
+    },
+    {
+      "sourceRow": 19,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Jeramiah Boyd",
+      "category": "M20-24",
+      "outcome": "advances",
+      "time": "1:51.527"
+    },
+    {
+      "sourceRow": 20,
+      "rank": "2.",
+      "nationality": "Portugal",
+      "name": "Henrique Antunes",
+      "category": "M20-24",
+      "outcome": "adv. on time",
+      "time": "1:53.104"
+    },
+    {
+      "sourceRow": 21,
+      "rank": "1.",
+      "nationality": "Ceska Republika",
+      "name": "Tomáš Erban",
+      "category": "M18-19",
+      "outcome": "advances",
+      "time": "1:53.449"
+    },
+    {
+      "sourceRow": 22,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Anthony Battaglia",
+      "category": "M16-17",
+      "outcome": "advances",
+      "time": "1:54.609"
+    },
+    {
+      "sourceRow": 23,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Ashton Myler",
+      "category": "M20-24",
+      "outcome": "advances",
+      "time": "1:55.120"
+    },
+    {
+      "sourceRow": 24,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Max Salebra",
+      "category": "M14-15",
+      "outcome": "4",
+      "time": "1:55.793"
+    },
+    {
+      "sourceRow": 25,
+      "rank": "2.",
+      "nationality": "Guam",
+      "name": "Rai Flores",
+      "category": "M16-17",
+      "outcome": "adv. on time",
+      "time": "1:57.827"
+    },
+    {
+      "sourceRow": 26,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Corban Contreras",
+      "category": "M16-17",
+      "outcome": "advances",
+      "time": "1:58.242"
+    },
+    {
+      "sourceRow": 27,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Mitchell Frie",
+      "category": "M12-13",
+      "outcome": "advances",
+      "time": "1:59.007"
+    },
+    {
+      "sourceRow": 28,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Stephen Menna",
+      "category": "M12-13",
+      "outcome": "adv. on time",
+      "time": "1:59.847"
+    },
+    {
+      "sourceRow": 29,
+      "rank": "3.",
+      "nationality": "Ceska Republika",
+      "name": "Lukáš Kutil",
+      "category": "M16-17",
+      "outcome": "4",
+      "time": "2:01.308"
+    },
+    {
+      "sourceRow": 30,
+      "rank": "1.",
+      "nationality": "United Kingdom",
+      "name": "Jonathan Hunter",
+      "category": "M30-34",
+      "outcome": "advances",
+      "time": "2:01.730"
+    },
+    {
+      "sourceRow": 31,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Tyler Bowers",
+      "category": "M10-11",
+      "outcome": "advances",
+      "time": "2:03.554"
+    },
+    {
+      "sourceRow": 32,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Elijah Davis",
+      "category": "M12-13",
+      "outcome": "advances",
+      "time": "2:03.991"
+    },
+    {
+      "sourceRow": 33,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Judah Bostic",
+      "category": "M12-13",
+      "outcome": "4",
+      "time": "2:04.061"
+    },
+    {
+      "sourceRow": 34,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Grayson Salinas",
+      "category": "M12-13",
+      "outcome": "4",
+      "time": "2:04.929"
+    },
+    {
+      "sourceRow": 35,
+      "rank": "2.",
+      "nationality": "France",
+      "name": "Alexandre Viaud",
+      "category": "M18-19",
+      "outcome": "adv. on time",
+      "time": "2:06.304"
+    },
+    {
+      "sourceRow": 36,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Meghan Moore",
+      "category": "F12-13",
+      "outcome": "advances",
+      "time": "2:09.195"
+    },
+    {
+      "sourceRow": 37,
+      "rank": "1.",
+      "nationality": "España",
+      "name": "Marcos Rodríguez",
+      "category": "M35-39",
+      "outcome": "advances",
+      "time": "2:09.273"
+    },
+    {
+      "sourceRow": 38,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Ananyssa Truong",
+      "category": "F12-13",
+      "outcome": "advances",
+      "time": "2:09.355"
+    },
+    {
+      "sourceRow": 39,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Ava Dombrowsky",
+      "category": "F12-13",
+      "outcome": "adv. on time",
+      "time": "2:09.710"
+    },
+    {
+      "sourceRow": 40,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Bentley Boyd",
+      "category": "M10-11",
+      "outcome": "advances",
+      "time": "2:09.937"
+    },
+    {
+      "sourceRow": 41,
+      "rank": "1.",
+      "nationality": "España",
+      "name": "José Vila",
+      "category": "M25-29",
+      "outcome": "advances",
+      "time": "2:10.035"
+    },
+    {
+      "sourceRow": 42,
+      "rank": "1.",
+      "nationality": "Rossiya",
+      "name": "Prokhor Khanonin",
+      "category": "M18-19",
+      "outcome": "advances",
+      "time": "2:10.043"
+    },
+    {
+      "sourceRow": 43,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Weston Boswell",
+      "category": "M20-24",
+      "outcome": "4",
+      "time": "2:10.612"
+    },
+    {
+      "sourceRow": 44,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Nathan Smith",
+      "category": "M25-29",
+      "outcome": "adv. on time",
+      "time": "2:10.867"
+    },
+    {
+      "sourceRow": 45,
+      "rank": "2.",
+      "nationality": "Ceska Republika",
+      "name": "Filip Kutil",
+      "category": "M18-19",
+      "outcome": "4",
+      "time": "2:11.199"
+    },
+    {
+      "sourceRow": 46,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Anthony Eardley",
+      "category": "M35-39",
+      "outcome": "advances",
+      "time": "2:12.796"
+    },
+    {
+      "sourceRow": 47,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Savanna Salinas",
+      "category": "F14-15",
+      "outcome": "advances",
+      "time": "2:14.886"
+    },
+    {
+      "sourceRow": 48,
+      "rank": "1.",
+      "nationality": "Nederland/Holland",
+      "name": "Robin De Wijs",
+      "category": "F14-15",
+      "outcome": "advances",
+      "time": "2:15.476"
+    },
+    {
+      "sourceRow": 49,
+      "rank": "3.",
+      "nationality": "Ceska Republika",
+      "name": "Karel Petrus",
+      "category": "M12-13",
+      "outcome": "4",
+      "time": "2:15.788"
+    },
+    {
+      "sourceRow": 50,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "David Wright",
+      "category": "M25-29",
+      "outcome": "advances",
+      "time": "2:15.835"
+    },
+    {
+      "sourceRow": 51,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Riley Bishop",
+      "category": "F14-15",
+      "outcome": "adv. on time",
+      "time": "2:16.382"
+    },
+    {
+      "sourceRow": 52,
+      "rank": "2.",
+      "nationality": "Malta",
+      "name": "Luke Pace",
+      "category": "M10-11",
+      "outcome": "adv. on time",
+      "time": "2:16.523"
+    },
+    {
+      "sourceRow": 53,
+      "rank": "2.",
+      "nationality": "Malta",
+      "name": "Michael Borg",
+      "category": "M10-11",
+      "outcome": "4",
+      "time": "2:16.613"
+    },
+    {
+      "sourceRow": 54,
+      "rank": "3.",
+      "nationality": "Sverige",
+      "name": "Quan Tidblad",
+      "category": "M20-24",
+      "outcome": "4",
+      "time": "2:16.734"
+    },
+    {
+      "sourceRow": 55,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Jeremy Lauff",
+      "category": "M16-17",
+      "outcome": "4",
+      "time": "2:17.121"
+    },
+    {
+      "sourceRow": 56,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Ernest Greer",
+      "category": "M40-44",
+      "outcome": "advances",
+      "time": "2:17.355"
+    },
+    {
+      "sourceRow": 57,
+      "rank": "2.",
+      "nationality": "España",
+      "name": "Alvaro Puerma",
+      "category": "M35-39",
+      "outcome": "adv. on time",
+      "time": "2:18.363"
+    },
+    {
+      "sourceRow": 58,
+      "rank": "2.",
+      "nationality": "España",
+      "name": "Jaime Pardo",
+      "category": "M35-39",
+      "outcome": "4",
+      "time": "2:18.394"
+    },
+    {
+      "sourceRow": 59,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "William Leroy",
+      "category": "M25-29",
+      "outcome": "4",
+      "time": "2:18.484"
+    },
+    {
+      "sourceRow": 60,
+      "rank": "3.",
+      "nationality": "Polska",
+      "name": "Julia Marzec",
+      "category": "F14-15",
+      "outcome": "4",
+      "time": "2:19.277"
+    },
+    {
+      "sourceRow": 61,
+      "rank": "2.",
+      "nationality": "Malta",
+      "name": "Emily Vella",
+      "category": "F12-13",
+      "outcome": "4",
+      "time": "2:20.074"
+    },
+    {
+      "sourceRow": 62,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Sage Larson",
+      "category": "F10-11",
+      "outcome": "advances",
+      "time": "2:25.503"
+    },
+    {
+      "sourceRow": 63,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "Nick Watson",
+      "category": "M20-24",
+      "outcome": "4",
+      "time": "2:25.668"
+    },
+    {
+      "sourceRow": 64,
+      "rank": "1.",
+      "nationality": "Ukrayina",
+      "name": "Eugene Sheretov",
+      "category": "M40-44",
+      "outcome": "advances",
+      "time": "2:26.250"
+    },
+    {
+      "sourceRow": 65,
+      "rank": "2.",
+      "nationality": "Lietuva",
+      "name": "Dainius Liutkus",
+      "category": "M40-44",
+      "outcome": "adv. on time",
+      "time": "2:26.452"
+    },
+    {
+      "sourceRow": 66,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Claire Mattern",
+      "category": "F10-11",
+      "outcome": "advances",
+      "time": "2:26.507"
+    },
+    {
+      "sourceRow": 67,
+      "rank": "3.",
+      "nationality": "Nederland/Holland",
+      "name": "Nick Mensink",
+      "category": "M35-39",
+      "outcome": "4",
+      "time": "2:26.729"
+    },
+    {
+      "sourceRow": 68,
+      "rank": "2.",
+      "nationality": "Nederland/Holland",
+      "name": "Hannah Drieszen",
+      "category": "F14-15",
+      "outcome": "4",
+      "time": "2:27.070"
+    },
+    {
+      "sourceRow": 69,
+      "rank": "2.",
+      "nationality": "Canada",
+      "name": "Justine Simard",
+      "category": "F10-11",
+      "outcome": "adv. on time",
+      "time": "2:30.280"
+    },
+    {
+      "sourceRow": 70,
+      "rank": "2.",
+      "nationality": "Byelarus",
+      "name": "Vadzim Yauseikin",
+      "category": "M40-44",
+      "outcome": "4",
+      "time": "2:30.824"
+    },
+    {
+      "sourceRow": 71,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Joshua Harris",
+      "category": "M45-49",
+      "outcome": "advances",
+      "time": "2:31.410"
+    },
+    {
+      "sourceRow": 72,
+      "rank": "1.",
+      "nationality": "United Kingdom",
+      "name": "Nathan Gardiner",
+      "category": "M30-34",
+      "outcome": "advances",
+      "time": "2:31.960"
+    },
+    {
+      "sourceRow": 73,
+      "rank": "1.",
+      "nationality": "Ceska Republika",
+      "name": "Anežka Holanová",
+      "category": "F16-17",
+      "outcome": "advances",
+      "time": "2:31.965"
+    },
+    {
+      "sourceRow": 74,
+      "rank": "3.",
+      "nationality": "Nederland/Holland",
+      "name": "Tjeerd Commandeur",
+      "category": "M40-44",
+      "outcome": "4",
+      "time": "2:32.925"
+    },
+    {
+      "sourceRow": 75,
+      "rank": "3.",
+      "nationality": "Malta",
+      "name": "Gabriel Borg",
+      "category": "M18-19",
+      "outcome": "4",
+      "time": "2:34.034"
+    },
+    {
+      "sourceRow": 76,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Ryan Meeks",
+      "category": "M45-49",
+      "outcome": "adv. on time",
+      "time": "2:35.000"
+    },
+    {
+      "sourceRow": 77,
+      "rank": "3.",
+      "nationality": "Polska",
+      "name": "Marek Podgorski",
+      "category": "M45-49",
+      "outcome": "4",
+      "time": "2:36.621"
+    },
+    {
+      "sourceRow": 78,
+      "rank": "3.",
+      "nationality": "Malta",
+      "name": "Kurt Mercieca",
+      "category": "M35-39",
+      "outcome": "4",
+      "time": "2:36.765"
+    },
+    {
+      "sourceRow": 79,
+      "rank": "2.",
+      "nationality": "Sverige",
+      "name": "Tyra Petersén",
+      "category": "F16-17",
+      "outcome": "adv. on time",
+      "time": "2:37.453"
+    },
+    {
+      "sourceRow": 80,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Morgan Lauchner",
+      "category": "F12-13",
+      "outcome": "4",
+      "time": "2:37.776"
+    },
+    {
+      "sourceRow": 81,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Mikhail Llauder",
+      "category": "M30-34",
+      "outcome": "adv. on time",
+      "time": "2:38.128"
+    },
+    {
+      "sourceRow": 82,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Emily Wilkes",
+      "category": "F10-11",
+      "outcome": "4",
+      "time": "2:39.698"
+    },
+    {
+      "sourceRow": 83,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Kirby Coggins",
+      "category": "M30-34",
+      "outcome": "4",
+      "time": "2:39.820"
+    },
+    {
+      "sourceRow": 84,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Brian Beckstrand",
+      "category": "M45-49",
+      "outcome": "advances",
+      "time": "2:39.968"
+    },
+    {
+      "sourceRow": 85,
+      "rank": "2.",
+      "nationality": "Lietuva",
+      "name": "Ramunas Uikys",
+      "category": "M45-49",
+      "outcome": "4",
+      "time": "2:40.574"
+    },
+    {
+      "sourceRow": 86,
+      "rank": "1.",
+      "nationality": "Rossiya",
+      "name": "Kira Chizhkova",
+      "category": "F16-17",
+      "outcome": "advances",
+      "time": "2:40.617"
+    },
+    {
+      "sourceRow": 87,
+      "rank": "3.",
+      "nationality": "Belgique",
+      "name": "Milan Buggenhoudt",
+      "category": "M16-17",
+      "outcome": "4",
+      "time": "2:43.230"
+    },
+    {
+      "sourceRow": 88,
+      "rank": "3.",
+      "nationality": "Italia",
+      "name": "Ambra Canepa",
+      "category": "F16-17",
+      "outcome": "4",
+      "time": "2:43.699"
+    },
+    {
+      "sourceRow": 89,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Neva McClure",
+      "category": "F10-11",
+      "outcome": "4",
+      "time": "2:45.476"
+    },
+    {
+      "sourceRow": 90,
+      "rank": "3.",
+      "nationality": "España",
+      "name": "Fernando Giménez",
+      "category": "M40-44",
+      "outcome": "4",
+      "time": "2:46.577"
+    },
+    {
+      "sourceRow": 91,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Aria Capozzi",
+      "category": "F14-15",
+      "outcome": "4",
+      "time": "2:47.491"
+    },
+    {
+      "sourceRow": 92,
+      "rank": "2.",
+      "nationality": "Estados Unidos Mexicanos",
+      "name": "Alejandro Bartning",
+      "category": "M25-29",
+      "outcome": "4",
+      "time": "2:47.859"
+    },
+    {
+      "sourceRow": 93,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Mikhail Mikhailov",
+      "category": "M10-11",
+      "outcome": "4",
+      "time": "2:50.273"
+    },
+    {
+      "sourceRow": 94,
+      "rank": "2.",
+      "nationality": "Deutschland",
+      "name": "Katelyn Van Paassen",
+      "category": "F16-17",
+      "outcome": "4",
+      "time": "2:50.308"
+    },
+    {
+      "sourceRow": 95,
+      "rank": "3.",
+      "nationality": "Polska",
+      "name": "Aleksandra Szojda",
+      "category": "F16-17",
+      "outcome": "4",
+      "time": "2:50.320"
+    },
+    {
+      "sourceRow": 96,
+      "rank": "1.",
+      "nationality": "Belgique",
+      "name": "Magali Hayen",
+      "category": "F35-39",
+      "outcome": "advances",
+      "time": "2:52.022"
+    },
+    {
+      "sourceRow": 97,
+      "rank": "3.",
+      "nationality": "Malta",
+      "name": "Maya Spiteri",
+      "category": "F10-11",
+      "outcome": "4",
+      "time": "2:57.929"
+    },
+    {
+      "sourceRow": 98,
+      "rank": "1.",
+      "nationality": "España",
+      "name": "Martin Navarro Plazas",
+      "category": "M50-54",
+      "outcome": "advances",
+      "time": "3:00.140"
+    },
+    {
+      "sourceRow": 99,
+      "rank": "3.",
+      "nationality": "Eesti Vabariik",
+      "name": "Peteri Grauen",
+      "category": "M45-49",
+      "outcome": "4",
+      "time": "3:04.285"
+    },
+    {
+      "sourceRow": 100,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Andrew Mirkis",
+      "category": "M62-63",
+      "outcome": "advances",
+      "time": "3:04.699"
+    },
+    {
+      "sourceRow": 101,
+      "rank": "3.",
+      "nationality": "Norge",
+      "name": "Andreas Ronning",
+      "category": "M30-34",
+      "outcome": "4",
+      "time": "3:07.456"
+    },
+    {
+      "sourceRow": 102,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Nina Vidovic",
+      "category": "F12-13",
+      "outcome": "4",
+      "time": "3:09.277"
+    },
+    {
+      "sourceRow": 103,
+      "rank": "1.",
+      "nationality": "Suomen Tasavalta",
+      "name": "Katarina Stenbacka",
+      "category": "F40-44",
+      "outcome": "advances",
+      "time": "3:09.574"
+    },
+    {
+      "sourceRow": 104,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Melisa Anderson",
+      "category": "F45-49",
+      "outcome": "advances",
+      "time": "3:11.417"
+    },
+    {
+      "sourceRow": 105,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Sean Flannery",
+      "category": "M25-29",
+      "outcome": "4",
+      "time": "3:11.461"
+    },
+    {
+      "sourceRow": 106,
+      "rank": "2.",
+      "nationality": "Danmark",
+      "name": "Tanja Gabelgaard",
+      "category": "F40-44",
+      "outcome": "adv. on time",
+      "time": "3:12.495"
+    },
+    {
+      "sourceRow": 107,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Ally Tippetts",
+      "category": "F30-34",
+      "outcome": "advances",
+      "time": "3:14.671"
+    },
+    {
+      "sourceRow": 108,
+      "rank": "1.",
+      "nationality": "United Kingdom",
+      "name": "Tamar Barclay",
+      "category": "F40-44",
+      "outcome": "advances",
+      "time": "3:17.667"
+    },
+    {
+      "sourceRow": 109,
+      "rank": "1.",
+      "nationality": "United Kingdom",
+      "name": "Andrew Durrance",
+      "category": "M62-63",
+      "outcome": "advances",
+      "time": "3:18.660"
+    },
+    {
+      "sourceRow": 110,
+      "rank": "1.",
+      "nationality": "Magyarorszag",
+      "name": "Alexandra Molnar",
+      "category": "F30-34",
+      "outcome": "advances",
+      "time": "3:19.128"
+    },
+    {
+      "sourceRow": 111,
+      "rank": "2.",
+      "nationality": "Canada",
+      "name": "Marc Chiarelli",
+      "category": "M62-63",
+      "outcome": "adv. on time",
+      "time": "3:19.722"
+    },
+    {
+      "sourceRow": 112,
+      "rank": "2.",
+      "nationality": "Danmark",
+      "name": "Hanne Larsen-Jensen",
+      "category": "F40-44",
+      "outcome": "4",
+      "time": "3:20.937"
+    },
+    {
+      "sourceRow": 113,
+      "rank": "1.",
+      "nationality": "Rossiya",
+      "name": "Mariia Smyshliaeva",
+      "category": "F35-39",
+      "outcome": "advances",
+      "time": "3:21.128"
+    },
+    {
+      "sourceRow": 114,
+      "rank": "3.",
+      "nationality": "Deutschland",
+      "name": "Alexandra Kraienhorst",
+      "category": "F40-44",
+      "outcome": "4",
+      "time": "3:26.832"
+    },
+    {
+      "sourceRow": 115,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Courtney Washington",
+      "category": "F35-39",
+      "outcome": "adv. on time",
+      "time": "3:30.640"
+    },
+    {
+      "sourceRow": 116,
+      "rank": "1.",
+      "nationality": "Sverige",
+      "name": "Ronnie Kilman",
+      "category": "M50-54",
+      "outcome": "advances",
+      "time": "3:32.308"
+    },
+    {
+      "sourceRow": 117,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Aliyah Emas",
+      "category": "F35-39",
+      "outcome": "4",
+      "time": "3:39.187"
+    },
+    {
+      "sourceRow": 118,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "Hikmat Hallak",
+      "category": "M30-34",
+      "outcome": "4",
+      "time": "3:39.558"
+    },
+    {
+      "sourceRow": 119,
+      "rank": "2.",
+      "nationality": "Italia",
+      "name": "Luca Antonelli",
+      "category": "M50-54",
+      "outcome": "adv. on time",
+      "time": "3:45.694"
+    },
+    {
+      "sourceRow": 120,
+      "rank": "3.",
+      "nationality": "Puerto Rico",
+      "name": "Julio Vega",
+      "category": "M50-54",
+      "outcome": "4",
+      "time": "3:47.050"
+    },
+    {
+      "sourceRow": 121,
+      "rank": "1.",
+      "nationality": "United States of America",
+      "name": "Karen Wiltin",
+      "category": "F45-49",
+      "outcome": "advances",
+      "time": "3:53.097"
+    },
+    {
+      "sourceRow": 122,
+      "rank": "3.",
+      "nationality": "Australia",
+      "name": "Jennifer Hynes",
+      "category": "F40-44",
+      "outcome": "4",
+      "time": "4:12.843"
+    },
+    {
+      "sourceRow": 123,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Bobby Micks",
+      "category": "M50-54",
+      "outcome": "4",
+      "time": "4:20.456"
+    },
+    {
+      "sourceRow": 124,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Mark Pressley",
+      "category": "M62-63",
+      "outcome": "4",
+      "time": "4:24.190"
+    },
+    {
+      "sourceRow": 125,
+      "rank": "2.",
+      "nationality": "Malta",
+      "name": "Louise Pisani",
+      "category": "F45-49",
+      "outcome": "adv. on time",
+      "time": "4:27.593"
+    },
+    {
+      "sourceRow": 126,
+      "rank": "2.",
+      "nationality": "Danmark",
+      "name": "Pernille Rytter",
+      "category": "F30-34",
+      "outcome": "adv. on time",
+      "time": "4:32.265"
+    },
+    {
+      "sourceRow": 127,
+      "rank": "3.",
+      "nationality": "Lietuva",
+      "name": "Sandra Liutkė",
+      "category": "F35-39",
+      "outcome": "4",
+      "time": "4:41.171"
+    },
+    {
+      "sourceRow": 128,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "John Huffman",
+      "category": "M50-54",
+      "outcome": "4",
+      "time": "4:47.030"
+    },
+    {
+      "sourceRow": 129,
+      "rank": "2.",
+      "nationality": "United States of America",
+      "name": "Adrienne Dombrowsky",
+      "category": "F45-49",
+      "outcome": "4",
+      "time": "4:47.632"
+    },
+    {
+      "sourceRow": 130,
+      "rank": "3.",
+      "nationality": "United States of America",
+      "name": "Jenny Kitchen",
+      "category": "F45-49",
+      "outcome": "4",
+      "time": "5:00.089"
+    },
+    {
+      "sourceRow": 131,
+      "rank": "2.",
+      "nationality": "Sverige",
+      "name": "Ola Wallström",
+      "category": "M62-63",
+      "outcome": "4",
+      "time": "5:14.926"
+    },
+    {
+      "sourceRow": 132,
+      "rank": "3.",
+      "nationality": "Malta",
+      "name": "Sandra Borg",
+      "category": "F45-49",
+      "outcome": "4",
+      "time": "5:23.031"
+    },
+    {
+      "sourceRow": 133,
+      "rank": "3.",
+      "nationality": "Italia",
+      "name": "Roberto Marabini",
+      "category": "M62-63",
+      "outcome": "4",
+      "time": "5:29.874"
+    },
+    {
+      "sourceRow": 134,
+      "rank": "2.",
+      "nationality": "Malta",
+      "name": "Bernice Falzon",
+      "category": "F30-34",
+      "outcome": "4",
+      "time": "5:36.554"
+    },
+    {
+      "sourceRow": 135,
+      "rank": "3.",
+      "nationality": "Canada",
+      "name": "Marina Galchinska",
+      "category": "F30-34",
+      "outcome": "4",
+      "time": "6:03.597"
+    }
+  ],
+  "finals": [
+    {
+      "sourceRow": 2,
+      "nationality": "Sverige",
+      "name": "Daniel Ekström",
+      "category": "Male Elite",
+      "time": "1:49.351"
+    },
+    {
+      "sourceRow": 3,
+      "nationality": "United States of America",
+      "name": "Kai Beckstrand",
+      "category": "Male Elite",
+      "time": "1:49.573"
+    },
+    {
+      "sourceRow": 4,
+      "nationality": "Italia",
+      "name": "FLAVIO PELLEREI",
+      "category": "Male Elite",
+      "time": "1:57.710"
+    },
+    {
+      "sourceRow": 5,
+      "nationality": "Polska",
+      "name": "Patrycja Teska",
+      "category": "Female Elite",
+      "time": "2:22.175"
+    },
+    {
+      "sourceRow": 6,
+      "nationality": "Polska",
+      "name": "Katarzyna Jonaczyk",
+      "category": "Female Elite",
+      "time": "2:22.901"
+    },
+    {
+      "sourceRow": 7,
+      "nationality": "Norge",
+      "name": "Signy Karoline Wingaard Kolstø",
+      "category": "Female Elite",
+      "time": "2:29.953"
+    },
+    {
+      "sourceRow": 8,
+      "nationality": "Deutschland",
+      "name": "Lena Schollig",
+      "category": "Female Adaptive ULI",
+      "time": "No Final (4:55.500)"
+    },
+    {
+      "sourceRow": 9,
+      "nationality": "United Kingdom",
+      "name": "Jamie Gane",
+      "category": "Male Adaptive LLI",
+      "time": "No Final (3:43.100)"
+    },
+    {
+      "sourceRow": 10,
+      "nationality": "Danmark",
+      "name": "Thomas Halkjær Rasmussen",
+      "category": "Male Adaptive LLI",
+      "time": "No Final (7:17.800)"
+    },
+    {
+      "sourceRow": 11,
+      "nationality": "Sverige",
+      "name": "Hans Lofdahl",
+      "category": "Male Adaptive VI",
+      "time": "No Final (6:40.600)"
+    },
+    {
+      "sourceRow": 12,
+      "nationality": "Nederland/Holland",
+      "name": "Merel Sas",
+      "category": "F25-29",
+      "time": "No Final (3:26.400)"
+    },
+    {
+      "sourceRow": 13,
+      "nationality": "France",
+      "name": "Lucie Sirot",
+      "category": "F25-29",
+      "time": "No Final (4:07.800)"
+    },
+    {
+      "sourceRow": 14,
+      "nationality": "Suomen Tasavalta",
+      "name": "Johanna Seppä",
+      "category": "F60-61",
+      "time": "No Final (6:31.100)"
+    },
+    {
+      "sourceRow": 15,
+      "nationality": "Australia",
+      "name": "Glenise Anderson",
+      "category": "F66-67",
+      "time": "No Final (8:24.400)"
+    },
+    {
+      "sourceRow": 16,
+      "nationality": "United Kingdom",
+      "name": "John Barlow",
+      "category": "M66-67",
+      "time": "No Final (6:14.700)"
+    },
+    {
+      "sourceRow": 17,
+      "nationality": "Sverige",
+      "name": "Valerio Amico",
+      "category": "M70+",
+      "time": "No Final (5:12.000)"
+    },
+    {
+      "sourceRow": 18,
+      "nationality": "Slovensko",
+      "name": "Jan Durin",
+      "category": "M70+",
+      "time": "No Final (6:13.200)"
+    },
+    {
+      "sourceRow": 19,
+      "nationality": "Australia",
+      "name": "Ray Balks",
+      "category": "M70+",
+      "time": "No Final (7:24.600)"
+    },
+    {
+      "sourceRow": 20,
+      "nationality": "United States of America",
+      "name": "Cameron Godbout",
+      "category": "M14-15",
+      "time": "1:37.468"
+    },
+    {
+      "sourceRow": 21,
+      "nationality": "United States of America",
+      "name": "Brandon Avila",
+      "category": "M14-15",
+      "time": "1:43.089"
+    },
+    {
+      "sourceRow": 22,
+      "nationality": "United States of America",
+      "name": "Jeramiah Boyd",
+      "category": "M20-24",
+      "time": "1:45.738"
+    },
+    {
+      "sourceRow": 23,
+      "nationality": "United States of America",
+      "name": "Ashton Myler",
+      "category": "M20-24",
+      "time": "1:46.070"
+    },
+    {
+      "sourceRow": 24,
+      "nationality": "Portugal",
+      "name": "Henrique Antunes",
+      "category": "M20-24",
+      "time": "1:47.074"
+    },
+    {
+      "sourceRow": 25,
+      "nationality": "United States of America",
+      "name": "Alex Ascone",
+      "category": "M14-15",
+      "time": "1:49.179"
+    },
+    {
+      "sourceRow": 26,
+      "nationality": "United States of America",
+      "name": "Tyler Bowers",
+      "category": "M10-11",
+      "time": "1:53.191"
+    },
+    {
+      "sourceRow": 27,
+      "nationality": "United States of America",
+      "name": "Mitchell Frie",
+      "category": "M12-13",
+      "time": "1:54.288"
+    },
+    {
+      "sourceRow": 28,
+      "nationality": "Ceska Republika",
+      "name": "Tomáš Erban",
+      "category": "M18-19",
+      "time": "1:55.663"
+    },
+    {
+      "sourceRow": 29,
+      "nationality": "United States of America",
+      "name": "Corban Contreras",
+      "category": "M16-17",
+      "time": "1:56.156"
+    },
+    {
+      "sourceRow": 30,
+      "nationality": "United Kingdom",
+      "name": "Jonathan Hunter",
+      "category": "M30-34",
+      "time": "1:56.648"
+    },
+    {
+      "sourceRow": 31,
+      "nationality": "United States of America",
+      "name": "Anthony Battaglia",
+      "category": "M16-17",
+      "time": "1:58.862"
+    },
+    {
+      "sourceRow": 32,
+      "nationality": "United States of America",
+      "name": "Meghan Moore",
+      "category": "F12-13",
+      "time": "2:00.929"
+    },
+    {
+      "sourceRow": 33,
+      "nationality": "United States of America",
+      "name": "Ava Dombrowsky",
+      "category": "F12-13",
+      "time": "2:01.394"
+    },
+    {
+      "sourceRow": 34,
+      "nationality": "United States of America",
+      "name": "David Wright",
+      "category": "M25-29",
+      "time": "2:02.304"
+    },
+    {
+      "sourceRow": 35,
+      "nationality": "España",
+      "name": "Marcos Rodríguez",
+      "category": "M35-39",
+      "time": "2:04.769"
+    },
+    {
+      "sourceRow": 36,
+      "nationality": "United States of America",
+      "name": "Anthony Eardley",
+      "category": "M35-39",
+      "time": "2:05.152"
+    },
+    {
+      "sourceRow": 37,
+      "nationality": "United States of America",
+      "name": "Elijah Davis",
+      "category": "M12-13",
+      "time": "2:05.464"
+    },
+    {
+      "sourceRow": 38,
+      "nationality": "United States of America",
+      "name": "Savanna Salinas",
+      "category": "F14-15",
+      "time": "2:06.039"
+    },
+    {
+      "sourceRow": 39,
+      "nationality": "España",
+      "name": "José Vila",
+      "category": "M25-29",
+      "time": "2:08.320"
+    },
+    {
+      "sourceRow": 40,
+      "nationality": "United States of America",
+      "name": "Ananyssa Truong",
+      "category": "F12-13",
+      "time": "2:08.371"
+    },
+    {
+      "sourceRow": 41,
+      "nationality": "Rossiya",
+      "name": "Prokhor Khanonin",
+      "category": "M18-19",
+      "time": "2:08.554"
+    },
+    {
+      "sourceRow": 42,
+      "nationality": "United States of America",
+      "name": "Riley Bishop",
+      "category": "F14-15",
+      "time": "2:09.140"
+    },
+    {
+      "sourceRow": 43,
+      "nationality": "United States of America",
+      "name": "Bentley Boyd",
+      "category": "M10-11",
+      "time": "2:10.316"
+    },
+    {
+      "sourceRow": 44,
+      "nationality": "Nederland/Holland",
+      "name": "Robin De Wijs",
+      "category": "F14-15",
+      "time": "2:11.761"
+    },
+    {
+      "sourceRow": 45,
+      "nationality": "Malta",
+      "name": "Luke Pace",
+      "category": "M10-11",
+      "time": "2:11.995"
+    },
+    {
+      "sourceRow": 46,
+      "nationality": "Ceska Republika",
+      "name": "Lukáš Kutil",
+      "category": "M16-17",
+      "time": "2:12.355"
+    },
+    {
+      "sourceRow": 47,
+      "nationality": "United States of America",
+      "name": "Claire Mattern",
+      "category": "F10-11",
+      "time": "2:12.616"
+    },
+    {
+      "sourceRow": 48,
+      "nationality": "United States of America",
+      "name": "Sage Larson",
+      "category": "F10-11",
+      "time": "2:14.738"
+    },
+    {
+      "sourceRow": 49,
+      "nationality": "United States of America",
+      "name": "Ernest Greer",
+      "category": "M40-44",
+      "time": "2:17.608"
+    },
+    {
+      "sourceRow": 50,
+      "nationality": "Ukrayina",
+      "name": "Eugene Sheretov",
+      "category": "M40-44",
+      "time": "2:20.843"
+    },
+    {
+      "sourceRow": 51,
+      "nationality": "United States of America",
+      "name": "Stephen Menna",
+      "category": "M12-13",
+      "time": "2:26.066"
+    },
+    {
+      "sourceRow": 52,
+      "nationality": "Ceska Republika",
+      "name": "Anežka Holanová",
+      "category": "F16-17",
+      "time": "2:28.128"
+    },
+    {
+      "sourceRow": 53,
+      "nationality": "United States of America",
+      "name": "Mikhail Llauder",
+      "category": "M30-34",
+      "time": "2:29.288"
+    },
+    {
+      "sourceRow": 54,
+      "nationality": "United States of America",
+      "name": "Joshua Harris",
+      "category": "M45-49",
+      "time": "2:30.972"
+    },
+    {
+      "sourceRow": 55,
+      "nationality": "United States of America",
+      "name": "Ryan Meeks",
+      "category": "M45-49",
+      "time": "2:36.832"
+    },
+    {
+      "sourceRow": 56,
+      "nationality": "United States of America",
+      "name": "Brian Beckstrand",
+      "category": "M45-49",
+      "time": "2:37.097"
+    },
+    {
+      "sourceRow": 57,
+      "nationality": "Canada",
+      "name": "Justine Simard",
+      "category": "F10-11",
+      "time": "2:40.125"
+    },
+    {
+      "sourceRow": 58,
+      "nationality": "Belgique",
+      "name": "Magali Hayen",
+      "category": "F35-39",
+      "time": "2:42.906"
+    },
+    {
+      "sourceRow": 59,
+      "nationality": "Portugal",
+      "name": "MAFALDA NOGUEIRA",
+      "category": "F20-24",
+      "time": "2:42.984"
+    },
+    {
+      "sourceRow": 60,
+      "nationality": "Rossiya",
+      "name": "Kira Chizhkova",
+      "category": "F16-17",
+      "time": "2:43.722"
+    },
+    {
+      "sourceRow": 61,
+      "nationality": "United States of America",
+      "name": "Nathan Smith",
+      "category": "M25-29",
+      "time": "2:44.347"
+    },
+    {
+      "sourceRow": 62,
+      "nationality": "España",
+      "name": "Alvaro Puerma",
+      "category": "M35-39",
+      "time": "2:44.570"
+    },
+    {
+      "sourceRow": 63,
+      "nationality": "Sverige",
+      "name": "Tyra Petersén",
+      "category": "F16-17",
+      "time": "2:45.871"
+    },
+    {
+      "sourceRow": 64,
+      "nationality": "Rossiya",
+      "name": "Mariia Smyshliaeva",
+      "category": "F35-39",
+      "time": "2:48.038"
+    },
+    {
+      "sourceRow": 65,
+      "nationality": "Portugal",
+      "name": "LEONOR ROCHA",
+      "category": "F20-24",
+      "time": "2:49.663"
+    },
+    {
+      "sourceRow": 66,
+      "nationality": "Nederland/Holland",
+      "name": "Yara Prinsen",
+      "category": "F18-19",
+      "time": "2:51.077"
+    },
+    {
+      "sourceRow": 67,
+      "nationality": "United States of America",
+      "name": "Ally Tippetts",
+      "category": "F30-34",
+      "time": "2:56.327"
+    },
+    {
+      "sourceRow": 68,
+      "nationality": "Magyarorszag",
+      "name": "Alexandra Molnar",
+      "category": "F30-34",
+      "time": "2:56.894"
+    },
+    {
+      "sourceRow": 69,
+      "nationality": "Lietuva",
+      "name": "Dainius Liutkus",
+      "category": "M40-44",
+      "time": "2:57.026"
+    },
+    {
+      "sourceRow": 70,
+      "nationality": "United Kingdom",
+      "name": "Nathan Gardiner",
+      "category": "M30-34",
+      "time": "2:57.429"
+    },
+    {
+      "sourceRow": 71,
+      "nationality": "United Kingdom",
+      "name": "Tony Leary",
+      "category": "M55-59",
+      "time": "3:01.577"
+    },
+    {
+      "sourceRow": 72,
+      "nationality": "Sverige",
+      "name": "Pia Kind",
+      "category": "F50-54",
+      "time": "3:01.613"
+    },
+    {
+      "sourceRow": 73,
+      "nationality": "United States of America",
+      "name": "Melisa Anderson",
+      "category": "F45-49",
+      "time": "3:03.077"
+    },
+    {
+      "sourceRow": 74,
+      "nationality": "United States of America",
+      "name": "Ixchel Valentino",
+      "category": "F20-24",
+      "time": "3:04.741"
+    },
+    {
+      "sourceRow": 75,
+      "nationality": "Suomen Tasavalta",
+      "name": "Katarina Stenbacka",
+      "category": "F40-44",
+      "time": "3:10.940"
+    },
+    {
+      "sourceRow": 76,
+      "nationality": "France",
+      "name": "Alexandre Viaud",
+      "category": "M18-19",
+      "time": "3:13.820"
+    },
+    {
+      "sourceRow": 77,
+      "nationality": "Deutschland",
+      "name": "Jörg Eißmann",
+      "category": "M55-59",
+      "time": "3:17.859"
+    },
+    {
+      "sourceRow": 78,
+      "nationality": "Danmark",
+      "name": "Tanja Gabelgaard",
+      "category": "F40-44",
+      "time": "3:21.093"
+    },
+    {
+      "sourceRow": 79,
+      "nationality": "United States of America",
+      "name": "Courtney Washington",
+      "category": "F35-39",
+      "time": "3:25.933"
+    },
+    {
+      "sourceRow": 80,
+      "nationality": "Danmark",
+      "name": "Liv Vilde Christensen",
+      "category": "F18-19",
+      "time": "3:27.457"
+    },
+    {
+      "sourceRow": 81,
+      "nationality": "Sverige",
+      "name": "Hans-Olov Lind",
+      "category": "M55-59",
+      "time": "3:28.882"
+    },
+    {
+      "sourceRow": 82,
+      "nationality": "España",
+      "name": "Martin Navarro Plazas",
+      "category": "M50-54",
+      "time": "3:29.655"
+    },
+    {
+      "sourceRow": 83,
+      "nationality": "Magyarorszag",
+      "name": "Sandor Baranyi",
+      "category": "M60-61",
+      "time": "3:30.753"
+    },
+    {
+      "sourceRow": 84,
+      "nationality": "United Kingdom",
+      "name": "Tamar Barclay",
+      "category": "F40-44",
+      "time": "3:37.601"
+    },
+    {
+      "sourceRow": 85,
+      "nationality": "Canada",
+      "name": "Marc Chiarelli",
+      "category": "M62-63",
+      "time": "3:41.421"
+    },
+    {
+      "sourceRow": 86,
+      "nationality": "United States of America",
+      "name": "Karen Wiltin",
+      "category": "F45-49",
+      "time": "3:52.468"
+    },
+    {
+      "sourceRow": 87,
+      "nationality": "Danmark",
+      "name": "Pernille Rytter",
+      "category": "F30-34",
+      "time": "3:54.437"
+    },
+    {
+      "sourceRow": 88,
+      "nationality": "United States of America",
+      "name": "Suzanne Himka",
+      "category": "F55-59",
+      "time": "4:04.222"
+    },
+    {
+      "sourceRow": 89,
+      "nationality": "United States of America",
+      "name": "Heather Nelson",
+      "category": "F50-54",
+      "time": "4:05.831"
+    },
+    {
+      "sourceRow": 90,
+      "nationality": "Portugal",
+      "name": "Eugenia Martins",
+      "category": "F55-59",
+      "time": "4:11.167"
+    },
+    {
+      "sourceRow": 91,
+      "nationality": "Malta",
+      "name": "Louise Pisani",
+      "category": "F45-49",
+      "time": "4:14.777"
+    },
+    {
+      "sourceRow": 92,
+      "nationality": "United States of America",
+      "name": "Andrew Mirkis",
+      "category": "M62-63",
+      "time": "4:18.781"
+    },
+    {
+      "sourceRow": 93,
+      "nationality": "United Kingdom",
+      "name": "Tim Kirk",
+      "category": "M60-61",
+      "time": "4:21.905"
+    },
+    {
+      "sourceRow": 94,
+      "nationality": "United Kingdom",
+      "name": "Andrew Durrance",
+      "category": "M62-63",
+      "time": "4:47.757"
+    },
+    {
+      "sourceRow": 95,
+      "nationality": "Italia",
+      "name": "Luca Antonelli",
+      "category": "M50-54",
+      "time": "5:09.476"
+    },
+    {
+      "sourceRow": 96,
+      "nationality": "United States of America",
+      "name": "Lisa Nondorf",
+      "category": "F50-54",
+      "time": "5:22.656"
+    },
+    {
+      "sourceRow": 97,
+      "nationality": "United States of America",
+      "name": "Aaron Coffman",
+      "category": "M60-61",
+      "time": "5:24.632"
+    },
+    {
+      "sourceRow": 98,
+      "nationality": "Canada",
+      "name": "Catharine Clarke",
+      "category": "F55-59",
+      "time": "6:34.254"
+    },
+    {
+      "sourceRow": 99,
+      "nationality": "Deutschland",
+      "name": "Christiane Rötzel",
+      "category": "F18-19",
+      "time": "7:15.643"
+    }
+  ]
+}
