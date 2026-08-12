@@ -147,7 +147,7 @@
 
   function loadCarouselImage(src) {
     return new Promise(resolve=>{
-      const image=new Image(); image.crossOrigin='anonymous'; image.onload=()=>resolve(image); image.onerror=()=>resolve(null); image.src=src;
+      const image=new Image(); if(/^https?:/i.test(src)) image.crossOrigin='anonymous'; image.onload=()=>resolve(image); image.onerror=()=>resolve(null); image.src=src;
     });
   }
 
@@ -201,9 +201,8 @@
   function drawCarouselBrand(ctx,logo,page,total) {
     if(logo){
       ctx.save();
-      const halo=ctx.createRadialGradient(902,120,8,902,120,126);halo.addColorStop(0,'rgba(245,255,248,.3)');halo.addColorStop(1,'rgba(245,255,248,0)');ctx.fillStyle=halo;ctx.beginPath();ctx.arc(902,120,126,0,Math.PI*2);ctx.fill();
-      ctx.globalAlpha=.7;ctx.shadowColor='rgba(229,255,238,.28)';ctx.shadowBlur=7;ctx.drawImage(logo,795,4,215,231);
-      ctx.globalAlpha=1;ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=18;ctx.drawImage(logo,795,4,215,231);ctx.restore();
+      const halo=ctx.createRadialGradient(902,120,8,902,120,126);halo.addColorStop(0,'rgba(241,255,246,.88)');halo.addColorStop(.72,'rgba(232,255,240,.7)');halo.addColorStop(1,'rgba(232,255,240,0)');ctx.fillStyle=halo;ctx.beginPath();ctx.arc(902,120,126,0,Math.PI*2);ctx.fill();
+      ctx.globalAlpha=1;ctx.shadowColor='rgba(0,0,0,.3)';ctx.shadowBlur=14;ctx.drawImage(logo,795,4,215,231);ctx.restore();
     }else{ctx.fillStyle='#65e6a5';ctx.font='900 24px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCR IRELAND',1010,105);ctx.textAlign='left';}
     ctx.fillStyle='rgba(255,255,255,.68)';ctx.font='700 22px Inter, sans-serif';ctx.fillText('OCR WORLD CHAMPIONSHIPS · IRELAND 2026',70,1292);
     ctx.textAlign='right';ctx.fillText(`${page} / ${total}`,1010,1292);ctx.textAlign='left';
@@ -221,13 +220,16 @@
 
   function buildCarouselSlides(a,indiv,tms,am) {
     const nation=countryByIso[a.countryIso],distance=athleteDistanceStats(indiv);
-    const peersAtLeast=D.athletes.filter(person=>person.eventCount>=a.eventCount).length;
     const entries=[
       ...indiv.map(result=>({event:result.event,category:result.category,time:result.time||'—',detail:result.medal?`${medalIcon(result.medal)} ${result.medal}`:result.place?`#${result.place}`:resultDetail(result)})),
       ...tms.map(team=>{const result=resultById[team.resultId];return {event:team.event,category:team.category,time:result?.time||'—',detail:result?.medal?`${medalIcon(result.medal)} ${result.medal}`:result?.place?`#${result.place}`:result?.status||'Team relay'};})
     ].sort((x,y)=>eventOrder.indexOf(D.events.find(event=>event.name===x.event)?.id)-eventOrder.indexOf(D.events.find(event=>event.name===y.event)?.id));
     const resultRows=entries.slice(0,7);
-    const topFinish=am.slice().sort((x,y)=>x.place-y.place)[0]||indiv.filter(result=>result.place).sort((x,y)=>x.place-y.place)[0]||null;
+    const placedResults=[...indiv,...tms.map(team=>resultById[team.resultId]).filter(Boolean)].filter(result=>result.place).sort((x,y)=>x.place-y.place||(x.timeSeconds??Infinity)-(y.timeSeconds??Infinity));
+    const topFinish=am.slice().sort((x,y)=>x.place-y.place)[0]||placedResults[0]||null;
+    const linkedResults=indiv.length+tms.length;
+    const nationPossessive=/s$/i.test(a.country)?`${a.country}'`:`${a.country}'s`;
+    const contribution=a.medalCount&&nation?.total?`Contributed to ${a.medalCount} of ${nationPossessive} ${nation.total} championship medal${nation.total===1?'':'s'}.`:`One of ${nation?.athletes??'—'} athletes proudly representing ${a.country}.`;
     return [
       {accent:'#65e6a5',draw(ctx,assets){
         ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.letterSpacing='3px';ctx.fillText('MY WORLD CHAMPIONSHIP',70,108);drawCarouselFlag(ctx,assets.flag,a,70,176);
@@ -249,11 +251,13 @@
         ctx.fillStyle='#a7beb3';ctx.font='600 21px Inter, sans-serif';canvasText(ctx,'Distance uses recorded individual rounds: 100m, 400m, Short (3 km) and Standard (12 km+). Relay legs are excluded because split distances were not supplied.',70,980,930,31,4);
       }},
       {accent:'#65e6a5',draw(ctx,assets){
-        ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.fillText('PART OF SOMETHING BIGGER',70,108);drawCarouselFlag(ctx,assets.flag,a,70,176,132,99);
-        ctx.fillStyle='#f7fbf9';ctx.font='900 67px Inter, sans-serif';canvasText(ctx,`I was 1 of ${D.athletes.length.toLocaleString()}.`,70,390,900,78,2);
-        ctx.fillStyle='#b8cdc3';ctx.font='750 32px Inter, sans-serif';canvasText(ctx,`And 1 of ${nation?.athletes??'—'} athletes representing ${a.country}.`,70,575,900,43,3);
-        canvasRoundRect(ctx,70,750,940,270,32,'rgba(3,17,12,.55)','rgba(255,255,255,.12)');ctx.fillStyle='#65e6a5';ctx.font='900 72px Inter, sans-serif';ctx.fillText(peersAtLeast.toLocaleString(),110,860);ctx.fillStyle='#f7fbf9';ctx.font='800 28px Inter, sans-serif';canvasText(ctx,`athletes competed in ${a.eventCount} or more event types`,110,915,800,38,2);
-        const finish=topFinish?`${topFinish.medal||`#${topFinish.place}`} · ${topFinish.event}`:'Every finish earned';ctx.fillStyle='#c5ff72';ctx.font='800 28px Inter, sans-serif';ctx.fillText(finish,70,1112);ctx.fillStyle='#f7fbf9';ctx.font='900 38px Inter, sans-serif';ctx.fillText('Ireland 2026 · Made for obstacles.',70,1172);
+        ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.fillText('MY CHAMPIONSHIP SNAPSHOT',70,108);drawCarouselFlag(ctx,assets.flag,a,70,160,126,94);
+        ctx.fillStyle='#f7fbf9';ctx.font=`900 ${a.name.length>25?40:48}px Inter, sans-serif`;const nameEnd=canvasText(ctx,a.name,230,194,520,a.name.length>25?48:56,2);ctx.fillStyle='#b8cdc3';ctx.font='700 24px Inter, sans-serif';ctx.fillText(`${a.country} · ${a.gender}`,230,Math.max(257,nameEnd+6));
+        drawCarouselMetric(ctx,70,350,280,a.eventCount,'event types','#65e6a5');drawCarouselMetric(ctx,400,350,280,linkedResults,'linked results','#c5ff72');drawCarouselMetric(ctx,730,350,280,a.medalCount,'championship medals','#ffd36a');
+        canvasRoundRect(ctx,70,575,940,390,34,'rgba(3,17,12,.58)','rgba(255,255,255,.14)');ctx.fillStyle='#65e6a5';ctx.font='850 23px Inter, sans-serif';ctx.fillText('MY BIGGEST MOMENT',110,638);
+        if(topFinish){const headline=topFinish.medal?`${medalIcon(topFinish.medal)} ${topFinish.medal.toUpperCase()} · ${topFinish.event.toUpperCase()}`:`#${topFinish.place} · ${topFinish.event.toUpperCase()}`;ctx.fillStyle=topFinish.medal==="Gold"?'#f2c94c':topFinish.medal==="Silver"?'#dbe4ec':topFinish.medal==="Bronze"?'#df9867':'#f7fbf9';ctx.font=`900 ${headline.length>28?45:55}px Inter, sans-serif`;canvasText(ctx,headline,110,722,820,64,2);ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';canvasText(ctx,`${topFinish.category} · ${topFinish.time||'Recorded result'}`,110,846,820,38,2);}else{ctx.fillStyle='#f7fbf9';ctx.font='900 48px Inter, sans-serif';canvasText(ctx,'WORLD CHAMPIONSHIP FINISHER',110,730,820,56,2);ctx.fillStyle='#b8cdc3';ctx.font='750 29px Inter, sans-serif';ctx.fillText(`${a.eventCount} event type${a.eventCount===1?'':'s'} completed`,110,852);}
+        ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';canvasText(ctx,contribution,110,910,820,34,2);
+        ctx.fillStyle='#c5ff72';ctx.font='850 29px Inter, sans-serif';ctx.fillText(`Proud to represent ${a.country}.`,70,1070);ctx.fillStyle='#f7fbf9';ctx.font='900 38px Inter, sans-serif';ctx.fillText('Ireland 2026 · Made for obstacles.',70,1132);
       }},
     ];
   }
@@ -264,7 +268,7 @@
     overlay.id='athlete-carousel';overlay.className='carousel-overlay';overlay.innerHTML=`<div class="carousel-dialog" role="dialog" aria-modal="true" aria-labelledby="carousel-title"><div class="carousel-head"><div><div class="eyebrow">Instagram carousel</div><h2 id="carousel-title">${esc(a.name)} · Championship story</h2><p>Four portrait slides, ready to download and post.</p></div><button class="carousel-close" aria-label="Close carousel">×</button></div><div class="carousel-workspace"><div class="carousel-preview"><canvas width="${CAROUSEL_WIDTH}" height="${CAROUSEL_HEIGHT}" aria-label="Athlete carousel slide preview"></canvas><div class="carousel-nav"><button class="btn carousel-prev">← Previous</button><div class="carousel-dots">${slides.map((_,index)=>`<button aria-label="Show slide ${index+1}" data-slide="${index}"></button>`).join('')}</div><button class="btn carousel-next">Next →</button></div></div><aside class="carousel-actions"><div class="carousel-slide-label"></div><p class="muted">PNG · 1080 × 1350 · Instagram portrait</p><button class="btn primary carousel-download">Download this slide</button><button class="btn carousel-download-all">Download all as ZIP</button><button class="btn carousel-caption">Copy Instagram caption</button><div class="notice"><strong>Distance methodology</strong>Uses only recorded individual race distances. Team and XC relay distance is excluded because individual splits were not supplied.</div><p class="carousel-feedback muted" aria-live="polite"></p></aside></div></div>`;
     document.body.appendChild(overlay);document.body.classList.add('carousel-open');
     const canvas=overlay.querySelector('canvas'),ctx=canvas.getContext('2d'),feedback=overlay.querySelector('.carousel-feedback');let current=0,logo=null,flag=null;
-    const draw=()=>{drawCarouselBackground(ctx,slides[current].accent);slides[current].draw(ctx,{logo,flag});drawCarouselBrand(ctx,logo,current+1,slides.length);overlay.querySelector('.carousel-slide-label').innerHTML=`<strong>Slide ${current+1} of ${slides.length}</strong><span>${['Cover','Results','Distance & effort','Championship community'][current]}</span>`;overlay.querySelectorAll('.carousel-dots button').forEach((dot,index)=>dot.classList.toggle('active',index===current));overlay.querySelector('.carousel-prev').disabled=current===0;overlay.querySelector('.carousel-next').disabled=current===slides.length-1;};
+    const draw=()=>{drawCarouselBackground(ctx,slides[current].accent);slides[current].draw(ctx,{logo,flag});drawCarouselBrand(ctx,logo,current+1,slides.length);overlay.querySelector('.carousel-slide-label').innerHTML=`<strong>Slide ${current+1} of ${slides.length}</strong><span>${['Cover','Results','Distance & effort','Championship snapshot'][current]}</span>`;overlay.querySelectorAll('.carousel-dots button').forEach((dot,index)=>dot.classList.toggle('active',index===current));overlay.querySelector('.carousel-prev').disabled=current===0;overlay.querySelector('.carousel-next').disabled=current===slides.length-1;};
     const go=index=>{current=Math.max(0,Math.min(slides.length-1,index));draw();};
     const close=()=>{overlay.remove();document.body.classList.remove('carousel-open');document.removeEventListener('keydown',keys);};
     const keys=event=>{if(event.key==='Escape')close();else if(event.key==='ArrowLeft')go(current-1);else if(event.key==='ArrowRight')go(current+1);};
