@@ -96,7 +96,7 @@
 
   const CAROUSEL_WIDTH = 1080;
   const CAROUSEL_HEIGHT = 1350;
-  const CAROUSEL_LOGO = '/assets/ocr-eireann-logo-white.png';
+  const CAROUSEL_LOGO = '/assets/ocr-eireann-logo-original-font.png';
 
   function recordedSeconds(value) {
     const raw=String(value??'').trim();
