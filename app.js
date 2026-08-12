@@ -96,7 +96,7 @@
 
   const CAROUSEL_WIDTH = 1080;
   const CAROUSEL_HEIGHT = 1350;
-  const CAROUSEL_LOGO = '/assets/ocr-eireann-logo-original-font.png';
+  const CAROUSEL_LOGO = '/assets/ocra-eireann-logo-provided.png';
 
   function recordedSeconds(value) {
     const raw=String(value??'').trim();
@@ -184,7 +184,8 @@
   function drawCarouselBrand(ctx,logo,page,total) {
     if(logo){
       ctx.save();
-      ctx.globalAlpha=1;ctx.drawImage(logo,850,18,160,172);ctx.restore();
+      const maxWidth=210,maxHeight=170,scale=Math.min(maxWidth/logo.naturalWidth,maxHeight/logo.naturalHeight),width=logo.naturalWidth*scale,height=logo.naturalHeight*scale;
+      ctx.globalAlpha=1;ctx.drawImage(logo,1010-width,10,width,height);ctx.restore();
     }else{ctx.fillStyle='#f7fbf9';ctx.font='900 24px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCRA ÉIREANN',1010,105);ctx.textAlign='left';}
     ctx.fillStyle='rgba(255,255,255,.68)';ctx.font='700 22px Inter, sans-serif';ctx.fillText('OCR WORLD CHAMPIONSHIPS · IRELAND 2026',70,1292);
     ctx.textAlign='right';ctx.fillText(`${page} / ${total}`,1010,1292);ctx.textAlign='left';
