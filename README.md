@@ -11,7 +11,7 @@ Interactive static results archive for the 2026 OCR World Championships in Irela
 - Qualification/elimination stage details where supplied
 - DNC analysis for Short and Standard Course
 - Championship insights, multi-event athletes and data-quality notes
-- Downloadable four-slide Instagram carousels from every athlete profile, branded with the OCR Ireland logo
+- Downloadable four-slide Instagram carousels with personal results, country statistics and OCRA Éireann branding
 - Mobile-friendly static site suitable for Vercel
 
 ## Data methodology
@@ -22,6 +22,7 @@ The app is generated from the supplied timing exports. Important rules:
 - 100m individual medals use final-stage times where available. Championship categories without a usable final-stage record use the supplied Best Time as a direct-final result.
 - 400m individual stages are linked to qualification entries by normalized athlete name and exact division. Podiums use the supplied finals times; entries marked `No Final` use the time supplied in parentheses as a direct-final result.
 - Athlete carousel distance totals count recorded individual starts using 100m, 400m, 3.5 km Short Course and 11 km Standard Course distances. Relay legs are excluded because individual split distances were not supplied.
+- Athlete carousels can be saved as individual PNGs, or shared together through the phone share sheet when supported.
 - 100m Team Relay and 400m Team Relay podiums are calculated from the supplied Best Time across Q1/Q2. Open categories are excluded.
 - XC Team Unranked entries are treated as DNC and excluded from podiums.
 

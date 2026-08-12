@@ -96,7 +96,7 @@
 
   const CAROUSEL_WIDTH = 1080;
   const CAROUSEL_HEIGHT = 1350;
-  const CAROUSEL_LOGO = '/assets/ocr-ireland-logo-white-text.png';
+  const CAROUSEL_LOGO = '/assets/ocr-eireann-logo-white.png';
 
   function recordedSeconds(value) {
     const raw=String(value??'').trim();
@@ -162,23 +162,6 @@
     const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=filename;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
-  function carouselZip(files) {
-    const encoder=new TextEncoder(),crcTable=new Uint32Array(256);
-    for(let n=0;n<256;n++){let c=n;for(let bit=0;bit<8;bit++)c=c&1?0xedb88320^(c>>>1):c>>>1;crcTable[n]=c>>>0;}
-    const crc32=bytes=>{let crc=0xffffffff;for(const byte of bytes)crc=crcTable[(crc^byte)&0xff]^(crc>>>8);return (crc^0xffffffff)>>>0;};
-    const concat=parts=>{const output=new Uint8Array(parts.reduce((sum,part)=>sum+part.length,0));let offset=0;for(const part of parts){output.set(part,offset);offset+=part.length;}return output;};
-    const localParts=[],centralParts=[];let localOffset=0;
-    files.forEach(file=>{
-      const name=encoder.encode(file.name),crc=crc32(file.bytes),local=new Uint8Array(30),lv=new DataView(local.buffer);
-      lv.setUint32(0,0x04034b50,true);lv.setUint16(4,20,true);lv.setUint32(14,crc,true);lv.setUint32(18,file.bytes.length,true);lv.setUint32(22,file.bytes.length,true);lv.setUint16(26,name.length,true);
-      localParts.push(local,name,file.bytes);
-      const central=new Uint8Array(46),cv=new DataView(central.buffer);cv.setUint32(0,0x02014b50,true);cv.setUint16(4,20,true);cv.setUint16(6,20,true);cv.setUint32(16,crc,true);cv.setUint32(20,file.bytes.length,true);cv.setUint32(24,file.bytes.length,true);cv.setUint16(28,name.length,true);cv.setUint32(42,localOffset,true);centralParts.push(central,name);
-      localOffset+=local.length+name.length+file.bytes.length;
-    });
-    const centralData=concat(centralParts),end=new Uint8Array(22),ev=new DataView(end.buffer);ev.setUint32(0,0x06054b50,true);ev.setUint16(8,files.length,true);ev.setUint16(10,files.length,true);ev.setUint32(12,centralData.length,true);ev.setUint32(16,localOffset,true);
-    return new Blob([...localParts,centralData,end],{type:'application/zip'});
-  }
-
   function canvasRoundRect(ctx,x,y,width,height,radius,fill,stroke='') {
     const r=Math.min(radius,width/2,height/2);
     ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+width,y,x+width,y+height,r);ctx.arcTo(x+width,y+height,x,y+height,r);ctx.arcTo(x,y+height,x,y,r);ctx.arcTo(x,y,x+width,y,r);ctx.closePath();
@@ -202,7 +185,7 @@
     if(logo){
       ctx.save();
       ctx.globalAlpha=1;ctx.drawImage(logo,850,18,160,172);ctx.restore();
-    }else{ctx.fillStyle='#65e6a5';ctx.font='900 24px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCR IRELAND',1010,105);ctx.textAlign='left';}
+    }else{ctx.fillStyle='#f7fbf9';ctx.font='900 24px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCRA ÉIREANN',1010,105);ctx.textAlign='left';}
     ctx.fillStyle='rgba(255,255,255,.68)';ctx.font='700 22px Inter, sans-serif';ctx.fillText('OCR WORLD CHAMPIONSHIPS · IRELAND 2026',70,1292);
     ctx.textAlign='right';ctx.fillText(`${page} / ${total}`,1010,1292);ctx.textAlign='left';
   }
@@ -227,8 +210,21 @@
     const placedResults=[...indiv,...tms.map(team=>resultById[team.resultId]).filter(Boolean)].filter(result=>result.place).sort((x,y)=>x.place-y.place||(x.timeSeconds??Infinity)-(y.timeSeconds??Infinity));
     const topFinish=am.slice().sort((x,y)=>x.place-y.place)[0]||placedResults[0]||null;
     const linkedResults=indiv.length+tms.length;
-    const nationPossessive=/s$/i.test(a.country)?`${a.country}'`:`${a.country}'s`;
-    const contribution=a.medalCount&&nation?.total?`Contributed to ${a.medalCount} of ${nationPossessive} ${nation.total} championship medal${nation.total===1?'':'s'}.`:`One of ${nation?.athletes??'—'} athletes proudly representing ${a.country}.`;
+    const nationTable=D.medalTables.combined.find(country=>country.countryIso===a.countryIso);
+    const nationEventTypes=Object.values(nation?.eventEntries||{}).filter(Boolean).length;
+    const countryMedalFact=a.medalCount&&nation?.total
+      ? `My country won ${nation.total} medal${nation.total===1?'':'s'}, and I earned ${a.medalCount} of ${nation.total===1?'it':'them'}.`
+      : nation?.total
+        ? `${a.country} finished #${nationTable?.rank||'—'} on the medal table with ${nation.total} medal${nation.total===1?'':'s'}.`
+        : `${a.country} joined ${D.countries.length} nations on the world championship stage.`;
+    const delegationFact=`I was one of ${nation?.athletes??'—'} athletes representing ${a.country}${nationEventTypes?` across ${nationEventTypes} event type${nationEventTypes===1?'':'s'}`:''}.`;
+    const thirdMetric=a.medalCount
+      ? {value:a.medalCount,label:'championship medals'}
+      : topFinish
+        ? {value:`#${topFinish.place}`,label:'best championship finish'}
+        : nationTable?.rank
+          ? {value:`#${nationTable.rank}`,label:'country medal-table rank'}
+          : {value:D.countries.length,label:'nations represented'};
     return [
       {accent:'#65e6a5',draw(ctx,assets){
         ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.letterSpacing='3px';ctx.fillText('MY WORLD CHAMPIONSHIP',70,108);drawCarouselFlag(ctx,assets.flag,a,70,176);
@@ -252,11 +248,11 @@
       {accent:'#65e6a5',draw(ctx,assets){
         ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.fillText('MY CHAMPIONSHIP SNAPSHOT',70,108);drawCarouselFlag(ctx,assets.flag,a,70,160,126,94);
         ctx.fillStyle='#f7fbf9';ctx.font=`900 ${a.name.length>25?40:48}px Inter, sans-serif`;const nameEnd=canvasText(ctx,a.name,230,194,520,a.name.length>25?48:56,2);ctx.fillStyle='#b8cdc3';ctx.font='700 24px Inter, sans-serif';ctx.fillText(`${a.country} · ${a.gender}`,230,Math.max(257,nameEnd+6));
-        drawCarouselMetric(ctx,70,350,280,a.eventCount,'event types','#65e6a5');drawCarouselMetric(ctx,400,350,280,linkedResults,'linked results','#c5ff72');drawCarouselMetric(ctx,730,350,280,a.medalCount,'championship medals','#ffd36a');
-        canvasRoundRect(ctx,70,575,940,390,34,'rgba(3,17,12,.58)','rgba(255,255,255,.14)');ctx.fillStyle='#65e6a5';ctx.font='850 23px Inter, sans-serif';ctx.fillText('MY BIGGEST MOMENT',110,638);
-        if(topFinish){const headline=topFinish.medal?`${medalIcon(topFinish.medal)} ${topFinish.medal.toUpperCase()} · ${topFinish.event.toUpperCase()}`:`#${topFinish.place} · ${topFinish.event.toUpperCase()}`;ctx.fillStyle=topFinish.medal==="Gold"?'#f2c94c':topFinish.medal==="Silver"?'#dbe4ec':topFinish.medal==="Bronze"?'#df9867':'#f7fbf9';ctx.font=`900 ${headline.length>28?45:55}px Inter, sans-serif`;canvasText(ctx,headline,110,722,820,64,2);ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';canvasText(ctx,`${topFinish.category} · ${topFinish.time||'Recorded result'}`,110,846,820,38,2);}else{ctx.fillStyle='#f7fbf9';ctx.font='900 48px Inter, sans-serif';canvasText(ctx,'WORLD CHAMPIONSHIP FINISHER',110,730,820,56,2);ctx.fillStyle='#b8cdc3';ctx.font='750 29px Inter, sans-serif';ctx.fillText(`${a.eventCount} event type${a.eventCount===1?'':'s'} completed`,110,852);}
-        ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';canvasText(ctx,contribution,110,910,820,34,2);
-        ctx.fillStyle='#c5ff72';ctx.font='850 29px Inter, sans-serif';ctx.fillText(`Proud to represent ${a.country}.`,70,1070);ctx.fillStyle='#f7fbf9';ctx.font='900 38px Inter, sans-serif';ctx.fillText('Ireland 2026 · My championship story.',70,1132);
+        drawCarouselMetric(ctx,70,350,280,a.eventCount,'event types','#65e6a5');drawCarouselMetric(ctx,400,350,280,linkedResults,'linked results','#c5ff72');drawCarouselMetric(ctx,730,350,280,thirdMetric.value,thirdMetric.label,'#ffd36a');
+        canvasRoundRect(ctx,70,555,940,300,34,'rgba(3,17,12,.58)','rgba(255,255,255,.14)');ctx.fillStyle='#65e6a5';ctx.font='850 23px Inter, sans-serif';ctx.fillText('MY BIGGEST MOMENT',110,615);
+        if(topFinish){const headline=topFinish.medal?`${medalIcon(topFinish.medal)} ${topFinish.medal.toUpperCase()} · ${topFinish.event.toUpperCase()}`:`#${topFinish.place} · ${topFinish.event.toUpperCase()}`;ctx.fillStyle=topFinish.medal==="Gold"?'#f2c94c':topFinish.medal==="Silver"?'#dbe4ec':topFinish.medal==="Bronze"?'#df9867':'#f7fbf9';ctx.font=`900 ${headline.length>28?45:55}px Inter, sans-serif`;canvasText(ctx,headline,110,700,820,60,2);ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';canvasText(ctx,`${topFinish.category} · ${topFinish.time||'Recorded result'}`,110,815,820,38,2);}else{ctx.fillStyle='#f7fbf9';ctx.font='900 48px Inter, sans-serif';canvasText(ctx,'WORLD CHAMPIONSHIP FINISHER',110,700,820,56,2);ctx.fillStyle='#b8cdc3';ctx.font='750 29px Inter, sans-serif';ctx.fillText(`${a.eventCount} event type${a.eventCount===1?'':'s'} completed`,110,815);}
+        canvasRoundRect(ctx,70,885,940,235,34,'rgba(3,17,12,.58)','rgba(255,255,255,.14)');ctx.fillStyle='#c5ff72';ctx.font='850 23px Inter, sans-serif';ctx.fillText('MY COUNTRY AT IRELAND 2026',110,945);ctx.fillStyle='#f7fbf9';ctx.font='800 27px Inter, sans-serif';const factEnd=canvasText(ctx,countryMedalFact,110,1005,820,34,2);ctx.fillStyle='#b8cdc3';ctx.font='700 22px Inter, sans-serif';canvasText(ctx,delegationFact,110,factEnd+8,820,30,2);
+        ctx.fillStyle='#c5ff72';ctx.font='850 29px Inter, sans-serif';ctx.fillText(`Proud to represent ${a.country}.`,70,1182);ctx.fillStyle='#f7fbf9';ctx.font='900 34px Inter, sans-serif';ctx.fillText('Ireland 2026 · My championship story.',70,1232);
       }},
     ];
   }
@@ -264,7 +260,7 @@
   function openAthleteCarousel(a,indiv,tms,am) {
     document.getElementById('athlete-carousel')?.remove();
     const slides=buildCarouselSlides(a,indiv,tms,am),overlay=document.createElement('div');
-    overlay.id='athlete-carousel';overlay.className='carousel-overlay';overlay.innerHTML=`<div class="carousel-dialog" role="dialog" aria-modal="true" aria-labelledby="carousel-title"><div class="carousel-head"><div><div class="eyebrow">Instagram carousel</div><h2 id="carousel-title">${esc(a.name)} · Championship story</h2><p>Four portrait slides, ready to download and post.</p></div><button class="carousel-close" aria-label="Close carousel">×</button></div><div class="carousel-workspace"><div class="carousel-preview"><canvas width="${CAROUSEL_WIDTH}" height="${CAROUSEL_HEIGHT}" aria-label="Athlete carousel slide preview"></canvas><div class="carousel-nav"><button class="btn carousel-prev">← Previous</button><div class="carousel-dots">${slides.map((_,index)=>`<button aria-label="Show slide ${index+1}" data-slide="${index}"></button>`).join('')}</div><button class="btn carousel-next">Next →</button></div></div><aside class="carousel-actions"><div class="carousel-slide-label"></div><p class="muted">PNG · 1080 × 1350 · Instagram portrait</p><button class="btn primary carousel-download">Download this slide</button><button class="btn carousel-download-all">Download all as ZIP</button><button class="btn carousel-caption">Copy Instagram caption</button><div class="notice"><strong>Distance methodology</strong>Uses only recorded individual race distances. Team and XC relay distance is excluded because individual splits were not supplied.</div><p class="carousel-feedback muted" aria-live="polite"></p></aside></div></div>`;
+    overlay.id='athlete-carousel';overlay.className='carousel-overlay';overlay.innerHTML=`<div class="carousel-dialog" role="dialog" aria-modal="true" aria-labelledby="carousel-title"><div class="carousel-head"><div><div class="eyebrow">Instagram carousel</div><h2 id="carousel-title">${esc(a.name)} · Championship story</h2><p>Four portrait slides, ready to download and post.</p></div><button class="carousel-close" aria-label="Close carousel">×</button></div><div class="carousel-workspace"><div class="carousel-preview"><canvas width="${CAROUSEL_WIDTH}" height="${CAROUSEL_HEIGHT}" aria-label="Athlete carousel slide preview"></canvas><div class="carousel-nav"><button class="btn carousel-prev">← Previous</button><div class="carousel-dots">${slides.map((_,index)=>`<button aria-label="Show slide ${index+1}" data-slide="${index}"></button>`).join('')}</div><button class="btn carousel-next">Next →</button></div></div><aside class="carousel-actions"><div class="carousel-slide-label"></div><p class="muted">PNG · 1080 × 1350 · Instagram portrait</p><button class="btn primary carousel-download">Download this slide</button><button class="btn carousel-download-all">Download / share all 4 PNGs</button><button class="btn carousel-caption">Copy Instagram caption</button><div class="notice"><strong>Distance methodology</strong>Uses only recorded individual race distances. Team and XC relay distance is excluded because individual splits were not supplied.</div><p class="carousel-feedback muted" aria-live="polite"></p></aside></div></div>`;
     document.body.appendChild(overlay);document.body.classList.add('carousel-open');
     const canvas=overlay.querySelector('canvas'),ctx=canvas.getContext('2d'),feedback=overlay.querySelector('.carousel-feedback');let current=0,logo=null,flag=null;
     const draw=()=>{drawCarouselBackground(ctx,slides[current].accent);slides[current].draw(ctx,{logo,flag});drawCarouselBrand(ctx,logo,current+1,slides.length);overlay.querySelector('.carousel-slide-label').innerHTML=`<strong>Slide ${current+1} of ${slides.length}</strong><span>${['Cover','Results','Distance & effort','Championship snapshot'][current]}</span>`;overlay.querySelectorAll('.carousel-dots button').forEach((dot,index)=>dot.classList.toggle('active',index===current));overlay.querySelector('.carousel-prev').disabled=current===0;overlay.querySelector('.carousel-next').disabled=current===slides.length-1;};
@@ -272,13 +268,12 @@
     const close=()=>{overlay.remove();document.body.classList.remove('carousel-open');document.removeEventListener('keydown',keys);};
     const keys=event=>{if(event.key==='Escape')close();else if(event.key==='ArrowLeft')go(current-1);else if(event.key==='ArrowRight')go(current+1);};
     const filename=index=>`${a.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'athlete'}-ocrwc2026-${index+1}.png`;
-    const slug=a.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'athlete';
     const download=async index=>{go(index);const blob=await carouselPngBlob(canvas);downloadCarouselBlob(blob,filename(index));};
     const caption=`${a.flag||''} ${a.name} at the 2026 OCR World Championships in Ireland.\n\n${a.eventCount} event type${a.eventCount===1?'':'s'} · ${a.medalCount} medal${a.medalCount===1?'':'s'} · one of ${D.athletes.length.toLocaleString()} championship athletes.\n\n#OCRWorldChampionships #OCRIreland #ObstacleCourseRacing #OCRWC2026`;
     overlay.querySelector('.carousel-close').addEventListener('click',close);overlay.addEventListener('click',event=>{if(event.target===overlay)close();});document.addEventListener('keydown',keys);
     overlay.querySelector('.carousel-prev').addEventListener('click',()=>go(current-1));overlay.querySelector('.carousel-next').addEventListener('click',()=>go(current+1));overlay.querySelectorAll('.carousel-dots button').forEach(dot=>dot.addEventListener('click',()=>go(+dot.dataset.slide)));
     overlay.querySelector('.carousel-download').addEventListener('click',async()=>{try{await download(current);feedback.textContent=`Slide ${current+1} downloaded.`;}catch{feedback.textContent='This browser could not create the PNG.';}});
-    overlay.querySelector('.carousel-download-all').addEventListener('click',async event=>{const button=event.currentTarget,original=current;button.disabled=true;button.textContent='Preparing ZIP…';try{const files=[];for(let index=0;index<slides.length;index++){go(index);const blob=await carouselPngBlob(canvas);files.push({name:filename(index),bytes:new Uint8Array(await blob.arrayBuffer())});}downloadCarouselBlob(carouselZip(files),`${slug}-ocrwc2026-carousel.zip`);feedback.textContent='Carousel ZIP downloaded.';}catch{feedback.textContent='This browser could not create the carousel ZIP.';}finally{go(original);button.disabled=false;button.textContent='Download all as ZIP';}});
+    overlay.querySelector('.carousel-download-all').addEventListener('click',async event=>{const button=event.currentTarget,original=current,defaultLabel='Download / share all 4 PNGs';button.disabled=true;button.textContent='Preparing 4 PNGs…';try{const images=[];for(let index=0;index<slides.length;index++){go(index);const blob=await carouselPngBlob(canvas),name=filename(index);images.push({blob,name});}const shareFiles=typeof File==='function'?images.map(image=>new File([image.blob],image.name,{type:'image/png'})):[];if(shareFiles.length&&navigator.share&&navigator.canShare?.({files:shareFiles})){await navigator.share({title:`${a.name} · OCRWC 2026`,files:shareFiles});feedback.textContent='Four PNGs opened in your phone’s share sheet.';}else{images.forEach((image,index)=>setTimeout(()=>downloadCarouselBlob(image.blob,image.name),index*250));feedback.textContent='Four separate PNG downloads started. If asked, allow multiple downloads.';}}catch(error){feedback.textContent=error?.name==='AbortError'?'Sharing cancelled.':'This browser could not create all four PNGs.';}finally{go(original);button.disabled=false;button.textContent=defaultLabel;}});
     overlay.querySelector('.carousel-caption').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(caption);feedback.textContent='Instagram caption copied.';}catch{feedback.textContent='Caption copy was blocked by this browser.';}});
     draw();Promise.all([loadCarouselImage(CAROUSEL_LOGO),loadCarouselImage(`${FLAG_ASSET_BASE}/${String(a.countryIso||'').toLowerCase()}.svg`)]).then(images=>{[logo,flag]=images;draw();});
   }
