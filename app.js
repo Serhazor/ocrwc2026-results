@@ -96,7 +96,7 @@
 
   const CAROUSEL_WIDTH = 1080;
   const CAROUSEL_HEIGHT = 1350;
-  const CAROUSEL_LOGO = '/assets/ocr-ireland-logo-transparent.png';
+  const CAROUSEL_LOGO = '/assets/ocr-ireland-logo-white-text.png';
 
   function recordedSeconds(value) {
     const raw=String(value??'').trim();
@@ -132,8 +132,8 @@
         Object.values(result.elimination||{}).forEach(run=>{if(run?.seconds!=null)runs.push(run.seconds);});
         if(!runs.length && result.timeSeconds!=null) runs.push(result.timeSeconds);
         runs.forEach(seconds=>add(result.eventId,km,seconds));
-      } else if(result.eventId==='short' && result.timeSeconds!=null) add('Short',3,result.timeSeconds);
-      else if(result.eventId==='standard' && result.timeSeconds!=null) add('Standard',12,result.timeSeconds,true);
+      } else if(result.eventId==='short' && result.timeSeconds!=null) add('Short',3.5,result.timeSeconds);
+      else if(result.eventId==='standard' && result.timeSeconds!=null) add('Standard',11,result.timeSeconds);
     }
     const counts=breakdown.reduce((map,label)=>map.set(label,(map.get(label)||0)+1),new Map());
     return {
@@ -141,7 +141,7 @@
       totalSeconds,
       starts,
       minimum,
-      breakdown:[...counts].map(([label,count])=>label==='Short'?'Short · 3 km':label==='Standard'?'Standard · 12 km+':`${label} × ${count}`).join('  ·  '),
+      breakdown:[...counts].map(([label,count])=>label==='Short'?'Short · 3.5 km':label==='Standard'?'Standard · 11 km':`${label} × ${count}`).join('  ·  '),
     };
   }
 
@@ -201,8 +201,7 @@
   function drawCarouselBrand(ctx,logo,page,total) {
     if(logo){
       ctx.save();
-      const halo=ctx.createRadialGradient(902,120,8,902,120,126);halo.addColorStop(0,'rgba(241,255,246,.88)');halo.addColorStop(.72,'rgba(232,255,240,.7)');halo.addColorStop(1,'rgba(232,255,240,0)');ctx.fillStyle=halo;ctx.beginPath();ctx.arc(902,120,126,0,Math.PI*2);ctx.fill();
-      ctx.globalAlpha=1;ctx.shadowColor='rgba(0,0,0,.3)';ctx.shadowBlur=14;ctx.drawImage(logo,795,4,215,231);ctx.restore();
+      ctx.globalAlpha=1;ctx.drawImage(logo,850,18,160,172);ctx.restore();
     }else{ctx.fillStyle='#65e6a5';ctx.font='900 24px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCR IRELAND',1010,105);ctx.textAlign='left';}
     ctx.fillStyle='rgba(255,255,255,.68)';ctx.font='700 22px Inter, sans-serif';ctx.fillText('OCR WORLD CHAMPIONSHIPS · IRELAND 2026',70,1292);
     ctx.textAlign='right';ctx.fillText(`${page} / ${total}`,1010,1292);ctx.textAlign='left';
@@ -248,7 +247,7 @@
         ctx.fillStyle='#ffd36a';ctx.font='850 24px Inter, sans-serif';ctx.fillText('THE DISTANCE',70,108);ctx.fillStyle='#f7fbf9';ctx.font='900 58px Inter, sans-serif';ctx.fillText('Obstacle by obstacle.',70,205);
         canvasRoundRect(ctx,70,285,940,380,38,'rgba(3,17,12,.55)','rgba(255,255,255,.12)');ctx.fillStyle='#ffd36a';ctx.font='900 116px Inter, sans-serif';ctx.fillText(`${distance.minimum?'≥ ':''}${formatDistance(distance.distance)}`,110,445);ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';ctx.fillText('recorded individual championship distance',110,502);ctx.fillStyle='#9db9ad';ctx.font='600 23px Inter, sans-serif';canvasText(ctx,distance.breakdown||'No timed individual distance recorded',110,558,820,34,3);
         drawCarouselMetric(ctx,70,730,430,distance.starts,'individual race starts','#ffd36a');drawCarouselMetric(ctx,540,730,470,formatRaceDuration(distance.totalSeconds),'recorded racing time','#65e6a5');
-        ctx.fillStyle='#a7beb3';ctx.font='600 21px Inter, sans-serif';canvasText(ctx,'Distance uses recorded individual rounds: 100m, 400m, Short (3 km) and Standard (12 km+). Relay legs are excluded because split distances were not supplied.',70,980,930,31,4);
+        ctx.fillStyle='#a7beb3';ctx.font='600 21px Inter, sans-serif';canvasText(ctx,'Distance uses recorded individual rounds: 100m, 400m, Short (3.5 km) and Standard (11 km). Relay legs are excluded because split distances were not supplied.',70,980,930,31,4);
       }},
       {accent:'#65e6a5',draw(ctx,assets){
         ctx.fillStyle='#65e6a5';ctx.font='850 24px Inter, sans-serif';ctx.fillText('MY CHAMPIONSHIP SNAPSHOT',70,108);drawCarouselFlag(ctx,assets.flag,a,70,160,126,94);
@@ -257,7 +256,7 @@
         canvasRoundRect(ctx,70,575,940,390,34,'rgba(3,17,12,.58)','rgba(255,255,255,.14)');ctx.fillStyle='#65e6a5';ctx.font='850 23px Inter, sans-serif';ctx.fillText('MY BIGGEST MOMENT',110,638);
         if(topFinish){const headline=topFinish.medal?`${medalIcon(topFinish.medal)} ${topFinish.medal.toUpperCase()} · ${topFinish.event.toUpperCase()}`:`#${topFinish.place} · ${topFinish.event.toUpperCase()}`;ctx.fillStyle=topFinish.medal==="Gold"?'#f2c94c':topFinish.medal==="Silver"?'#dbe4ec':topFinish.medal==="Bronze"?'#df9867':'#f7fbf9';ctx.font=`900 ${headline.length>28?45:55}px Inter, sans-serif`;canvasText(ctx,headline,110,722,820,64,2);ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';canvasText(ctx,`${topFinish.category} · ${topFinish.time||'Recorded result'}`,110,846,820,38,2);}else{ctx.fillStyle='#f7fbf9';ctx.font='900 48px Inter, sans-serif';canvasText(ctx,'WORLD CHAMPIONSHIP FINISHER',110,730,820,56,2);ctx.fillStyle='#b8cdc3';ctx.font='750 29px Inter, sans-serif';ctx.fillText(`${a.eventCount} event type${a.eventCount===1?'':'s'} completed`,110,852);}
         ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';canvasText(ctx,contribution,110,910,820,34,2);
-        ctx.fillStyle='#c5ff72';ctx.font='850 29px Inter, sans-serif';ctx.fillText(`Proud to represent ${a.country}.`,70,1070);ctx.fillStyle='#f7fbf9';ctx.font='900 38px Inter, sans-serif';ctx.fillText('Ireland 2026 · Made for obstacles.',70,1132);
+        ctx.fillStyle='#c5ff72';ctx.font='850 29px Inter, sans-serif';ctx.fillText(`Proud to represent ${a.country}.`,70,1070);ctx.fillStyle='#f7fbf9';ctx.font='900 38px Inter, sans-serif';ctx.fillText('Ireland 2026 · My championship story.',70,1132);
       }},
     ];
   }
