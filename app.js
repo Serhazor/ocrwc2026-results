@@ -3,9 +3,12 @@
   const app = document.getElementById('app');
 
   async function loadData() {
-    if (!window.OCR_DATA_PARTS || !window.OCR_DATA_PARTS.length) throw new Error('Compressed dataset missing');
+    if (window.OCR_DATA) return window.OCR_DATA;
+
+    const compressedData = window.OCR_DATA_PARTS?.join('') || window.OCR_DATA_GZIP_B64;
+    if (!compressedData) throw new Error('Championship dataset missing');
     if (!('DecompressionStream' in window)) throw new Error('This browser does not support DecompressionStream');
-    const raw = atob(window.OCR_DATA_PARTS.join(''));
+    const raw = atob(compressedData);
     const bytes = new Uint8Array(raw.length);
     for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
     const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
