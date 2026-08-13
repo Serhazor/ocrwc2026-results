@@ -1,11 +1,12 @@
 {
   "generated": "2026-08-13",
   "methodology": [
-    "100m podiums use valid Final-stage times; divisions without a usable final use qualifying Best Time as direct finals.",
+    "100m knockout podiums follow bracket progression: semifinal winners contest gold/silver and semifinal losers contest bronze; divisions without semifinals use qualifying Best Time as direct finals.",
     "400m podiums use the Finals workbook, including parenthetical times for categories marked No Final.",
     "100m and 400m team podiums use Best Time from their supplied qualifying workbooks.",
     "Short and Standard podiums use ranked contest rows only; Unranked, DNS, DNF, DNC and OOC rows are excluded.",
     "XC podiums use XC Team Relay rows only; XC Team Unranked, Open and DNS rows are excluded.",
+    "The Final column in the 100m elimination export contains both the championship final and the third-place race, so those times are never pooled into one ranking.",
     "The numeric value 41 in unused 100m elimination cells is a non-result placeholder, not a 41-second performance."
   ],
   "counts": {
@@ -89,22 +90,22 @@
       "category": "Female Junior",
       "place": 2,
       "medal": "Silver",
-      "name": "Romagnolli, Anita (3)",
-      "time": "44.266",
-      "timeSeconds": 44.266,
+      "name": "Rybišarová, Tina (2)",
+      "time": "52.893",
+      "timeSeconds": 52.893,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 59
+      "sourceRow": 58
     },
     {
       "eventId": "100m",
       "category": "Female Junior",
       "place": 3,
       "medal": "Bronze",
-      "name": "Nowakowska, Maja (4)",
-      "time": "48.200",
-      "timeSeconds": 48.2,
+      "name": "Romagnolli, Anita (3)",
+      "time": "44.266",
+      "timeSeconds": 44.266,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 60
+      "sourceRow": 59
     },
     {
       "eventId": "100m",
@@ -122,22 +123,22 @@
       "category": "Female Masters",
       "place": 2,
       "medal": "Silver",
-      "name": "Himka, Suzanne (4)",
-      "time": "53.383",
-      "timeSeconds": 53.383,
+      "name": "Wiltin, Karen (2)",
+      "time": "54.803",
+      "timeSeconds": 54.803,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 103
+      "sourceRow": 102
     },
     {
       "eventId": "100m",
       "category": "Female Masters",
       "place": 3,
       "medal": "Bronze",
-      "name": "Wiltin, Karen (2)",
-      "time": "54.803",
-      "timeSeconds": 54.803,
+      "name": "Himka, Suzanne (4)",
+      "time": "53.383",
+      "timeSeconds": 53.383,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 102
+      "sourceRow": 103
     },
     {
       "eventId": "100m",
@@ -276,33 +277,33 @@
       "category": "Male Elite",
       "place": 1,
       "medal": "Gold",
-      "name": "Beckstrand, Kai (1)",
-      "time": "25.247",
-      "timeSeconds": 25.247,
+      "name": "Riley, Caleb (3)",
+      "time": "38.202",
+      "timeSeconds": 38.202,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 4
+      "sourceRow": 2
     },
     {
       "eventId": "100m",
       "category": "Male Elite",
       "place": 2,
       "medal": "Silver",
-      "name": "Yamamoto, Ryohei (2)",
-      "time": "27.254",
-      "timeSeconds": 27.254,
+      "name": "Beckstrand, Luke (5)",
+      "time": "No Time",
+      "timeSeconds": null,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 5
+      "sourceRow": 3
     },
     {
       "eventId": "100m",
       "category": "Male Elite",
       "place": 3,
       "medal": "Bronze",
-      "name": "Riley, Caleb (3)",
-      "time": "38.202",
-      "timeSeconds": 38.202,
+      "name": "Beckstrand, Kai (1)",
+      "time": "25.247",
+      "timeSeconds": 25.247,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 2
+      "sourceRow": 4
     },
     {
       "eventId": "100m",
@@ -320,22 +321,22 @@
       "category": "Male Junior",
       "place": 2,
       "medal": "Silver",
-      "name": "Battaglia, Anthony (4)",
-      "time": "27.844",
-      "timeSeconds": 27.844,
+      "name": "Yuan, Kieran (1)",
+      "time": "42.208",
+      "timeSeconds": 42.208,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 66
+      "sourceRow": 65
     },
     {
       "eventId": "100m",
       "category": "Male Junior",
       "place": 3,
       "medal": "Bronze",
-      "name": "Vitchikov, Daniil (11)",
-      "time": "30.562",
-      "timeSeconds": 30.562,
+      "name": "Battaglia, Anthony (4)",
+      "time": "27.844",
+      "timeSeconds": 27.844,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 67
+      "sourceRow": 66
     },
     {
       "eventId": "100m",
@@ -386,22 +387,22 @@
       "category": "Male Senior",
       "place": 2,
       "medal": "Silver",
-      "name": "Wächter, Nils (10)",
-      "time": "35.742",
-      "timeSeconds": 35.742,
+      "name": "KATO, YUICHIRO (11)",
+      "time": "1:20.477",
+      "timeSeconds": 80.477,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 89
+      "sourceRow": 88
     },
     {
       "eventId": "100m",
       "category": "Male Senior",
       "place": 3,
       "medal": "Bronze",
-      "name": "Boswell, Weston (5)",
-      "time": "52.152",
-      "timeSeconds": 52.152,
+      "name": "Wächter, Nils (10)",
+      "time": "35.742",
+      "timeSeconds": 35.742,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 90
+      "sourceRow": 89
     },
     {
       "eventId": "100m",
@@ -441,17 +442,6 @@
       "category": "Male Youth",
       "place": 1,
       "medal": "Gold",
-      "name": "Ascone, Alex (1)",
-      "time": "27.015",
-      "timeSeconds": 27.015,
-      "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
-      "sourceRow": 43
-    },
-    {
-      "eventId": "100m",
-      "category": "Male Youth",
-      "place": 2,
-      "medal": "Silver",
       "name": "Kosinov, Danila (5)",
       "time": "27.312",
       "timeSeconds": 27.312,
@@ -461,13 +451,24 @@
     {
       "eventId": "100m",
       "category": "Male Youth",
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "name": "Salebra, Max (2)",
       "time": "27.661",
       "timeSeconds": 27.661,
       "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
       "sourceRow": 42
+    },
+    {
+      "eventId": "100m",
+      "category": "Male Youth",
+      "place": 3,
+      "medal": "Bronze",
+      "name": "Ascone, Alex (1)",
+      "time": "27.015",
+      "timeSeconds": 27.015,
+      "sourceFile": "100M Results - Elimination Rounds Results.xlsx",
+      "sourceRow": 43
     },
     {
       "eventId": "100m-team",

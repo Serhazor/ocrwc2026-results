@@ -24,7 +24,34 @@ const normalize = value => String(value ?? '')
   .trim();
 const personKey = value => normalize(value).split(' ').filter(Boolean).sort().join('|');
 const close = (left, right) => Number.isFinite(left) && Number.isFinite(right) && Math.abs(left - right) <= 0.001;
+const sameSeconds = (left, right) => (left == null && right == null) || close(left, right);
 const medalKey = item => `${item.eventId}|${item.category}|${item.place}`;
+const medalIdNumber = value => Number(String(value ?? '').replace(/\D+/g, '')) || 0;
+const medalTableSort = (left, right) => (
+  right.gold - left.gold
+  || right.silver - left.silver
+  || right.bronze - left.bronze
+  || left.country.localeCompare(right.country)
+);
+const buildMedalTable = medals => {
+  const rows = new Map();
+  for (const medal of medals) {
+    const key = medal.countryIso || medal.country;
+    if (!rows.has(key)) rows.set(key, {
+      country: medal.country,
+      countryIso: medal.countryIso,
+      flag: medal.flag,
+      gold: 0,
+      silver: 0,
+      bronze: 0,
+      total: 0,
+    });
+    const row = rows.get(key);
+    row[medal.medal.toLowerCase()] += 1;
+    row.total += 1;
+  }
+  return [...rows.values()].sort(medalTableSort).map((row, index) => ({ ...row, rank: index + 1 }));
+};
 const athletes = new Map(data.athletes.map(athlete => [athlete.id, athlete]));
 const actualMedals = new Map(data.medals.map(medal => [medalKey(medal), medal]));
 const sourceMedals = new Map(source.medals.map(medal => [medalKey(medal), medal]));
@@ -41,7 +68,7 @@ for (const expected of source.medals) {
     ? normalize(actual.name) === normalize(expected.name)
     : personKey(actual.name) === personKey(expected.name)
       || athlete?.aliases?.some(alias => personKey(alias) === personKey(expected.name));
-  if (!nameMatches || actual.time !== expected.time || !close(actual.timeSeconds, expected.timeSeconds) || actual.medal !== expected.medal) {
+  if (!nameMatches || actual.time !== expected.time || !sameSeconds(actual.timeSeconds, expected.timeSeconds) || actual.medal !== expected.medal) {
     mismatches.push({
       key: medalKey(expected),
       issue: 'source mismatch',
@@ -64,14 +91,14 @@ for (const medal of data.medals) {
     && item.place === medal.place
     && (medal.athleteId ? item.athleteId === medal.athleteId : item.teamId === medal.teamId)
   ));
-  if (!result || result.medal !== medal.medal || result.time !== medal.time || !close(result.timeSeconds, medal.timeSeconds)) {
+  if (!result || result.medal !== medal.medal || result.time !== medal.time || !sameSeconds(result.timeSeconds, medal.timeSeconds)) {
     inconsistentResultLinks.push({ medalId: medal.id, resultId: result?.id ?? null });
   }
 }
 
 const bad100mFinals = data.results
-  .filter(result => result.eventId === '100m' && result.elimination?.Final?.seconds != null)
-  .filter(result => result.time !== result.finalTime || !close(result.timeSeconds, result.elimination?.Final?.seconds))
+  .filter(result => result.eventId === '100m' && result.finalTime != null)
+  .filter(result => result.time !== result.finalTime || !sameSeconds(result.timeSeconds, result.elimination?.Final?.seconds))
   .map(result => result.id);
 const bad100mPlaceholders = data.results
   .filter(result => result.eventId === '100m')
@@ -87,6 +114,43 @@ for (const eventId of eventIds) {
     if (medals.some((medal, index) => medal.place !== index + 1)) badCategoryPlacings.push(`${eventId}:${category}`);
   }
 }
+
+const badMedalTables = [];
+for (const eventId of [...eventIds, 'combined']) {
+  const medals = eventId === 'combined' ? data.medals : data.medals.filter(medal => medal.eventId === eventId);
+  if (JSON.stringify(data.medalTables[eventId]) !== JSON.stringify(buildMedalTable(medals))) badMedalTables.push(eventId);
+}
+
+const expectedAthleteMedals = new Map(data.athletes.map(athlete => [athlete.id, new Set()]));
+for (const medal of data.medals) {
+  if (medal.athleteId) expectedAthleteMedals.get(medal.athleteId)?.add(medal.id);
+  if (medal.teamId) {
+    const team = data.teams.find(item => item.id === medal.teamId);
+    for (const athleteId of team?.memberIds ?? []) expectedAthleteMedals.get(athleteId)?.add(medal.id);
+  }
+}
+const badAthleteMedalTotals = data.athletes
+  .filter(athlete => {
+    const expectedIds = [...expectedAthleteMedals.get(athlete.id)].sort((left, right) => medalIdNumber(left) - medalIdNumber(right));
+    const medals = expectedIds.map(id => data.medals.find(medal => medal.id === id));
+    return JSON.stringify(athlete.medals) !== JSON.stringify(expectedIds)
+      || athlete.medalCount !== medals.length
+      || athlete.goldCount !== medals.filter(medal => medal.medal === 'Gold').length
+      || athlete.silverCount !== medals.filter(medal => medal.medal === 'Silver').length
+      || athlete.bronzeCount !== medals.filter(medal => medal.medal === 'Bronze').length;
+  })
+  .map(athlete => athlete.id);
+
+const combinedRows = new Map(buildMedalTable(data.medals).map(row => [row.countryIso || row.country, row]));
+const badCountryMedalTotals = data.countries
+  .filter(country => {
+    const expected = combinedRows.get(country.countryIso || country.country);
+    return country.gold !== (expected?.gold ?? 0)
+      || country.silver !== (expected?.silver ?? 0)
+      || country.bronze !== (expected?.bronze ?? 0)
+      || country.total !== (expected?.total ?? 0);
+  })
+  .map(country => country.countryIso);
 
 const json = JSON.stringify(data);
 const directContext = { window: {} };
@@ -108,6 +172,9 @@ const checks = {
   categoryPlacings: badCategoryPlacings.length === 0,
   final100mFields: bad100mFinals.length === 0,
   placeholder41Excluded: bad100mPlaceholders.length === 0,
+  medalTablesRecalculated: badMedalTables.length === 0,
+  athleteMedalTotalsRecalculated: badAthleteMedalTotals.length === 0,
+  countryMedalTotalsRecalculated: badCountryMedalTotals.length === 0,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,
@@ -122,6 +189,7 @@ const report = {
     resultsByEvent: resultCounts,
     podiumsByEvent: medalCounts,
     final100mResults: data.results.filter(result => result.eventId === '100m' && result.elimination?.Final?.seconds != null).length,
+    final100mParticipants: data.results.filter(result => result.eventId === '100m' && result.finalTime != null).length,
     directFinal100mResults: data.results.filter(result => result.eventId === '100m' && result.directFinal).length,
   },
   mismatches: mismatches.slice(0, 20),
@@ -129,6 +197,9 @@ const report = {
   bad100mFinals,
   bad100mPlaceholders,
   badCategoryPlacings,
+  badMedalTables,
+  badAthleteMedalTotals: badAthleteMedalTotals.slice(0, 20),
+  badCountryMedalTotals,
 };
 
 console.log(JSON.stringify(report, null, 2));

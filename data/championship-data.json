@@ -84,10 +84,10 @@
         "country": "United States",
         "countryIso": "US",
         "flag": "🇺🇸",
-        "gold": 11,
-        "silver": 7,
+        "gold": 10,
+        "silver": 9,
         "bronze": 8,
-        "total": 26,
+        "total": 27,
         "rank": 1
       },
       "fastestRecordedRun": {
@@ -288,10 +288,12 @@
   },
   "eventFacts": {
     "100m": [
-      "Male Elite champion: Kai Beckstrand (🇺🇸 United States) in 25.247.",
+      "Male Elite champion: Caleb Riley (🇺🇸 United States) in 38.202.",
       "Female Elite champion: Elizabeth Polsgrove (🇺🇸 United States) in 30.982.",
       "Fastest recorded 100m run: Luke Beckstrand in 24.542 during the Semi Final.",
-      "Adaptive categories and Female Veteran without a usable final-stage result are treated as direct finals using the supplied Best Time."
+      "Knockout podiums follow bracket progression: semifinal winners contest gold and silver, while semifinal losers contest bronze.",
+      "The Final column contains both the championship final and the third-place race; their times are not pooled into one ranking.",
+      "Adaptive categories and Female Veteran without semifinals are treated as direct finals using the supplied Best Time."
     ],
     "100m-team": [
       "Fastest team in the supplied data: Usa 100m Elite Mixed Team (🇺🇸 United States) in 27.874.",
@@ -331,11 +333,7 @@
     "1077 unique athletes are linked across the supplied individual and team datasets.",
     "834 athletes appear in two or more event types.",
     "Jamie Gane, Lena Schollig and Stephan Wirtz appear in all seven event types in the available data.",
-    "🇺🇸 United States leads the combined medal table with 45 golds and 117 total medals.",
-    "Among delegations with at least 10 linked athletes, 🇵🇹 Portugal has the highest medals-per-athlete ratio (0.85).",
-    "🇺🇸 United States leads the combined medal table with 45 golds and 117 total medals.",
-    "Among delegations with at least 10 linked athletes, 🇵🇹 Portugal has the highest medals-per-athlete ratio (0.85).",
-    "🇺🇸 United States leads the combined medal table with 45 golds and 117 total medals.",
+    "🇺🇸 United States leads the combined medal table with 44 golds and 118 total medals.",
     "Among delegations with at least 10 linked athletes, 🇵🇹 Portugal has the highest medals-per-athlete ratio (0.85)."
   ],
   "insights": [
@@ -386,10 +384,10 @@
         "country": "United States",
         "countryIso": "US",
         "flag": "🇺🇸",
-        "gold": 11,
-        "silver": 7,
+        "gold": 10,
+        "silver": 9,
         "bronze": 8,
-        "total": 26,
+        "total": 27,
         "rank": 1
       },
       {
@@ -413,16 +411,6 @@
         "rank": 3
       },
       {
-        "country": "Germany",
-        "countryIso": "DE",
-        "flag": "🇩🇪",
-        "gold": 1,
-        "silver": 1,
-        "bronze": 0,
-        "total": 2,
-        "rank": 4
-      },
-      {
         "country": "Japan",
         "countryIso": "JP",
         "flag": "🇯🇵",
@@ -430,16 +418,26 @@
         "silver": 1,
         "bronze": 0,
         "total": 2,
+        "rank": 4
+      },
+      {
+        "country": "Germany",
+        "countryIso": "DE",
+        "flag": "🇩🇪",
+        "gold": 1,
+        "silver": 0,
+        "bronze": 1,
+        "total": 2,
         "rank": 5
       },
       {
         "country": "Russia",
         "countryIso": "RU",
         "flag": "🇷🇺",
-        "gold": 0,
-        "silver": 1,
-        "bronze": 1,
-        "total": 2,
+        "gold": 1,
+        "silver": 0,
+        "bronze": 0,
+        "total": 1,
         "rank": 6
       },
       {
@@ -453,9 +451,9 @@
         "rank": 7
       },
       {
-        "country": "Denmark",
-        "countryIso": "DK",
-        "flag": "🇩🇰",
+        "country": "Czech Republic",
+        "countryIso": "CZ",
+        "flag": "🇨🇿",
         "gold": 0,
         "silver": 1,
         "bronze": 0,
@@ -463,9 +461,9 @@
         "rank": 8
       },
       {
-        "country": "Italy",
-        "countryIso": "IT",
-        "flag": "🇮🇹",
+        "country": "Denmark",
+        "countryIso": "DK",
+        "flag": "🇩🇰",
         "gold": 0,
         "silver": 1,
         "bronze": 0,
@@ -473,14 +471,24 @@
         "rank": 9
       },
       {
+        "country": "Italy",
+        "countryIso": "IT",
+        "flag": "🇮🇹",
+        "gold": 0,
+        "silver": 0,
+        "bronze": 1,
+        "total": 1,
+        "rank": 10
+      },
+      {
         "country": "Poland",
         "countryIso": "PL",
         "flag": "🇵🇱",
         "gold": 0,
         "silver": 0,
-        "bronze": 2,
-        "total": 2,
-        "rank": 10
+        "bronze": 1,
+        "total": 1,
+        "rank": 11
       }
     ],
     "100m-team": [
@@ -1500,10 +1508,10 @@
         "country": "United States",
         "countryIso": "US",
         "flag": "🇺🇸",
-        "gold": 45,
-        "silver": 41,
+        "gold": 44,
+        "silver": 43,
         "bronze": 31,
-        "total": 117,
+        "total": 118,
         "rank": 1
       },
       {
@@ -1541,8 +1549,8 @@
         "countryIso": "DE",
         "flag": "🇩🇪",
         "gold": 11,
-        "silver": 5,
-        "bronze": 2,
+        "silver": 4,
+        "bronze": 3,
         "total": 18,
         "rank": 5
       },
@@ -1571,9 +1579,9 @@
         "countryIso": "CZ",
         "flag": "🇨🇿",
         "gold": 5,
-        "silver": 6,
+        "silver": 7,
         "bronze": 4,
-        "total": 15,
+        "total": 16,
         "rank": 8
       },
       {
@@ -1582,8 +1590,8 @@
         "flag": "🇵🇱",
         "gold": 5,
         "silver": 4,
-        "bronze": 7,
-        "total": 16,
+        "bronze": 6,
+        "total": 15,
         "rank": 9
       },
       {
@@ -1597,6 +1605,16 @@
         "rank": 10
       },
       {
+        "country": "Russia",
+        "countryIso": "RU",
+        "flag": "🇷🇺",
+        "gold": 3,
+        "silver": 8,
+        "bronze": 2,
+        "total": 13,
+        "rank": 11
+      },
+      {
         "country": "Denmark",
         "countryIso": "DK",
         "flag": "🇩🇰",
@@ -1604,16 +1622,6 @@
         "silver": 6,
         "bronze": 6,
         "total": 15,
-        "rank": 11
-      },
-      {
-        "country": "Russia",
-        "countryIso": "RU",
-        "flag": "🇷🇺",
-        "gold": 2,
-        "silver": 9,
-        "bronze": 3,
-        "total": 14,
         "rank": 12
       },
       {
@@ -1681,8 +1689,8 @@
         "countryIso": "IT",
         "flag": "🇮🇹",
         "gold": 1,
-        "silver": 3,
-        "bronze": 5,
+        "silver": 2,
+        "bronze": 6,
         "total": 9,
         "rank": 19
       },
@@ -1885,13 +1893,13 @@
       "category": "Female Junior",
       "place": 2,
       "medal": "Silver",
-      "country": "Italy",
-      "countryIso": "IT",
-      "flag": "🇮🇹",
-      "name": "Anita Romagnolli",
-      "time": "44.266",
-      "timeSeconds": 44.266,
-      "athleteId": "a152",
+      "country": "Czech Republic",
+      "countryIso": "CZ",
+      "flag": "🇨🇿",
+      "name": "Tina Rybišarová",
+      "time": "52.893",
+      "timeSeconds": 52.893,
+      "athleteId": "a151",
       "id": "m7"
     },
     {
@@ -1900,13 +1908,13 @@
       "category": "Female Junior",
       "place": 3,
       "medal": "Bronze",
-      "country": "Poland",
-      "countryIso": "PL",
-      "flag": "🇵🇱",
-      "name": "Maja Nowakowska",
-      "time": "48.200",
-      "timeSeconds": 48.2,
-      "athleteId": "a153",
+      "country": "Italy",
+      "countryIso": "IT",
+      "flag": "🇮🇹",
+      "name": "Anita Romagnolli",
+      "time": "44.266",
+      "timeSeconds": 44.266,
+      "athleteId": "a152",
       "id": "m8"
     },
     {
@@ -1933,10 +1941,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Suzanne Himka",
-      "time": "53.383",
-      "timeSeconds": 53.383,
-      "athleteId": "a245",
+      "name": "Karen Wiltin",
+      "time": "54.803",
+      "timeSeconds": 54.803,
+      "athleteId": "a243",
       "id": "m10"
     },
     {
@@ -1948,10 +1956,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Karen Wiltin",
-      "time": "54.803",
-      "timeSeconds": 54.803,
-      "athleteId": "a243",
+      "name": "Suzanne Himka",
+      "time": "53.383",
+      "timeSeconds": 53.383,
+      "athleteId": "a245",
       "id": "m11"
     },
     {
@@ -2143,10 +2151,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Kai Beckstrand",
-      "time": "25.247",
-      "timeSeconds": 25.247,
-      "athleteId": "a1",
+      "name": "Caleb Riley",
+      "time": "38.202",
+      "timeSeconds": 38.202,
+      "athleteId": "a3",
       "id": "m24"
     },
     {
@@ -2155,13 +2163,13 @@
       "category": "Male Elite",
       "place": 2,
       "medal": "Silver",
-      "country": "Japan",
-      "countryIso": "JP",
-      "flag": "🇯🇵",
-      "name": "Ryohei Yamamoto",
-      "time": "27.254",
-      "timeSeconds": 27.254,
-      "athleteId": "a2",
+      "country": "United States",
+      "countryIso": "US",
+      "flag": "🇺🇸",
+      "name": "Luke Beckstrand",
+      "time": "No Time",
+      "timeSeconds": null,
+      "athleteId": "a5",
       "id": "m25"
     },
     {
@@ -2173,10 +2181,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Caleb Riley",
-      "time": "38.202",
-      "timeSeconds": 38.202,
-      "athleteId": "a3",
+      "name": "Kai Beckstrand",
+      "time": "25.247",
+      "timeSeconds": 25.247,
+      "athleteId": "a1",
       "id": "m26"
     },
     {
@@ -2203,10 +2211,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Anthony Battaglia",
-      "time": "27.844",
-      "timeSeconds": 27.844,
-      "athleteId": "a162",
+      "name": "Kieran Yuan",
+      "time": "42.208",
+      "timeSeconds": 42.208,
+      "athleteId": "a159",
       "id": "m28"
     },
     {
@@ -2215,13 +2223,13 @@
       "category": "Male Junior",
       "place": 3,
       "medal": "Bronze",
-      "country": "Russia",
-      "countryIso": "RU",
-      "flag": "🇷🇺",
-      "name": "Daniil Vitchikov",
-      "time": "30.562",
-      "timeSeconds": 30.562,
-      "athleteId": "a169",
+      "country": "United States",
+      "countryIso": "US",
+      "flag": "🇺🇸",
+      "name": "Anthony Battaglia",
+      "time": "27.844",
+      "timeSeconds": 27.844,
+      "athleteId": "a162",
       "id": "m29"
     },
     {
@@ -2290,13 +2298,13 @@
       "category": "Male Senior",
       "place": 2,
       "medal": "Silver",
-      "country": "Germany",
-      "countryIso": "DE",
-      "flag": "🇩🇪",
-      "name": "Nils Wächter",
-      "time": "35.742",
-      "timeSeconds": 35.742,
-      "athleteId": "a214",
+      "country": "Japan",
+      "countryIso": "JP",
+      "flag": "🇯🇵",
+      "name": "Yuichiro Kato",
+      "time": "1:20.477",
+      "timeSeconds": 80.477,
+      "athleteId": "a215",
       "id": "m34"
     },
     {
@@ -2305,13 +2313,13 @@
       "category": "Male Senior",
       "place": 3,
       "medal": "Bronze",
-      "country": "United States",
-      "countryIso": "US",
-      "flag": "🇺🇸",
-      "name": "Weston Boswell",
-      "time": "52.152",
-      "timeSeconds": 52.152,
-      "athleteId": "a209",
+      "country": "Germany",
+      "countryIso": "DE",
+      "flag": "🇩🇪",
+      "name": "Nils Wächter",
+      "time": "35.742",
+      "timeSeconds": 35.742,
+      "athleteId": "a214",
       "id": "m35"
     },
     {
@@ -2365,13 +2373,13 @@
       "category": "Male Youth",
       "place": 1,
       "medal": "Gold",
-      "country": "United States",
-      "countryIso": "US",
-      "flag": "🇺🇸",
-      "name": "Alex Ascone",
-      "time": "27.015",
-      "timeSeconds": 27.015,
-      "athleteId": "a81",
+      "country": "Russia",
+      "countryIso": "RU",
+      "flag": "🇷🇺",
+      "name": "Danila Kosinov",
+      "time": "27.312",
+      "timeSeconds": 27.312,
+      "athleteId": "a85",
       "id": "m39"
     },
     {
@@ -2380,13 +2388,13 @@
       "category": "Male Youth",
       "place": 2,
       "medal": "Silver",
-      "country": "Russia",
-      "countryIso": "RU",
-      "flag": "🇷🇺",
-      "name": "Danila Kosinov",
-      "time": "27.312",
-      "timeSeconds": 27.312,
-      "athleteId": "a85",
+      "country": "United States",
+      "countryIso": "US",
+      "flag": "🇺🇸",
+      "name": "Max Salebra",
+      "time": "27.661",
+      "timeSeconds": 27.661,
+      "athleteId": "a82",
       "id": "m40"
     },
     {
@@ -2398,10 +2406,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Max Salebra",
-      "time": "27.661",
-      "timeSeconds": 27.661,
-      "athleteId": "a82",
+      "name": "Alex Ascone",
+      "time": "27.015",
+      "timeSeconds": 27.015,
+      "athleteId": "a81",
       "id": "m41"
     },
     {
@@ -8093,7 +8101,7 @@
         "t56"
       ],
       "medals": [
-        "m24",
+        "m26",
         "m46",
         "m72",
         "m323"
@@ -8106,9 +8114,9 @@
       ],
       "eventCount": 4,
       "medalCount": 4,
-      "goldCount": 3,
+      "goldCount": 2,
       "silverCount": 1,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a2",
@@ -8124,17 +8132,15 @@
       "teamResults": [
         "t42"
       ],
-      "medals": [
-        "m25"
-      ],
+      "medals": [],
       "eventIds": [
         "100m",
         "400m-team"
       ],
       "eventCount": 2,
-      "medalCount": 1,
+      "medalCount": 0,
       "goldCount": 0,
-      "silverCount": 1,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -8152,7 +8158,7 @@
         "t9"
       ],
       "medals": [
-        "m26",
+        "m24",
         "m49"
       ],
       "eventIds": [
@@ -8161,9 +8167,9 @@
       ],
       "eventCount": 2,
       "medalCount": 2,
-      "goldCount": 1,
+      "goldCount": 2,
       "silverCount": 0,
-      "bronzeCount": 1
+      "bronzeCount": 0
     },
     {
       "id": "a4",
@@ -8204,6 +8210,7 @@
         "t56"
       ],
       "medals": [
+        "m25",
         "m46",
         "m72"
       ],
@@ -8214,9 +8221,9 @@
         "400m-team"
       ],
       "eventCount": 4,
-      "medalCount": 2,
+      "medalCount": 3,
       "goldCount": 2,
-      "silverCount": 0,
+      "silverCount": 1,
       "bronzeCount": 0
     },
     {
@@ -10511,7 +10518,7 @@
         "t12"
       ],
       "medals": [
-        "m39",
+        "m41",
         "m58",
         "m342"
       ],
@@ -10522,9 +10529,9 @@
       ],
       "eventCount": 3,
       "medalCount": 3,
-      "goldCount": 1,
+      "goldCount": 0,
       "silverCount": 0,
-      "bronzeCount": 2
+      "bronzeCount": 3
     },
     {
       "id": "a82",
@@ -10543,7 +10550,7 @@
         "t84"
       ],
       "medals": [
-        "m41",
+        "m40",
         "m87"
       ],
       "eventIds": [
@@ -10555,8 +10562,8 @@
       "eventCount": 4,
       "medalCount": 2,
       "goldCount": 0,
-      "silverCount": 1,
-      "bronzeCount": 1
+      "silverCount": 2,
+      "bronzeCount": 0
     },
     {
       "id": "a83",
@@ -10638,7 +10645,7 @@
         "t53"
       ],
       "medals": [
-        "m40",
+        "m39",
         "m47",
         "m70"
       ],
@@ -10651,8 +10658,8 @@
       ],
       "eventCount": 5,
       "medalCount": 3,
-      "goldCount": 0,
-      "silverCount": 3,
+      "goldCount": 1,
+      "silverCount": 2,
       "bronzeCount": 0
     },
     {
@@ -12475,6 +12482,7 @@
         "t36"
       ],
       "medals": [
+        "m7",
         "m68",
         "m73"
       ],
@@ -12484,9 +12492,9 @@
         "short"
       ],
       "eventCount": 3,
-      "medalCount": 2,
+      "medalCount": 3,
       "goldCount": 0,
-      "silverCount": 1,
+      "silverCount": 2,
       "bronzeCount": 1
     },
     {
@@ -12503,7 +12511,7 @@
       ],
       "teamResults": [],
       "medals": [
-        "m7"
+        "m8"
       ],
       "eventIds": [
         "100m",
@@ -12512,8 +12520,8 @@
       "eventCount": 2,
       "medalCount": 1,
       "goldCount": 0,
-      "silverCount": 1,
-      "bronzeCount": 0
+      "silverCount": 0,
+      "bronzeCount": 1
     },
     {
       "id": "a153",
@@ -12527,17 +12535,15 @@
         "r153"
       ],
       "teamResults": [],
-      "medals": [
-        "m8"
-      ],
+      "medals": [],
       "eventIds": [
         "100m"
       ],
       "eventCount": 1,
-      "medalCount": 1,
+      "medalCount": 0,
       "goldCount": 0,
       "silverCount": 0,
-      "bronzeCount": 1
+      "bronzeCount": 0
     },
     {
       "id": "a154",
@@ -12682,6 +12688,7 @@
         "t9"
       ],
       "medals": [
+        "m28",
         "m49"
       ],
       "eventIds": [
@@ -12689,9 +12696,9 @@
         "100m-team"
       ],
       "eventCount": 2,
-      "medalCount": 1,
+      "medalCount": 2,
       "goldCount": 1,
-      "silverCount": 0,
+      "silverCount": 1,
       "bronzeCount": 0
     },
     {
@@ -12767,7 +12774,7 @@
       ],
       "teamResults": [],
       "medals": [
-        "m28",
+        "m29",
         "m356"
       ],
       "eventIds": [
@@ -12777,8 +12784,8 @@
       "eventCount": 2,
       "medalCount": 2,
       "goldCount": 0,
-      "silverCount": 2,
-      "bronzeCount": 0
+      "silverCount": 1,
+      "bronzeCount": 1
     },
     {
       "id": "a163",
@@ -12958,7 +12965,6 @@
         "t53"
       ],
       "medals": [
-        "m29",
         "m47",
         "m70"
       ],
@@ -12969,10 +12975,10 @@
         "400m-team"
       ],
       "eventCount": 4,
-      "medalCount": 3,
+      "medalCount": 2,
       "goldCount": 0,
       "silverCount": 2,
-      "bronzeCount": 1
+      "bronzeCount": 0
     },
     {
       "id": "a170",
@@ -14087,9 +14093,7 @@
         "r1962"
       ],
       "teamResults": [],
-      "medals": [
-        "m35"
-      ],
+      "medals": [],
       "eventIds": [
         "100m",
         "400m",
@@ -14097,10 +14101,10 @@
         "standard"
       ],
       "eventCount": 4,
-      "medalCount": 1,
+      "medalCount": 0,
       "goldCount": 0,
       "silverCount": 0,
-      "bronzeCount": 1
+      "bronzeCount": 0
     },
     {
       "id": "a210",
@@ -14214,7 +14218,7 @@
         "t39"
       ],
       "medals": [
-        "m34",
+        "m35",
         "m50"
       ],
       "eventIds": [
@@ -14225,8 +14229,8 @@
       "eventCount": 3,
       "medalCount": 2,
       "goldCount": 0,
-      "silverCount": 2,
-      "bronzeCount": 0
+      "silverCount": 1,
+      "bronzeCount": 1
     },
     {
       "id": "a215",
@@ -14242,15 +14246,17 @@
       "teamResults": [
         "t42"
       ],
-      "medals": [],
+      "medals": [
+        "m34"
+      ],
       "eventIds": [
         "100m",
         "400m-team"
       ],
       "eventCount": 2,
-      "medalCount": 0,
+      "medalCount": 1,
       "goldCount": 0,
-      "silverCount": 0,
+      "silverCount": 1,
       "bronzeCount": 0
     },
     {
@@ -14974,7 +14980,7 @@
       ],
       "teamResults": [],
       "medals": [
-        "m11",
+        "m10",
         "m404"
       ],
       "eventIds": [
@@ -14984,8 +14990,8 @@
       "eventCount": 2,
       "medalCount": 2,
       "goldCount": 0,
-      "silverCount": 1,
-      "bronzeCount": 1
+      "silverCount": 2,
+      "bronzeCount": 0
     },
     {
       "id": "a244",
@@ -15039,7 +15045,7 @@
         "t188"
       ],
       "medals": [
-        "m10",
+        "m11",
         "m55",
         "m126",
         "m291",
@@ -15055,8 +15061,8 @@
       "eventCount": 5,
       "medalCount": 5,
       "goldCount": 3,
-      "silverCount": 2,
-      "bronzeCount": 0
+      "silverCount": 1,
+      "bronzeCount": 1
     },
     {
       "id": "a246",
@@ -40975,8 +40981,8 @@
       "status": "Ranked",
       "time": "25.247",
       "timeSeconds": 25.247,
-      "place": 1,
-      "medal": "Gold",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "29.588",
@@ -41020,8 +41026,8 @@
       "status": "Ranked",
       "time": "27.254",
       "timeSeconds": 27.254,
-      "place": 2,
-      "medal": "Silver",
+      "place": null,
+      "medal": null,
       "stage": "Final",
       "qualification": {
         "attempt1": "29.835",
@@ -41065,8 +41071,8 @@
       "status": "Ranked",
       "time": "38.202",
       "timeSeconds": 38.202,
-      "place": 3,
-      "medal": "Bronze",
+      "place": 1,
+      "medal": "Gold",
       "stage": "Final",
       "qualification": {
         "attempt1": "28.637",
@@ -41152,10 +41158,10 @@
       "gender": "Male",
       "category": "Male Elite",
       "status": "Ranked",
-      "time": "29.274",
-      "timeSeconds": 29.274,
-      "place": null,
-      "medal": null,
+      "time": "No Time",
+      "timeSeconds": null,
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "29.274",
@@ -41181,7 +41187,8 @@
         }
       },
       "source": "100M Day 1 - Q1 Q2 Results.xlsx",
-      "qualifyingRank": 5
+      "qualifyingRank": 5,
+      "finalTime": "No Time"
     },
     {
       "id": "r6",
@@ -43814,8 +43821,8 @@
       "status": "Ranked",
       "time": "27.015",
       "timeSeconds": 27.015,
-      "place": 1,
-      "medal": "Gold",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "29.162",
@@ -43859,8 +43866,8 @@
       "status": "Ranked",
       "time": "27.661",
       "timeSeconds": 27.661,
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "29.519",
@@ -43993,8 +44000,8 @@
       "status": "Ranked",
       "time": "27.312",
       "timeSeconds": 27.312,
-      "place": 2,
-      "medal": "Silver",
+      "place": 1,
+      "medal": "Gold",
       "stage": "Final",
       "qualification": {
         "attempt1": "44.084",
@@ -45998,8 +46005,8 @@
       "status": "Ranked",
       "time": "52.893",
       "timeSeconds": 52.893,
-      "place": null,
-      "medal": null,
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "46.933",
@@ -46043,8 +46050,8 @@
       "status": "Ranked",
       "time": "44.266",
       "timeSeconds": 44.266,
-      "place": 2,
-      "medal": "Silver",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "49.082",
@@ -46088,8 +46095,8 @@
       "status": "Ranked",
       "time": "48.200",
       "timeSeconds": 48.2,
-      "place": 3,
-      "medal": "Bronze",
+      "place": null,
+      "medal": null,
       "stage": "Final",
       "qualification": {
         "attempt1": "57.585",
@@ -46319,8 +46326,8 @@
       "status": "Ranked",
       "time": "42.208",
       "timeSeconds": 42.208,
-      "place": null,
-      "medal": null,
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "28.803",
@@ -46453,8 +46460,8 @@
       "status": "Ranked",
       "time": "27.844",
       "timeSeconds": 27.844,
-      "place": 2,
-      "medal": "Silver",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "34.362",
@@ -46745,8 +46752,8 @@
       "status": "Ranked",
       "time": "30.562",
       "timeSeconds": 30.562,
-      "place": 3,
-      "medal": "Bronze",
+      "place": null,
+      "medal": null,
       "stage": "Final",
       "qualification": {
         "attempt1": "1:09.834",
@@ -48164,8 +48171,8 @@
       "status": "Ranked",
       "time": "52.152",
       "timeSeconds": 52.152,
-      "place": 3,
-      "medal": "Bronze",
+      "place": null,
+      "medal": null,
       "stage": "Final",
       "qualification": {
         "attempt1": "35.393",
@@ -48385,8 +48392,8 @@
       "status": "Ranked",
       "time": "35.742",
       "timeSeconds": 35.742,
-      "place": 2,
-      "medal": "Silver",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "34.076",
@@ -48430,8 +48437,8 @@
       "status": "Ranked",
       "time": "1:20.477",
       "timeSeconds": 80.477,
-      "place": null,
-      "medal": null,
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "45.980",
@@ -49273,8 +49280,8 @@
       "status": "Ranked",
       "time": "54.803",
       "timeSeconds": 54.803,
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "stage": "Final",
       "qualification": {
         "attempt1": "1:04.987",
@@ -49363,8 +49370,8 @@
       "status": "Ranked",
       "time": "53.383",
       "timeSeconds": 53.383,
-      "place": 2,
-      "medal": "Silver",
+      "place": 3,
+      "medal": "Bronze",
       "stage": "Final",
       "qualification": {
         "attempt1": "1:16.252",
@@ -95940,9 +95947,9 @@
       "athletes": 34,
       "resultEntries": 65,
       "gold": 5,
-      "silver": 6,
+      "silver": 7,
       "bronze": 4,
-      "total": 15,
+      "total": 16,
       "eventEntries": {
         "100m": 7,
         "400m": 10,
@@ -96032,8 +96039,8 @@
       "athletes": 43,
       "resultEntries": 103,
       "gold": 11,
-      "silver": 5,
-      "bronze": 2,
+      "silver": 4,
+      "bronze": 3,
       "total": 18,
       "eventEntries": {
         "100m": 17,
@@ -96134,8 +96141,8 @@
       "athletes": 46,
       "resultEntries": 71,
       "gold": 1,
-      "silver": 3,
-      "bronze": 5,
+      "silver": 2,
+      "bronze": 6,
       "total": 9,
       "eventEntries": {
         "100m": 6,
@@ -96313,8 +96320,8 @@
       "resultEntries": 109,
       "gold": 5,
       "silver": 4,
-      "bronze": 7,
-      "total": 16,
+      "bronze": 6,
+      "total": 15,
       "eventEntries": {
         "100m": 11,
         "100m-team": 1,
@@ -96368,10 +96375,10 @@
       "flag": "🇷🇺",
       "athletes": 17,
       "resultEntries": 41,
-      "gold": 2,
-      "silver": 9,
-      "bronze": 3,
-      "total": 14,
+      "gold": 3,
+      "silver": 8,
+      "bronze": 2,
+      "total": 13,
       "eventEntries": {
         "100m": 4,
         "100m-team": 1,
@@ -96495,10 +96502,10 @@
       "flag": "🇺🇸",
       "athletes": 202,
       "resultEntries": 446,
-      "gold": 45,
-      "silver": 41,
+      "gold": 44,
+      "silver": 43,
       "bronze": 31,
-      "total": 117,
+      "total": 118,
       "eventEntries": {
         "100m": 126,
         "100m-team": 19,
@@ -96688,17 +96695,6 @@
       "total": 5
     },
     {
-      "id": "a245",
-      "name": "Suzanne Himka",
-      "flag": "🇺🇸",
-      "country": "United States",
-      "countryIso": "US",
-      "gold": 3,
-      "silver": 2,
-      "bronze": 0,
-      "total": 5
-    },
-    {
       "id": "a367",
       "name": "Tomáš Erban",
       "flag": "🇨🇿",
@@ -96707,6 +96703,17 @@
       "gold": 3,
       "silver": 2,
       "bronze": 0,
+      "total": 5
+    },
+    {
+      "id": "a245",
+      "name": "Suzanne Himka",
+      "flag": "🇺🇸",
+      "country": "United States",
+      "countryIso": "US",
+      "gold": 3,
+      "silver": 1,
+      "bronze": 1,
       "total": 5
     },
     {
@@ -96761,10 +96768,10 @@
       "flag": "🇺🇸",
       "athletes": 202,
       "resultEntries": 446,
-      "gold": 45,
-      "silver": 41,
+      "gold": 44,
+      "silver": 43,
       "bronze": 31,
-      "total": 117,
+      "total": 118,
       "eventEntries": {
         "100m": 126,
         "100m-team": 19,
@@ -96840,8 +96847,8 @@
       "resultEntries": 109,
       "gold": 5,
       "silver": 4,
-      "bronze": 7,
-      "total": 16,
+      "bronze": 6,
+      "total": 15,
       "eventEntries": {
         "100m": 11,
         "100m-team": 1,
@@ -96898,8 +96905,8 @@
       "athletes": 46,
       "resultEntries": 71,
       "gold": 1,
-      "silver": 3,
-      "bronze": 5,
+      "silver": 2,
+      "bronze": 6,
       "total": 9,
       "eventEntries": {
         "100m": 6,
@@ -96917,8 +96924,8 @@
       "athletes": 43,
       "resultEntries": 103,
       "gold": 11,
-      "silver": 5,
-      "bronze": 2,
+      "silver": 4,
+      "bronze": 3,
       "total": 18,
       "eventEntries": {
         "100m": 17,
@@ -96997,16 +97004,6 @@
     },
     {
       "level": "info",
-      "title": "400m elimination and final method",
-      "text": "400m stages are linked to the qualification field by normalized athlete name and exact division. Podiums use the supplied finals times; where the export says “No Final”, the parenthetical time is treated as the direct-final result."
-    },
-    {
-      "level": "info",
-      "title": "400m elimination and final method",
-      "text": "400m stages are linked to the qualification field by normalized athlete name and exact division. Podiums use the supplied finals times; where the export says “No Final”, the parenthetical time is treated as the direct-final result."
-    },
-    {
-      "level": "info",
       "title": "DNC definition",
       "text": "For Short and Standard Course, DNC means the athlete finished the course but failed 3 or more obstacles. They retain a finish time but are unranked and ineligible for medals."
     },
@@ -97017,8 +97014,8 @@
     },
     {
       "level": "info",
-      "title": "100m direct finals",
-      "text": "Where the 100m elimination export contains no usable final-stage result for a championship category, podiums are calculated from the supplied Best Time as a direct-final/qualification result."
+      "title": "100m knockout and direct-final method",
+      "text": "For bracket divisions, semifinal winners contest gold and silver while semifinal losers contest bronze. The Final column therefore contains two separate head-to-head races and is not ranked as one pooled list. Divisions without semifinals use the supplied Best Time as a direct final."
     },
     {
       "level": "info",
