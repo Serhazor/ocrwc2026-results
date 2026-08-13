@@ -94061,12 +94061,12 @@
       "category": "Elite Mixed",
       "gender": "Team",
       "status": "Ranked",
-      "time": "39:53.5",
-      "timeSeconds": 2393.5,
-      "place": 8,
+      "time": "42:53.5",
+      "timeSeconds": 2573.5,
+      "place": 12,
       "medal": null,
       "source": "XC Team Relay Results.xlsx",
-      "note": null
+      "note": "Confirmed three-minute time adjustment."
     },
     {
       "id": "r2168",
@@ -94083,7 +94083,7 @@
       "status": "Ranked",
       "time": "40:11.9",
       "timeSeconds": 2411.9,
-      "place": 9,
+      "place": 8,
       "medal": null,
       "source": "XC Team Relay Results.xlsx",
       "note": null
@@ -94143,7 +94143,7 @@
       "status": "Ranked",
       "time": "40:41.5",
       "timeSeconds": 2441.5,
-      "place": 10,
+      "place": 9,
       "medal": null,
       "source": "XC Team Relay Results.xlsx",
       "note": null
@@ -94263,7 +94263,7 @@
       "status": "Ranked",
       "time": "41:24.2",
       "timeSeconds": 2484.2,
-      "place": 11,
+      "place": 10,
       "medal": null,
       "source": "XC Team Relay Results.xlsx",
       "note": null
@@ -94283,7 +94283,7 @@
       "status": "Ranked",
       "time": "41:27.2",
       "timeSeconds": 2487.2,
-      "place": 12,
+      "place": 11,
       "medal": null,
       "source": "XC Team Relay Results.xlsx",
       "note": null
@@ -97025,6 +97025,11 @@
       "level": "info",
       "title": "XC Team Relay roster correction",
       "text": "The Netherlands Elite Mixed team roster reflects a confirmed last-minute injury substitution: Jilles van Merkenstein replaced Olof van Houten."
+    },
+    {
+      "level": "info",
+      "title": "XC Team Relay time correction",
+      "text": "A confirmed three-minute adjustment was applied to EST XC Elite Mixed Team. Its time changed from 39:53.5 to 42:53.5 and the Elite Mixed placings were recalculated."
     }
   ]
 }

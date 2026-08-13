@@ -184,6 +184,22 @@ const xcRosterCorrectionApplied = Boolean(
   && !olof.teamResults.includes(correctedXcTeam.id)
 );
 
+const correctedEstXcResult = data.results.find(result => (
+  result.eventId === 'xc-team'
+  && result.category === 'Elite Mixed'
+  && result.name === 'EST XC Elite Mixed Team'
+));
+const xcTimeCorrectionApplied = Boolean(
+  correctedEstXcResult
+  && correctedEstXcResult.time === '42:53.5'
+  && close(correctedEstXcResult.timeSeconds, 2573.5)
+  && correctedEstXcResult.place === 12
+);
+const eliteMixedRankedResults = data.results
+  .filter(result => result.eventId === 'xc-team' && result.category === 'Elite Mixed' && result.status === 'Ranked')
+  .sort((left, right) => left.timeSeconds - right.timeSeconds || left.name.localeCompare(right.name));
+const eliteMixedPlacingsRecalculated = eliteMixedRankedResults.every((result, index) => result.place === index + 1);
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -209,6 +225,8 @@ const checks = {
   countryMedalTotalsRecalculated: badCountryMedalTotals.length === 0,
   athleteTeamLinksRecalculated: badAthleteTeamLinks.length === 0,
   xcRosterCorrectionApplied,
+  xcTimeCorrectionApplied,
+  eliteMixedPlacingsRecalculated,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,

@@ -12,6 +12,14 @@ const correction = {
   outgoingName: 'Olof van Houten',
   incomingName: 'Jilles van Merkenstein',
 };
+const timeCorrection = {
+  teamName: 'EST XC Elite Mixed Team',
+  category: 'Elite Mixed',
+  originalTime: '39:53.5',
+  correctedTime: '42:53.5',
+  correctedSeconds: 42 * 60 + 53.5,
+  reason: 'Confirmed three-minute time adjustment.',
+};
 const normalize = value => String(value ?? '').trim().toLowerCase();
 const medalIdNumber = value => Number(String(value ?? '').replace(/\D+/g, '')) || 0;
 const eventOrder = new Map(data.events.map((event, index) => [event.id, index]));
@@ -29,6 +37,26 @@ if (memberIndex >= 0) {
   team.memberIds[memberIndex] = incoming.id;
   team.members[memberIndex] = incoming.name;
 }
+
+const correctedResult = data.results.find(item => (
+  item.eventId === 'xc-team'
+  && item.name === timeCorrection.teamName
+  && item.category === timeCorrection.category
+));
+if (!correctedResult) throw new Error(`Missing XC result for ${timeCorrection.teamName}.`);
+correctedResult.time = timeCorrection.correctedTime;
+correctedResult.timeSeconds = timeCorrection.correctedSeconds;
+correctedResult.note = timeCorrection.reason;
+
+const correctedCategoryResults = data.results
+  .filter(item => (
+    item.eventId === 'xc-team'
+    && item.category === timeCorrection.category
+    && item.status === 'Ranked'
+    && Number.isFinite(item.timeSeconds)
+  ))
+  .sort((left, right) => left.timeSeconds - right.timeSeconds || left.name.localeCompare(right.name));
+for (const [index, result] of correctedCategoryResults.entries()) result.place = index + 1;
 
 const teamsByAthlete = new Map(data.athletes.map(athlete => [athlete.id, []]));
 for (const currentTeam of data.teams) {
@@ -114,6 +142,15 @@ const existingNote = data.dataNotes.find(note => note.title === correctionNote.t
 if (existingNote) Object.assign(existingNote, correctionNote);
 else data.dataNotes.push(correctionNote);
 
+const timeCorrectionNote = {
+  level: 'info',
+  title: 'XC Team Relay time correction',
+  text: 'A confirmed three-minute adjustment was applied to EST XC Elite Mixed Team. Its time changed from 39:53.5 to 42:53.5 and the Elite Mixed placings were recalculated.',
+};
+const existingTimeNote = data.dataNotes.find(note => note.title === timeCorrectionNote.title);
+if (existingTimeNote) Object.assign(existingTimeNote, timeCorrectionNote);
+else data.dataNotes.push(timeCorrectionNote);
+
 const compact = JSON.stringify(data);
 const compressed = zlib.gzipSync(Buffer.from(compact), { level: 9, mtime: 0 }).toString('base64');
 const partLength = Math.ceil(compressed.length / 5);
@@ -131,4 +168,10 @@ console.log(JSON.stringify({
   team: team.name,
   outgoing: { name: outgoing.name, eventCount: outgoing.eventCount, medalCount: outgoing.medalCount },
   incoming: { name: incoming.name, eventCount: incoming.eventCount, medalCount: incoming.medalCount },
+  timeCorrection: {
+    team: correctedResult.name,
+    time: correctedResult.time,
+    place: correctedResult.place,
+    categoryPlacings: correctedCategoryResults.map(result => ({ place: result.place, name: result.name, time: result.time })),
+  },
 }, null, 2));
