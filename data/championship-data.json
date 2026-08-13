@@ -24233,19 +24233,23 @@
         "r841",
         "r1588"
       ],
-      "teamResults": [],
+      "teamResults": [
+        "t102"
+      ],
       "medals": [
         "m145",
-        "m226"
+        "m226",
+        "m285"
       ],
       "eventIds": [
         "short",
-        "standard"
+        "standard",
+        "xc-team"
       ],
-      "eventCount": 2,
-      "medalCount": 2,
+      "eventCount": 3,
+      "medalCount": 3,
       "goldCount": 1,
-      "silverCount": 1,
+      "silverCount": 2,
       "bronzeCount": 0
     },
     {
@@ -25795,21 +25799,16 @@
         "r940",
         "r1622"
       ],
-      "teamResults": [
-        "t102"
-      ],
-      "medals": [
-        "m285"
-      ],
+      "teamResults": [],
+      "medals": [],
       "eventIds": [
         "short",
-        "standard",
-        "xc-team"
+        "standard"
       ],
-      "eventCount": 3,
-      "medalCount": 1,
+      "eventCount": 2,
+      "medalCount": 0,
       "goldCount": 0,
-      "silverCount": 1,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -38920,12 +38919,12 @@
       "members": [
         "Elsa Rijpstra",
         "Lenny Stoutjesdijk",
-        "Olof Van Houten"
+        "Jilles van Merkenstein"
       ],
       "memberIds": [
         "a590",
         "a584",
-        "a630"
+        "a571"
       ],
       "resultId": "r2155"
     },
@@ -97021,6 +97020,11 @@
       "level": "info",
       "title": "Country normalization",
       "text": "Native country labels in the timing exports (for example Sverige, Polska and Nederland/Holland) are normalized to standard English names while the original results remain traceable to their source files."
+    },
+    {
+      "level": "info",
+      "title": "XC Team Relay roster correction",
+      "text": "The Netherlands Elite Mixed team roster reflects a confirmed last-minute injury substitution: Jilles van Merkenstein replaced Olof van Houten."
     }
   ]
 }

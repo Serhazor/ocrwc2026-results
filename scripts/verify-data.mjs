@@ -152,6 +152,38 @@ const badCountryMedalTotals = data.countries
   })
   .map(country => country.countryIso);
 
+const teamsByAthlete = new Map(data.athletes.map(athlete => [athlete.id, []]));
+for (const team of data.teams) {
+  for (const athleteId of team.memberIds ?? []) teamsByAthlete.get(athleteId)?.push(team);
+}
+const eventOrder = new Map(data.events.map((event, index) => [event.id, index]));
+const badAthleteTeamLinks = data.athletes
+  .filter(athlete => {
+    const teams = teamsByAthlete.get(athlete.id);
+    const expectedTeamIds = teams.map(team => team.id);
+    const expectedEventIds = [...new Set([
+      ...data.results.filter(result => result.athleteId === athlete.id).map(result => result.eventId),
+      ...teams.map(team => team.eventId),
+    ])].sort((left, right) => eventOrder.get(left) - eventOrder.get(right));
+    return JSON.stringify(athlete.teamResults) !== JSON.stringify(expectedTeamIds)
+      || JSON.stringify(athlete.eventIds) !== JSON.stringify(expectedEventIds)
+      || athlete.eventCount !== expectedEventIds.length;
+  })
+  .map(athlete => athlete.id);
+
+const correctedXcTeam = data.teams.find(team => team.eventId === 'xc-team' && team.name === 'NED XC Elite Mixed Team');
+const jilles = data.athletes.find(athlete => normalize(athlete.name) === normalize('Jilles van Merkenstein'));
+const olof = data.athletes.find(athlete => normalize(athlete.name) === normalize('Olof van Houten'));
+const xcRosterCorrectionApplied = Boolean(
+  correctedXcTeam
+  && jilles
+  && olof
+  && correctedXcTeam.memberIds.includes(jilles.id)
+  && !correctedXcTeam.memberIds.includes(olof.id)
+  && jilles.teamResults.includes(correctedXcTeam.id)
+  && !olof.teamResults.includes(correctedXcTeam.id)
+);
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -175,6 +207,8 @@ const checks = {
   medalTablesRecalculated: badMedalTables.length === 0,
   athleteMedalTotalsRecalculated: badAthleteMedalTotals.length === 0,
   countryMedalTotalsRecalculated: badCountryMedalTotals.length === 0,
+  athleteTeamLinksRecalculated: badAthleteTeamLinks.length === 0,
+  xcRosterCorrectionApplied,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,
@@ -200,6 +234,7 @@ const report = {
   badMedalTables,
   badAthleteMedalTotals: badAthleteMedalTotals.slice(0, 20),
   badCountryMedalTotals,
+  badAthleteTeamLinks: badAthleteTeamLinks.slice(0, 20),
 };
 
 console.log(JSON.stringify(report, null, 2));
