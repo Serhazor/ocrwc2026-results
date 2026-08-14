@@ -200,6 +200,31 @@ const eliteMixedRankedResults = data.results
   .sort((left, right) => left.timeSeconds - right.timeSeconds || left.name.localeCompare(right.name));
 const eliteMixedPlacingsRecalculated = eliteMixedRankedResults.every((result, index) => result.place === index + 1);
 
+const vitalijStandardResult = data.results.find(result => (
+  result.eventId === 'standard'
+  && result.category === 'M40-44'
+  && result.athleteId === 'a991'
+));
+const standardM4044CorrectionApplied = Boolean(
+  vitalijStandardResult
+  && vitalijStandardResult.status === 'DNC'
+  && vitalijStandardResult.place == null
+  && vitalijStandardResult.medal == null
+  && vitalijStandardResult.note === 'Finished without bands; unranked.'
+);
+const standardM4044RankedResults = data.results
+  .filter(result => result.eventId === 'standard' && result.category === 'M40-44' && result.status === 'Ranked')
+  .sort((left, right) => left.timeSeconds - right.timeSeconds || left.name.localeCompare(right.name));
+const standardM4044PlacingsRecalculated = standardM4044RankedResults.every((result, index) => (
+  result.place === index + 1
+  && result.medal === (['Gold', 'Silver', 'Bronze'][index] ?? null)
+));
+const standardM4044PodiumCorrect = ['Gavin Hogarth', 'Pablo Llusía', 'Magnus Marklund']
+  .every((name, index) => {
+    const medal = data.medals.find(item => item.eventId === 'standard' && item.category === 'M40-44' && item.place === index + 1);
+    return medal?.name === name && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
+  });
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -227,6 +252,9 @@ const checks = {
   xcRosterCorrectionApplied,
   xcTimeCorrectionApplied,
   eliteMixedPlacingsRecalculated,
+  standardM4044CorrectionApplied,
+  standardM4044PlacingsRecalculated,
+  standardM4044PodiumCorrect,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,

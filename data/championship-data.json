@@ -241,11 +241,11 @@
         "rank": 1
       },
       "timedFinishes": 521,
-      "ranked": 370,
-      "dnc": 151,
+      "ranked": 369,
+      "dnc": 152,
       "dns": 46,
       "dnf": 3,
-      "dncRate": 29,
+      "dncRate": 29.2,
       "fastestMale": {
         "name": "Stijn Lagrand",
         "country": "Netherlands",
@@ -324,8 +324,8 @@
     "standard": [
       "Fastest ranked man: Stijn Lagrand (🇳🇱 Netherlands) in 40:39.6.",
       "Fastest ranked woman: Elsa Rijpstra (🇳🇱 Netherlands) in 46:19.5.",
-      "29.0% of timed finishers were DNC (151 athletes).",
-      "Female Standard DNC rate was 45.8% versus 21.0% for men.",
+      "29.2% of timed finishers were DNC (152 athletes).",
+      "Female Standard DNC rate was 45.8% versus 21.2% for men.",
       "Elsa Rijpstra won Female Elite in both Short and Standard Course."
     ]
   },
@@ -359,13 +359,13 @@
     },
     {
       "title": "Standard Course DNC rate",
-      "value": "29.0%",
+      "value": "29.2%",
       "text": "Nearly twice the Short Course rate."
     },
     {
       "title": "Female Standard DNC rate",
       "value": "45.8%",
-      "text": "Male Standard DNC rate: 21.0%."
+      "text": "Male Standard DNC rate: 21.2%."
     }
   ],
   "dncGender": {
@@ -374,7 +374,7 @@
       "Female": 20.4
     },
     "standard": {
-      "Male": 21,
+      "Male": 21.2,
       "Female": 45.8
     }
   },
@@ -1146,16 +1146,16 @@
         "flag": "🇸🇪",
         "gold": 6,
         "silver": 1,
-        "bronze": 1,
-        "total": 8,
+        "bronze": 2,
+        "total": 9,
         "rank": 2
       },
       {
         "country": "United Kingdom",
         "countryIso": "GB",
         "flag": "🇬🇧",
-        "gold": 4,
-        "silver": 3,
+        "gold": 5,
+        "silver": 2,
         "bronze": 0,
         "total": 7,
         "rank": 3
@@ -1175,8 +1175,8 @@
         "countryIso": "ES",
         "flag": "🇪🇸",
         "gold": 2,
-        "silver": 4,
-        "bronze": 3,
+        "silver": 5,
+        "bronze": 2,
         "total": 9,
         "rank": 5
       },
@@ -1241,16 +1241,6 @@
         "rank": 11
       },
       {
-        "country": "Lithuania",
-        "countryIso": "LT",
-        "flag": "🇱🇹",
-        "gold": 1,
-        "silver": 0,
-        "bronze": 0,
-        "total": 1,
-        "rank": 12
-      },
-      {
         "country": "Switzerland",
         "countryIso": "CH",
         "flag": "🇨🇭",
@@ -1258,7 +1248,7 @@
         "silver": 0,
         "bronze": 0,
         "total": 1,
-        "rank": 13
+        "rank": 12
       },
       {
         "country": "Ukraine",
@@ -1268,7 +1258,7 @@
         "silver": 0,
         "bronze": 0,
         "total": 1,
-        "rank": 14
+        "rank": 13
       },
       {
         "country": "United States",
@@ -1278,7 +1268,7 @@
         "silver": 5,
         "bronze": 2,
         "total": 7,
-        "rank": 15
+        "rank": 14
       },
       {
         "country": "Malta",
@@ -1288,7 +1278,7 @@
         "silver": 1,
         "bronze": 1,
         "total": 2,
-        "rank": 16
+        "rank": 15
       },
       {
         "country": "Norway",
@@ -1298,7 +1288,7 @@
         "silver": 1,
         "bronze": 1,
         "total": 2,
-        "rank": 17
+        "rank": 16
       },
       {
         "country": "Canada",
@@ -1308,7 +1298,7 @@
         "silver": 1,
         "bronze": 0,
         "total": 1,
-        "rank": 18
+        "rank": 17
       },
       {
         "country": "Finland",
@@ -1318,7 +1308,7 @@
         "silver": 1,
         "bronze": 0,
         "total": 1,
-        "rank": 19
+        "rank": 18
       },
       {
         "country": "Denmark",
@@ -1328,7 +1318,7 @@
         "silver": 0,
         "bronze": 3,
         "total": 3,
-        "rank": 20
+        "rank": 19
       },
       {
         "country": "Estonia",
@@ -1338,7 +1328,7 @@
         "silver": 0,
         "bronze": 2,
         "total": 2,
-        "rank": 21
+        "rank": 20
       },
       {
         "country": "Hungary",
@@ -1348,7 +1338,7 @@
         "silver": 0,
         "bronze": 1,
         "total": 1,
-        "rank": 22
+        "rank": 21
       },
       {
         "country": "Poland",
@@ -1358,7 +1348,7 @@
         "silver": 0,
         "bronze": 1,
         "total": 1,
-        "rank": 23
+        "rank": 22
       }
     ],
     "xc-team": [
@@ -1520,16 +1510,16 @@
         "flag": "🇸🇪",
         "gold": 23,
         "silver": 5,
-        "bronze": 6,
-        "total": 34,
+        "bronze": 7,
+        "total": 35,
         "rank": 2
       },
       {
         "country": "United Kingdom",
         "countryIso": "GB",
         "flag": "🇬🇧",
-        "gold": 19,
-        "silver": 10,
+        "gold": 20,
+        "silver": 9,
         "bronze": 6,
         "total": 35,
         "rank": 3
@@ -1569,8 +1559,8 @@
         "countryIso": "ES",
         "flag": "🇪🇸",
         "gold": 8,
-        "silver": 7,
-        "bronze": 4,
+        "silver": 8,
+        "bronze": 3,
         "total": 19,
         "rank": 7
       },
@@ -1725,16 +1715,6 @@
         "rank": 22
       },
       {
-        "country": "Lithuania",
-        "countryIso": "LT",
-        "flag": "🇱🇹",
-        "gold": 1,
-        "silver": 0,
-        "bronze": 3,
-        "total": 4,
-        "rank": 23
-      },
-      {
         "country": "Philippines",
         "countryIso": "PH",
         "flag": "🇵🇭",
@@ -1742,7 +1722,7 @@
         "silver": 0,
         "bronze": 0,
         "total": 1,
-        "rank": 24
+        "rank": 23
       },
       {
         "country": "Switzerland",
@@ -1752,7 +1732,7 @@
         "silver": 0,
         "bronze": 0,
         "total": 1,
-        "rank": 25
+        "rank": 24
       },
       {
         "country": "Norway",
@@ -1762,7 +1742,7 @@
         "silver": 1,
         "bronze": 3,
         "total": 4,
-        "rank": 26
+        "rank": 25
       },
       {
         "country": "France",
@@ -1772,7 +1752,7 @@
         "silver": 1,
         "bronze": 2,
         "total": 3,
-        "rank": 27
+        "rank": 26
       },
       {
         "country": "Slovakia",
@@ -1782,6 +1762,16 @@
         "silver": 1,
         "bronze": 0,
         "total": 1,
+        "rank": 27
+      },
+      {
+        "country": "Lithuania",
+        "countryIso": "LT",
+        "flag": "🇱🇹",
+        "gold": 0,
+        "silver": 0,
+        "bronze": 3,
+        "total": 3,
         "rank": 28
       },
       {
@@ -5448,13 +5438,13 @@
       "category": "M40-44",
       "place": 1,
       "medal": "Gold",
-      "country": "Lithuania",
-      "countryIso": "LT",
-      "flag": "🇱🇹",
-      "name": "Vitalij Voitechovic",
-      "time": "42:26.8",
-      "timeSeconds": 2546.8,
-      "athleteId": "a991",
+      "country": "United Kingdom",
+      "countryIso": "GB",
+      "flag": "🇬🇧",
+      "name": "Gavin Hogarth",
+      "time": "45:53.8",
+      "timeSeconds": 2753.8,
+      "athleteId": "a568",
       "id": "m244"
     },
     {
@@ -5463,13 +5453,13 @@
       "category": "M40-44",
       "place": 2,
       "medal": "Silver",
-      "country": "United Kingdom",
-      "countryIso": "GB",
-      "flag": "🇬🇧",
-      "name": "Gavin Hogarth",
-      "time": "45:53.8",
-      "timeSeconds": 2753.8,
-      "athleteId": "a568",
+      "country": "Spain",
+      "countryIso": "ES",
+      "flag": "🇪🇸",
+      "name": "Pablo Llusía",
+      "time": "47:13.1",
+      "timeSeconds": 2833.1,
+      "athleteId": "a600",
       "id": "m245"
     },
     {
@@ -5478,13 +5468,13 @@
       "category": "M40-44",
       "place": 3,
       "medal": "Bronze",
-      "country": "Spain",
-      "countryIso": "ES",
-      "flag": "🇪🇸",
-      "name": "Pablo Llusía",
-      "time": "47:13.1",
-      "timeSeconds": 2833.1,
-      "athleteId": "a600",
+      "country": "Sweden",
+      "countryIso": "SE",
+      "flag": "🇸🇪",
+      "name": "Magnus Marklund",
+      "time": "47:35.1",
+      "timeSeconds": 2855.1,
+      "athleteId": "a580",
       "id": "m246"
     },
     {
@@ -24158,7 +24148,7 @@
       ],
       "medals": [
         "m162",
-        "m245",
+        "m244",
         "m302"
       ],
       "eventIds": [
@@ -24168,8 +24158,8 @@
       ],
       "eventCount": 3,
       "medalCount": 3,
-      "goldCount": 2,
-      "silverCount": 1,
+      "goldCount": 3,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -24477,16 +24467,18 @@
         "r1616"
       ],
       "teamResults": [],
-      "medals": [],
+      "medals": [
+        "m246"
+      ],
       "eventIds": [
         "short",
         "standard"
       ],
       "eventCount": 2,
-      "medalCount": 0,
+      "medalCount": 1,
       "goldCount": 0,
       "silverCount": 0,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a581",
@@ -25017,7 +25009,7 @@
       ],
       "teamResults": [],
       "medals": [
-        "m246"
+        "m245"
       ],
       "eventIds": [
         "short",
@@ -25026,8 +25018,8 @@
       "eventCount": 2,
       "medalCount": 1,
       "goldCount": 0,
-      "silverCount": 0,
-      "bronzeCount": 1
+      "silverCount": 1,
+      "bronzeCount": 0
     },
     {
       "id": "a601",
@@ -34682,15 +34674,13 @@
         "r1581"
       ],
       "teamResults": [],
-      "medals": [
-        "m244"
-      ],
+      "medals": [],
       "eventIds": [
         "standard"
       ],
       "eventCount": 1,
-      "medalCount": 1,
-      "goldCount": 1,
+      "medalCount": 0,
+      "goldCount": 0,
       "silverCount": 0,
       "bronzeCount": 0
     },
@@ -82340,13 +82330,13 @@
       "flag": "🇱🇹",
       "gender": "Male",
       "category": "M40-44",
-      "status": "Ranked",
+      "status": "DNC",
       "time": "42:26.8",
       "timeSeconds": 2546.8,
-      "place": 1,
-      "medal": "Gold",
+      "place": null,
+      "medal": null,
       "source": "Short_Standard.xlsx",
-      "note": null
+      "note": "Finished without bands; unranked."
     },
     {
       "id": "r1582",
@@ -82763,8 +82753,8 @@
       "status": "Ranked",
       "time": "45:53.8",
       "timeSeconds": 2753.8,
-      "place": 2,
-      "medal": "Silver",
+      "place": 1,
+      "medal": "Gold",
       "source": "Short_Standard.xlsx",
       "note": null
     },
@@ -82943,8 +82933,8 @@
       "status": "Ranked",
       "time": "47:13.1",
       "timeSeconds": 2833.1,
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "source": "Short_Standard.xlsx",
       "note": null
     },
@@ -83043,8 +83033,8 @@
       "status": "Ranked",
       "time": "47:35.1",
       "timeSeconds": 2855.1,
-      "place": 4,
-      "medal": null,
+      "place": 3,
+      "medal": "Bronze",
       "source": "Short_Standard.xlsx",
       "note": null
     },
@@ -83123,7 +83113,7 @@
       "status": "Ranked",
       "time": "47:58.4",
       "timeSeconds": 2878.4,
-      "place": 5,
+      "place": 4,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -83663,7 +83653,7 @@
       "status": "Ranked",
       "time": "49:49.5",
       "timeSeconds": 2989.5,
-      "place": 6,
+      "place": 5,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -83703,7 +83693,7 @@
       "status": "Ranked",
       "time": "49:57.4",
       "timeSeconds": 2997.4,
-      "place": 7,
+      "place": 6,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -83743,7 +83733,7 @@
       "status": "Ranked",
       "time": "50:08.8",
       "timeSeconds": 3008.8,
-      "place": 8,
+      "place": 7,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -83783,7 +83773,7 @@
       "status": "Ranked",
       "time": "50:17.8",
       "timeSeconds": 3017.8,
-      "place": 9,
+      "place": 8,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -83923,7 +83913,7 @@
       "status": "Ranked",
       "time": "50:36.6",
       "timeSeconds": 3036.6,
-      "place": 10,
+      "place": 9,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84063,7 +84053,7 @@
       "status": "Ranked",
       "time": "51:16.3",
       "timeSeconds": 3076.3,
-      "place": 11,
+      "place": 10,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84123,7 +84113,7 @@
       "status": "Ranked",
       "time": "51:21.8",
       "timeSeconds": 3081.8,
-      "place": 12,
+      "place": 11,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84223,7 +84213,7 @@
       "status": "Ranked",
       "time": "51:43.0",
       "timeSeconds": 3103,
-      "place": 13,
+      "place": 12,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84283,7 +84273,7 @@
       "status": "Ranked",
       "time": "51:54.0",
       "timeSeconds": 3114,
-      "place": 14,
+      "place": 13,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84303,7 +84293,7 @@
       "status": "Ranked",
       "time": "51:56.5",
       "timeSeconds": 3116.5,
-      "place": 15,
+      "place": 14,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84343,7 +84333,7 @@
       "status": "Ranked",
       "time": "52:08.9",
       "timeSeconds": 3128.9,
-      "place": 16,
+      "place": 15,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84443,7 +84433,7 @@
       "status": "Ranked",
       "time": "52:28.4",
       "timeSeconds": 3148.4,
-      "place": 17,
+      "place": 16,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84523,7 +84513,7 @@
       "status": "Ranked",
       "time": "52:47.8",
       "timeSeconds": 3167.8,
-      "place": 18,
+      "place": 17,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84543,7 +84533,7 @@
       "status": "Ranked",
       "time": "52:52.8",
       "timeSeconds": 3172.8,
-      "place": 19,
+      "place": 18,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -84563,7 +84553,7 @@
       "status": "Ranked",
       "time": "52:57.2",
       "timeSeconds": 3177.2,
-      "place": 20,
+      "place": 19,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85143,7 +85133,7 @@
       "status": "Ranked",
       "time": "55:39.4",
       "timeSeconds": 3339.4,
-      "place": 21,
+      "place": 20,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85383,7 +85373,7 @@
       "status": "Ranked",
       "time": "56:41.8",
       "timeSeconds": 3401.8,
-      "place": 22,
+      "place": 21,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85483,7 +85473,7 @@
       "status": "Ranked",
       "time": "56:49.6",
       "timeSeconds": 3409.6,
-      "place": 23,
+      "place": 22,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85603,7 +85593,7 @@
       "status": "Ranked",
       "time": "57:17.0",
       "timeSeconds": 3437,
-      "place": 24,
+      "place": 23,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85683,7 +85673,7 @@
       "status": "Ranked",
       "time": "57:40.4",
       "timeSeconds": 3460.4,
-      "place": 25,
+      "place": 24,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -85883,7 +85873,7 @@
       "status": "Ranked",
       "time": "58:31.6",
       "timeSeconds": 3511.6,
-      "place": 26,
+      "place": 25,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -86103,7 +86093,7 @@
       "status": "Ranked",
       "time": "59:03.4",
       "timeSeconds": 3543.4,
-      "place": 27,
+      "place": 26,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -86123,7 +86113,7 @@
       "status": "Ranked",
       "time": "59:10.5",
       "timeSeconds": 3550.5,
-      "place": 28,
+      "place": 27,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -86183,7 +86173,7 @@
       "status": "Ranked",
       "time": "59:29.9",
       "timeSeconds": 3569.9,
-      "place": 29,
+      "place": 28,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -86803,7 +86793,7 @@
       "status": "Ranked",
       "time": "1:02:21.6",
       "timeSeconds": 3741.6,
-      "place": 30,
+      "place": 29,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -87263,7 +87253,7 @@
       "status": "Ranked",
       "time": "1:04:36.3",
       "timeSeconds": 3876.3,
-      "place": 31,
+      "place": 30,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -87523,7 +87513,7 @@
       "status": "Ranked",
       "time": "1:06:46.5",
       "timeSeconds": 4006.5,
-      "place": 32,
+      "place": 31,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -87563,7 +87553,7 @@
       "status": "Ranked",
       "time": "1:07:01.4",
       "timeSeconds": 4021.4,
-      "place": 33,
+      "place": 32,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -87603,7 +87593,7 @@
       "status": "Ranked",
       "time": "1:07:15.0",
       "timeSeconds": 4035,
-      "place": 34,
+      "place": 33,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -88163,7 +88153,7 @@
       "status": "Ranked",
       "time": "1:10:55.0",
       "timeSeconds": 4255,
-      "place": 35,
+      "place": 34,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -88443,7 +88433,7 @@
       "status": "Ranked",
       "time": "1:13:18.9",
       "timeSeconds": 4398.9,
-      "place": 36,
+      "place": 35,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -88703,7 +88693,7 @@
       "status": "Ranked",
       "time": "1:16:02.6",
       "timeSeconds": 4562.6,
-      "place": 37,
+      "place": 36,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -88963,7 +88953,7 @@
       "status": "Ranked",
       "time": "1:19:20.9",
       "timeSeconds": 4760.9,
-      "place": 38,
+      "place": 37,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -88983,7 +88973,7 @@
       "status": "Ranked",
       "time": "1:19:31.0",
       "timeSeconds": 4771,
-      "place": 39,
+      "place": 38,
       "medal": null,
       "source": "Short_Standard.xlsx",
       "note": null
@@ -96191,10 +96181,10 @@
       "flag": "🇱🇹",
       "athletes": 8,
       "resultEntries": 18,
-      "gold": 1,
+      "gold": 0,
       "silver": 0,
       "bronze": 3,
-      "total": 4,
+      "total": 3,
       "eventEntries": {
         "100m": 1,
         "400m": 3,
@@ -96412,8 +96402,8 @@
       "athletes": 65,
       "resultEntries": 115,
       "gold": 8,
-      "silver": 7,
-      "bronze": 4,
+      "silver": 8,
+      "bronze": 3,
       "total": 19,
       "eventEntries": {
         "100m": 2,
@@ -96431,8 +96421,8 @@
       "resultEntries": 122,
       "gold": 23,
       "silver": 5,
-      "bronze": 6,
-      "total": 34,
+      "bronze": 7,
+      "total": 35,
       "eventEntries": {
         "100m": 5,
         "400m": 18,
@@ -96481,8 +96471,8 @@
       "flag": "🇬🇧",
       "athletes": 110,
       "resultEntries": 206,
-      "gold": 19,
-      "silver": 10,
+      "gold": 20,
+      "silver": 9,
       "bronze": 6,
       "total": 35,
       "eventEntries": {
@@ -96787,8 +96777,8 @@
       "flag": "🇬🇧",
       "athletes": 110,
       "resultEntries": 206,
-      "gold": 19,
-      "silver": 10,
+      "gold": 20,
+      "silver": 9,
       "bronze": 6,
       "total": 35,
       "eventEntries": {
@@ -96808,8 +96798,8 @@
       "athletes": 65,
       "resultEntries": 115,
       "gold": 8,
-      "silver": 7,
-      "bronze": 4,
+      "silver": 8,
+      "bronze": 3,
       "total": 19,
       "eventEntries": {
         "100m": 2,
@@ -96866,8 +96856,8 @@
       "resultEntries": 122,
       "gold": 23,
       "silver": 5,
-      "bronze": 6,
-      "total": 34,
+      "bronze": 7,
+      "total": 35,
       "eventEntries": {
         "100m": 5,
         "400m": 18,
@@ -97030,6 +97020,11 @@
       "level": "info",
       "title": "XC Team Relay time correction",
       "text": "A confirmed three-minute adjustment was applied to EST XC Elite Mixed Team. Its time changed from 39:53.5 to 42:53.5 and the Elite Mixed placings were recalculated."
+    },
+    {
+      "level": "info",
+      "title": "Standard Course M40–44 unranked correction",
+      "text": "Vitalij Voitechovic finished without bands and is classified DNC/unranked. The M40–44 standings and medals were recalculated: Gavin Hogarth won Gold, Pablo Llusía won Silver and Magnus Marklund won Bronze."
     }
   ]
 }

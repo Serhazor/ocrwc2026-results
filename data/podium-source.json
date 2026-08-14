@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-13",
+  "generated": "2026-08-14",
   "methodology": [
     "100m knockout podiums follow bracket progression: semifinal winners contest gold/silver and semifinal losers contest bronze; divisions without semifinals use qualifying Best Time as direct finals.",
     "400m podiums use the Finals workbook, including parenthetical times for categories marked No Final.",
@@ -3775,17 +3775,6 @@
       "category": "M40-44",
       "place": 1,
       "medal": "Gold",
-      "name": "Vitalij Voitechovic",
-      "time": "42:26.8",
-      "timeSeconds": 2546.8,
-      "sourceFile": "Short_Standard.xlsx",
-      "sourceRow": 777
-    },
-    {
-      "eventId": "standard",
-      "category": "M40-44",
-      "place": 2,
-      "medal": "Silver",
       "name": "Gavin Hogarth",
       "time": "45:53.8",
       "timeSeconds": 2753.8,
@@ -3795,13 +3784,24 @@
     {
       "eventId": "standard",
       "category": "M40-44",
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "name": "Pablo Llusía",
       "time": "47:13.1",
       "timeSeconds": 2833.1,
       "sourceFile": "Short_Standard.xlsx",
       "sourceRow": 807
+    },
+    {
+      "eventId": "standard",
+      "category": "M40-44",
+      "place": 3,
+      "medal": "Bronze",
+      "name": "Magnus Marklund",
+      "time": "47:35.1",
+      "timeSeconds": 2855.1,
+      "sourceFile": "Short_Standard.xlsx",
+      "sourceRow": 812
     },
     {
       "eventId": "standard",
