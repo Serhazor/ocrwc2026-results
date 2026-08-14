@@ -629,17 +629,6 @@
       "category": "Mixed U16",
       "place": 1,
       "medal": "Gold",
-      "name": "Usa 100m Mixed U16 Team E",
-      "time": "30.015",
-      "timeSeconds": 30.015,
-      "sourceFile": "100M Day 1 - Q1  Q2 Results.xlsx",
-      "sourceRow": 313
-    },
-    {
-      "eventId": "100m-team",
-      "category": "Mixed U16",
-      "place": 2,
-      "medal": "Silver",
       "name": "Usa 100m Mixed U16 Team F",
       "time": "30.401",
       "timeSeconds": 30.401,
@@ -649,13 +638,24 @@
     {
       "eventId": "100m-team",
       "category": "Mixed U16",
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "name": "Usa 100m Mixed U16 Team J",
       "time": "31.120",
       "timeSeconds": 31.12,
       "sourceFile": "100M Day 1 - Q1  Q2 Results.xlsx",
       "sourceRow": 315
+    },
+    {
+      "eventId": "100m-team",
+      "category": "Mixed U16",
+      "place": 3,
+      "medal": "Bronze",
+      "name": "Usa 100m Mixed U16 Team Nt",
+      "time": "31.244",
+      "timeSeconds": 31.244,
+      "sourceFile": "100M Day 1 - Q1  Q2 Results.xlsx",
+      "sourceRow": 316
     },
     {
       "eventId": "400m",

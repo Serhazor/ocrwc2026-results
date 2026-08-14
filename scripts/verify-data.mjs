@@ -7,7 +7,7 @@ const source = JSON.parse(fs.readFileSync('data/podium-source.json', 'utf8'));
 const eventIds = ['100m', '100m-team', '400m', '400m-team', 'short', 'standard', 'xc-team'];
 const expectedResultCounts = {
   '100m': 306,
-  '100m-team': 32,
+  '100m-team': 31,
   '400m': 407,
   '400m-team': 60,
   short: 770,
@@ -225,6 +225,28 @@ const standardM4044PodiumCorrect = ['Gavin Hogarth', 'Pablo Llusía', 'Magnus Ma
     return medal?.name === name && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
   });
 
+const removedEmptyU16Team = !data.teams.some(team => team.id === 't10' || team.name === 'Usa 100m Mixed U16 Team E')
+  && !data.results.some(result => result.id === 'r316' || result.teamId === 't10' || result.name === 'Usa 100m Mixed U16 Team E')
+  && !data.medals.some(medal => medal.teamId === 't10' || medal.name === 'Usa 100m Mixed U16 Team E');
+const retainedMixed16PlusTeamE = data.teams.some(team => (
+  team.id === 't9'
+  && team.name === 'Usa 100m Mixed 16+ Team E'
+  && team.category === 'Mixed 16+'
+  && team.memberIds.length === 4
+));
+const mixedU16RankedResults = data.results
+  .filter(result => result.eventId === '100m-team' && result.category === 'Mixed U16' && result.status === 'Ranked')
+  .sort((left, right) => left.timeSeconds - right.timeSeconds || left.name.localeCompare(right.name));
+const mixedU16PlacingsRecalculated = mixedU16RankedResults.every((result, index) => (
+  result.place === index + 1
+  && result.medal === (['Gold', 'Silver', 'Bronze'][index] ?? null)
+));
+const mixedU16PodiumCorrect = ['Usa 100m Mixed U16 Team F', 'Usa 100m Mixed U16 Team J', 'Usa 100m Mixed U16 Team Nt']
+  .every((name, index) => {
+    const medal = data.medals.find(item => item.eventId === '100m-team' && item.category === 'Mixed U16' && item.place === index + 1);
+    return medal?.name === name && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
+  });
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -255,6 +277,10 @@ const checks = {
   standardM4044CorrectionApplied,
   standardM4044PlacingsRecalculated,
   standardM4044PodiumCorrect,
+  removedEmptyU16Team,
+  retainedMixed16PlusTeamE,
+  mixedU16PlacingsRecalculated,
+  mixedU16PodiumCorrect,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,

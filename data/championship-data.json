@@ -100,9 +100,9 @@
       "championshipEntries": 302
     },
     "100m-team": {
-      "entries": 32,
+      "entries": 31,
       "countries": 9,
-      "categories": 9,
+      "categories": 10,
       "fastest": {
         "name": "Usa 100m Elite Mixed Team",
         "country": "United States",
@@ -120,7 +120,7 @@
         "total": 10,
         "rank": 1
       },
-      "medalEligibleTeams": 30
+      "medalEligibleTeams": 29
     },
     "400m": {
       "entries": 407,
@@ -2621,10 +2621,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Usa 100m Mixed U16 Team E",
-      "time": "30.015",
-      "timeSeconds": 30.015,
-      "teamId": "t10",
+      "name": "Usa 100m Mixed U16 Team F",
+      "time": "30.401",
+      "timeSeconds": 30.401,
+      "teamId": "t11",
       "id": "m56"
     },
     {
@@ -2636,10 +2636,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Usa 100m Mixed U16 Team F",
-      "time": "30.401",
-      "timeSeconds": 30.401,
-      "teamId": "t11",
+      "name": "Usa 100m Mixed U16 Team J",
+      "time": "31.120",
+      "timeSeconds": 31.12,
+      "teamId": "t12",
       "id": "m57"
     },
     {
@@ -2651,10 +2651,10 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "name": "Usa 100m Mixed U16 Team J",
-      "time": "31.120",
-      "timeSeconds": 31.12,
-      "teamId": "t12",
+      "name": "Usa 100m Mixed U16 Team Nt",
+      "time": "31.244",
+      "timeSeconds": 31.244,
+      "teamId": "t13",
       "id": "m58"
     },
     {
@@ -9076,7 +9076,7 @@
       ],
       "medals": [
         "m17",
-        "m57",
+        "m56",
         "m86",
         "m361"
       ],
@@ -9089,8 +9089,8 @@
       ],
       "eventCount": 5,
       "medalCount": 4,
-      "goldCount": 3,
-      "silverCount": 1,
+      "goldCount": 4,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -9179,6 +9179,7 @@
         "t194"
       ],
       "medals": [
+        "m58",
         "m87",
         "m92",
         "m293",
@@ -9193,10 +9194,10 @@
         "xc-team"
       ],
       "eventCount": 6,
-      "medalCount": 4,
+      "medalCount": 5,
       "goldCount": 1,
       "silverCount": 3,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a36",
@@ -9245,6 +9246,7 @@
         "t84"
       ],
       "medals": [
+        "m58",
         "m87"
       ],
       "eventIds": [
@@ -9253,10 +9255,10 @@
         "400m-team"
       ],
       "eventCount": 3,
-      "medalCount": 1,
+      "medalCount": 2,
       "goldCount": 0,
       "silverCount": 1,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a38",
@@ -9338,7 +9340,7 @@
         "t174"
       ],
       "medals": [
-        "m57"
+        "m56"
       ],
       "eventIds": [
         "100m",
@@ -9347,8 +9349,8 @@
       ],
       "eventCount": 3,
       "medalCount": 1,
-      "goldCount": 0,
-      "silverCount": 1,
+      "goldCount": 1,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -9527,7 +9529,7 @@
         "t193"
       ],
       "medals": [
-        "m58",
+        "m57",
         "m88"
       ],
       "eventIds": [
@@ -9540,8 +9542,8 @@
       "eventCount": 5,
       "medalCount": 2,
       "goldCount": 0,
-      "silverCount": 0,
-      "bronzeCount": 2
+      "silverCount": 1,
+      "bronzeCount": 1
     },
     {
       "id": "a47",
@@ -10509,7 +10511,7 @@
       ],
       "medals": [
         "m41",
-        "m58",
+        "m57",
         "m342"
       ],
       "eventIds": [
@@ -10520,8 +10522,8 @@
       "eventCount": 3,
       "medalCount": 3,
       "goldCount": 0,
-      "silverCount": 0,
-      "bronzeCount": 3
+      "silverCount": 1,
+      "bronzeCount": 2
     },
     {
       "id": "a82",
@@ -10541,6 +10543,7 @@
       ],
       "medals": [
         "m40",
+        "m58",
         "m87"
       ],
       "eventIds": [
@@ -10550,10 +10553,10 @@
         "400m-team"
       ],
       "eventCount": 4,
-      "medalCount": 2,
+      "medalCount": 3,
       "goldCount": 0,
       "silverCount": 2,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a83",
@@ -10669,7 +10672,7 @@
         "t81"
       ],
       "medals": [
-        "m57",
+        "m56",
         "m86"
       ],
       "eventIds": [
@@ -10680,8 +10683,8 @@
       ],
       "eventCount": 4,
       "medalCount": 2,
-      "goldCount": 1,
-      "silverCount": 1,
+      "goldCount": 2,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -10804,7 +10807,7 @@
         "t12"
       ],
       "medals": [
-        "m58",
+        "m57",
         "m349"
       ],
       "eventIds": [
@@ -10815,8 +10818,8 @@
       "eventCount": 3,
       "medalCount": 2,
       "goldCount": 1,
-      "silverCount": 0,
-      "bronzeCount": 1
+      "silverCount": 1,
+      "bronzeCount": 0
     },
     {
       "id": "a92",
@@ -10910,7 +10913,7 @@
         "t11"
       ],
       "medals": [
-        "m57"
+        "m56"
       ],
       "eventIds": [
         "100m",
@@ -10918,8 +10921,8 @@
       ],
       "eventCount": 2,
       "medalCount": 1,
-      "goldCount": 0,
-      "silverCount": 1,
+      "goldCount": 1,
+      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -17027,7 +17030,7 @@
         "t12"
       ],
       "medals": [
-        "m58"
+        "m57"
       ],
       "eventIds": [
         "100m-team"
@@ -17035,8 +17038,8 @@
       "eventCount": 1,
       "medalCount": 1,
       "goldCount": 0,
-      "silverCount": 0,
-      "bronzeCount": 1
+      "silverCount": 1,
+      "bronzeCount": 0
     },
     {
       "id": "a315",
@@ -17050,15 +17053,17 @@
       "teamResults": [
         "t13"
       ],
-      "medals": [],
+      "medals": [
+        "m58"
+      ],
       "eventIds": [
         "100m-team"
       ],
       "eventCount": 1,
-      "medalCount": 0,
+      "medalCount": 1,
       "goldCount": 0,
       "silverCount": 0,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a316",
@@ -36831,19 +36836,6 @@
       "resultId": "r315"
     },
     {
-      "id": "t10",
-      "eventId": "100m-team",
-      "event": "100m Team Relay",
-      "name": "Usa 100m Mixed U16 Team E",
-      "country": "United States",
-      "countryIso": "US",
-      "flag": "🇺🇸",
-      "category": "Mixed U16",
-      "members": [],
-      "memberIds": [],
-      "resultId": "r316"
-    },
-    {
       "id": "t11",
       "eventId": "100m-team",
       "event": "100m Team Relay",
@@ -51653,31 +51645,6 @@
       "note": "Standings use the supplied Best Time across Q1/Q2; Open teams are excluded from medals."
     },
     {
-      "id": "r316",
-      "eventId": "100m-team",
-      "event": "100m Team Relay",
-      "type": "team",
-      "teamId": "t10",
-      "name": "Usa 100m Mixed U16 Team E",
-      "country": "United States",
-      "countryIso": "US",
-      "flag": "🇺🇸",
-      "category": "Mixed U16",
-      "gender": "Team",
-      "status": "Ranked",
-      "time": "30.015",
-      "timeSeconds": 30.015,
-      "place": 1,
-      "medal": "Gold",
-      "qualification": {
-        "attempt1": "29.656",
-        "attempt2": "30.015",
-        "best": "30.015"
-      },
-      "source": "100M Day 1 - Q1 Q2 Results.xlsx",
-      "note": "Standings use the supplied Best Time across Q1/Q2; Open teams are excluded from medals."
-    },
-    {
       "id": "r317",
       "eventId": "100m-team",
       "event": "100m Team Relay",
@@ -51692,8 +51659,8 @@
       "status": "Ranked",
       "time": "30.401",
       "timeSeconds": 30.401,
-      "place": 2,
-      "medal": "Silver",
+      "place": 1,
+      "medal": "Gold",
       "qualification": {
         "attempt1": "41.732",
         "attempt2": "30.401",
@@ -51717,8 +51684,8 @@
       "status": "Ranked",
       "time": "31.120",
       "timeSeconds": 31.12,
-      "place": 3,
-      "medal": "Bronze",
+      "place": 2,
+      "medal": "Silver",
       "qualification": {
         "attempt1": "32.186",
         "attempt2": "31.120",
@@ -51742,8 +51709,8 @@
       "status": "Ranked",
       "time": "31.244",
       "timeSeconds": 31.244,
-      "place": 4,
-      "medal": null,
+      "place": 3,
+      "medal": "Bronze",
       "qualification": {
         "attempt1": "31.244",
         "attempt2": "41.697",
@@ -51817,7 +51784,7 @@
       "status": "Ranked",
       "time": "32.800",
       "timeSeconds": 32.8,
-      "place": 5,
+      "place": 4,
       "medal": null,
       "qualification": {
         "attempt1": "33.725",
@@ -51842,7 +51809,7 @@
       "status": "Ranked",
       "time": "33.834",
       "timeSeconds": 33.834,
-      "place": 6,
+      "place": 5,
       "medal": null,
       "qualification": {
         "attempt1": "35.229",
@@ -51967,7 +51934,7 @@
       "status": "Ranked",
       "time": "38.225",
       "timeSeconds": 38.225,
-      "place": 7,
+      "place": 6,
       "medal": null,
       "qualification": {
         "attempt1": "38.225",
@@ -51992,7 +51959,7 @@
       "status": "Ranked",
       "time": "38.633",
       "timeSeconds": 38.633,
-      "place": 8,
+      "place": 7,
       "medal": null,
       "qualification": {
         "attempt1": "38.633",
@@ -52017,7 +51984,7 @@
       "status": "Ranked",
       "time": "43.712",
       "timeSeconds": 43.712,
-      "place": 9,
+      "place": 8,
       "medal": null,
       "qualification": {
         "attempt1": "44.778",
@@ -52042,7 +52009,7 @@
       "status": "Ranked",
       "time": "43.712",
       "timeSeconds": 43.712,
-      "place": 10,
+      "place": 9,
       "medal": null,
       "qualification": {
         "attempt1": "No Time",
@@ -52067,7 +52034,7 @@
       "status": "Ranked",
       "time": "43.715",
       "timeSeconds": 43.715,
-      "place": 11,
+      "place": 10,
       "medal": null,
       "qualification": {
         "attempt1": "43.715",
@@ -52092,7 +52059,7 @@
       "status": "Ranked",
       "time": "47.244",
       "timeSeconds": 47.244,
-      "place": 12,
+      "place": 11,
       "medal": null,
       "qualification": {
         "attempt1": "47.943",
@@ -52142,7 +52109,7 @@
       "status": "Ranked",
       "time": "52.627",
       "timeSeconds": 52.627,
-      "place": 13,
+      "place": 12,
       "medal": null,
       "qualification": {
         "attempt1": "55.067",
@@ -52167,7 +52134,7 @@
       "status": "Ranked",
       "time": "53.452",
       "timeSeconds": 53.452,
-      "place": 14,
+      "place": 13,
       "medal": null,
       "qualification": {
         "attempt1": "53.452",
@@ -96544,6 +96511,15 @@
       "medalCount": 6
     },
     {
+      "id": "a35",
+      "name": "Ava Dombrowsky",
+      "flag": "🇺🇸",
+      "country": "United States",
+      "countryIso": "US",
+      "eventCount": 6,
+      "medalCount": 5
+    },
+    {
       "id": "a307",
       "name": "Kira Chizhkova",
       "flag": "🇷🇺",
@@ -96569,15 +96545,6 @@
       "countryIso": "DK",
       "eventCount": 6,
       "medalCount": 5
-    },
-    {
-      "id": "a35",
-      "name": "Ava Dombrowsky",
-      "flag": "🇺🇸",
-      "country": "United States",
-      "countryIso": "US",
-      "eventCount": 6,
-      "medalCount": 4
     },
     {
       "id": "a33",
@@ -96739,15 +96706,15 @@
       "total": 5
     },
     {
-      "id": "a445",
-      "name": "Alexandra Kraienhorst",
-      "flag": "🇩🇪",
-      "country": "Germany",
-      "countryIso": "DE",
-      "gold": 3,
-      "silver": 1,
-      "bronze": 0,
-      "total": 4
+      "id": "a35",
+      "name": "Ava Dombrowsky",
+      "flag": "🇺🇸",
+      "country": "United States",
+      "countryIso": "US",
+      "gold": 1,
+      "silver": 3,
+      "bronze": 1,
+      "total": 5
     }
   ],
   "largestCountries": [
@@ -97025,6 +96992,11 @@
       "level": "info",
       "title": "Standard Course M40–44 unranked correction",
       "text": "Vitalij Voitechovic finished without bands and is classified DNC/unranked. The M40–44 standings and medals were recalculated: Gavin Hogarth won Gold, Pablo Llusía won Silver and Magnus Marklund won Bronze."
+    },
+    {
+      "level": "info",
+      "title": "100m Mixed U16 empty team removal",
+      "text": "USA 100m Mixed U16 Team E was removed because no athletes were linked to the team. Mixed U16 placings and medals were recalculated; USA 100m Mixed 16+ Team E remains unchanged."
     }
   ]
 }
