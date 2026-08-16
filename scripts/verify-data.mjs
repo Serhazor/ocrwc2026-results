@@ -152,6 +152,15 @@ const badCountryMedalTotals = data.countries
   })
   .map(country => country.countryIso);
 
+const actualAthleteCountsByCountry = new Map();
+for (const athlete of data.athletes) {
+  const key = athlete.countryIso || athlete.country;
+  actualAthleteCountsByCountry.set(key, (actualAthleteCountsByCountry.get(key) ?? 0) + 1);
+}
+const badCountryAthleteTotals = data.countries
+  .filter(country => country.athletes !== (actualAthleteCountsByCountry.get(country.countryIso || country.country) ?? 0))
+  .map(country => country.countryIso);
+
 const teamsByAthlete = new Map(data.athletes.map(athlete => [athlete.id, []]));
 for (const team of data.teams) {
   for (const athleteId of team.memberIds ?? []) teamsByAthlete.get(athleteId)?.push(team);
@@ -247,6 +256,27 @@ const mixedU16PodiumCorrect = ['Usa 100m Mixed U16 Team F', 'Usa 100m Mixed U16 
     return medal?.name === name && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
   });
 
+const karenWiltin = data.athletes.find(athlete => athlete.id === 'a243');
+const karenRelayTeam = data.teams.find(team => team.id === 't76');
+const karenWiltinProfileMerged = Boolean(
+  karenWiltin
+  && karenWiltin.name === 'Karen Wiltin'
+  && karenWiltin.aliases.includes('Karen Luebcke Wilton')
+  && JSON.stringify(karenWiltin.results) === JSON.stringify(['r244', 'r619'])
+  && karenWiltin.teamResults.includes('t76')
+  && JSON.stringify(karenWiltin.eventIds) === JSON.stringify(['100m', '400m', '400m-team'])
+  && JSON.stringify(karenWiltin.medals) === JSON.stringify(['m10', 'm82', 'm404'])
+  && karenWiltin.medalCount === 3
+  && karenWiltin.goldCount === 1
+  && karenWiltin.silverCount === 2
+  && !data.athletes.some(athlete => athlete.id === 'a544')
+  && karenRelayTeam
+  && karenRelayTeam.members.includes('Karen Wiltin')
+  && !karenRelayTeam.members.includes('Karen Luebcke Wilton')
+  && karenRelayTeam.memberIds.includes('a243')
+  && !karenRelayTeam.memberIds.includes('a544')
+);
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -270,6 +300,7 @@ const checks = {
   medalTablesRecalculated: badMedalTables.length === 0,
   athleteMedalTotalsRecalculated: badAthleteMedalTotals.length === 0,
   countryMedalTotalsRecalculated: badCountryMedalTotals.length === 0,
+  countryAthleteTotalsRecalculated: badCountryAthleteTotals.length === 0,
   athleteTeamLinksRecalculated: badAthleteTeamLinks.length === 0,
   xcRosterCorrectionApplied,
   xcTimeCorrectionApplied,
@@ -281,6 +312,7 @@ const checks = {
   retainedMixed16PlusTeamE,
   mixedU16PlacingsRecalculated,
   mixedU16PodiumCorrect,
+  karenWiltinProfileMerged,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,
@@ -306,6 +338,7 @@ const report = {
   badMedalTables,
   badAthleteMedalTotals: badAthleteMedalTotals.slice(0, 20),
   badCountryMedalTotals,
+  badCountryAthleteTotals,
   badAthleteTeamLinks: badAthleteTeamLinks.slice(0, 20),
 };
 

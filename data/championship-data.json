@@ -330,7 +330,7 @@
     ]
   },
   "overallFacts": [
-    "1077 unique athletes are linked across the supplied individual and team datasets.",
+    "1076 unique athletes are linked across the supplied individual and team datasets.",
     "834 athletes appear in two or more event types.",
     "Jamie Gane, Lena Schollig and Stephan Wirtz appear in all seven event types in the available data.",
     "🇺🇸 United States leads the combined medal table with 44 golds and 118 total medals.",
@@ -339,7 +339,7 @@
   "insights": [
     {
       "title": "Athletes across the supplied datasets",
-      "value": 1077,
+      "value": 1076,
       "text": "Unique athlete identities after normalization and obvious cross-file alias merging."
     },
     {
@@ -14962,7 +14962,9 @@
     {
       "id": "a243",
       "name": "Karen Wiltin",
-      "aliases": [],
+      "aliases": [
+        "Karen Luebcke Wilton"
+      ],
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
@@ -14971,18 +14973,22 @@
         "r244",
         "r619"
       ],
-      "teamResults": [],
+      "teamResults": [
+        "t76"
+      ],
       "medals": [
         "m10",
+        "m82",
         "m404"
       ],
       "eventIds": [
         "100m",
-        "400m"
+        "400m",
+        "400m-team"
       ],
-      "eventCount": 2,
-      "medalCount": 2,
-      "goldCount": 0,
+      "eventCount": 3,
+      "medalCount": 3,
+      "goldCount": 1,
       "silverCount": 2,
       "bronzeCount": 0
     },
@@ -23459,30 +23465,6 @@
       "medalCount": 1,
       "goldCount": 0,
       "silverCount": 1,
-      "bronzeCount": 0
-    },
-    {
-      "id": "a544",
-      "name": "Karen Luebcke Wilton",
-      "aliases": [],
-      "country": "United States",
-      "countryIso": "US",
-      "flag": "🇺🇸",
-      "gender": "Mixed/Unknown",
-      "results": [],
-      "teamResults": [
-        "t76"
-      ],
-      "medals": [
-        "m82"
-      ],
-      "eventIds": [
-        "400m-team"
-      ],
-      "eventCount": 1,
-      "medalCount": 1,
-      "goldCount": 1,
-      "silverCount": 0,
       "bronzeCount": 0
     },
     {
@@ -38320,13 +38302,13 @@
       "category": "Mixed 40+",
       "members": [
         "Adrienne Dombrowsky",
-        "Karen Luebcke Wilton",
+        "Karen Wiltin",
         "Brian Beckstrand",
         "Andrew Lowes"
       ],
       "memberIds": [
         "a244",
-        "a544",
+        "a243",
         "a261",
         "a267"
       ],
@@ -96456,7 +96438,7 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "athletes": 202,
+      "athletes": 201,
       "resultEntries": 446,
       "gold": 44,
       "silver": 43,
@@ -96722,7 +96704,7 @@
       "country": "United States",
       "countryIso": "US",
       "flag": "🇺🇸",
-      "athletes": 202,
+      "athletes": 201,
       "resultEntries": 446,
       "gold": 44,
       "silver": 43,
@@ -96997,6 +96979,11 @@
       "level": "info",
       "title": "100m Mixed U16 empty team removal",
       "text": "USA 100m Mixed U16 Team E was removed because no athletes were linked to the team. Mixed U16 placings and medals were recalculated; USA 100m Mixed 16+ Team E remains unchanged."
+    },
+    {
+      "level": "info",
+      "title": "Karen Wiltin athlete identity correction",
+      "text": "Karen Luebcke Wilton in the USA 400m Mixed 40+ Team NT roster was corrected to Karen Wiltin and linked to the same athlete profile as her individual 100m and 400m results."
     }
   ]
 }
