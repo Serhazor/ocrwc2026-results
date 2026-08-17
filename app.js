@@ -31,6 +31,7 @@
   const countryByIso = Object.fromEntries(D.countries.map(x => [x.countryIso, x]));
   const eventOrder = ['100m','100m-team','400m','400m-team','short','standard','xc-team'];
   const PAGE_SIZE = 50;
+  let cleanupCurrentView = () => {};
 
   const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const num = v => Number(v || 0).toLocaleString();
@@ -201,6 +202,191 @@
     canvasRoundRect(ctx,x,y,width,176,28,'rgba(3,17,12,.56)','rgba(255,255,255,.12)');ctx.fillStyle=accent;ctx.font='900 54px Inter, sans-serif';ctx.fillText(String(value),x+28,y+72);ctx.fillStyle='#b8cdc3';ctx.font='700 22px Inter, sans-serif';canvasText(ctx,label,x+28,y+112,width-56,27,2);
   }
 
+  const COUNTRY_PALETTES = {
+    AD:['#2364aa','#f6c945','#d62839'],AR:['#75aadb','#ffffff','#f6b40e'],AU:['#012169','#ffffff','#e4002b'],BY:['#d22730','#ffffff','#00af66'],BE:['#1b1b1b','#fdda24','#ef3340'],BR:['#009c3b','#ffdf00','#002776'],CA:['#d80621','#ffffff','#d80621'],CL:['#0039a6','#ffffff','#d52b1e'],CN:['#de2910','#ffde00','#de2910'],CR:['#002b7f','#ffffff','#ce1126'],CZ:['#11457e','#ffffff','#d7141a'],DK:['#c60c30','#ffffff','#c60c30'],EE:['#4891d9','#ffffff','#101820'],FI:['#003580','#ffffff','#003580'],FR:['#0055a4','#ffffff','#ef4135'],DE:['#dd0000','#ffce00','#191919'],GR:['#0d5eaf','#ffffff','#0d5eaf'],GU:['#133e7c','#ffffff','#d21034'],HK:['#de2910','#ffffff','#de2910'],HU:['#ce2939','#ffffff','#477050'],IE:['#169b62','#ffffff','#ff883e'],IT:['#009246','#ffffff','#ce2b37'],JP:['#bc002d','#ffffff','#bc002d'],LV:['#9e3039','#ffffff','#9e3039'],LT:['#fdb913','#006a44','#c1272d'],MT:['#cf142b','#ffffff','#cf142b'],MX:['#006847','#ffffff','#ce1126'],NL:['#21468b','#ffffff','#ae1c28'],NZ:['#012169','#ffffff','#cc142b'],NO:['#ba0c2f','#ffffff','#00205b'],PH:['#0038a8','#fcd116','#ce1126'],PL:['#dc143c','#ffffff','#dc143c'],PT:['#046a38','#ffcc29','#da291c'],PR:['#0050f0','#ffffff','#ed0000'],RU:['#1c3578','#ffffff','#d52b1e'],SK:['#0b4ea2','#ffffff','#ee1c25'],ES:['#aa151b','#f1bf00','#aa151b'],SE:['#006aa7','#fecc02','#006aa7'],CH:['#d52b1e','#ffffff','#d52b1e'],UA:['#0057b7','#ffd700','#0057b7'],GB:['#012169','#ffffff','#c8102e'],US:['#3c3b6e','#ffffff','#b22234']
+  };
+  const countrySocialStatsCache = new Map();
+
+  function countryPalette(iso) {
+    const [primary,secondary,accent]=COUNTRY_PALETTES[iso]||['#157a55','#f7fbf9','#65e6a5'];
+    return {primary,secondary,accent};
+  }
+
+  function resultIsUsable(result) {
+    return result && !/^(DNS|DNF|DNC|OOC|No Time|Unranked)$/i.test(String(result.status||''));
+  }
+
+  function verifiedPerformances(result) {
+    if(!resultIsUsable(result)) return [];
+    const performances=[];
+    const add=(raw,seconds,round)=>{const parsed=Number.isFinite(seconds)?seconds:recordedSeconds(raw);if(parsed!=null&&parsed>0)performances.push({raw:String(raw||result.time||''),seconds:parsed,round,result});};
+    if(result.qualification){add(result.qualification.attempt1,null,'Q1');add(result.qualification.attempt2,null,'Q2');}
+    Object.entries(result.elimination||{}).forEach(([round,attempt])=>add(attempt?.raw,attempt?.seconds,round));
+    add(result.time,result.timeSeconds,result.stage||'Official result');
+    return performances.filter((attempt,index,list)=>list.findIndex(other=>other.seconds===attempt.seconds&&other.round===attempt.round)===index);
+  }
+
+  function bestPerformance(results) {
+    return results.flatMap(verifiedPerformances).sort((a,b)=>a.seconds-b.seconds)[0]||null;
+  }
+
+  function countrySocialStats(iso) {
+    if(countrySocialStatsCache.has(iso)) return countrySocialStatsCache.get(iso);
+    const country=countryByIso[iso];
+    const results=D.results.filter(result=>result.countryIso===iso);
+    const individualResults=results.filter(result=>result.type==='individual');
+    const teamResults=results.filter(result=>result.type==='team');
+    const teams=D.teams.filter(team=>team.countryIso===iso);
+    const fastestMale=bestPerformance(individualResults.filter(result=>result.gender==='Male'));
+    const fastestFemale=bestPerformance(individualResults.filter(result=>result.gender==='Female'));
+    const fastestIndividual=[fastestMale,fastestFemale].filter(Boolean).sort((a,b)=>a.seconds-b.seconds)[0]||null;
+    const fastestTeam=bestPerformance(teamResults);
+    const improvements=results.flatMap(result=>{
+      if(!resultIsUsable(result)||!result.qualification) return [];
+      const q1=recordedSeconds(result.qualification.attempt1),q2=recordedSeconds(result.qualification.attempt2);
+      if(q1==null||q2==null||q2>=q1) return [];
+      return [{result,q1,q2,difference:q1-q2}];
+    }).sort((a,b)=>b.difference-a.difference);
+    const eventSummaries=eventOrder.map(eventId=>{
+      const eventResults=results.filter(result=>result.eventId===eventId);
+      if(!eventResults.length) return null;
+      const categories=new Set(eventResults.map(result=>result.category).filter(Boolean));
+      const placed=eventResults.filter(result=>resultIsUsable(result)&&Number.isFinite(result.place)).sort((a,b)=>a.place-b.place||(a.timeSeconds??Infinity)-(b.timeSeconds??Infinity));
+      const recorded=eventResults.filter(result=>verifiedPerformances(result).length).sort((a,b)=>(a.timeSeconds??Infinity)-(b.timeSeconds??Infinity));
+      return {eventId,event:eventName(eventId),entries:eventResults.length,categories:categories.size,featured:placed[0]||recorded[0]||null};
+    }).filter(Boolean);
+    const categoryCount=new Set(results.map(result=>`${result.eventId}|${result.category}`).filter(value=>!value.endsWith('|undefined'))).size;
+    const officialPlacings=results.filter(result=>resultIsUsable(result)&&Number.isFinite(result.place)).length;
+    const stats={country,results,individualResults,teamResults,teams,teamCount:teams.length,categoryCount,officialPlacings,fastestMale,fastestFemale,fastestIndividual,fastestTeam,biggestImprovement:improvements[0]||null,eventSummaries};
+    countrySocialStatsCache.set(iso,stats);
+    return stats;
+  }
+
+  function preciseDuration(seconds) {
+    if(!Number.isFinite(seconds)||seconds<=0) return '—';
+    if(seconds<60) return `${seconds.toFixed(3).replace(/0+$/,'').replace(/\.$/,'')}s`;
+    const hours=Math.floor(seconds/3600),minutes=Math.floor((seconds%3600)/60),secs=(seconds%60).toFixed(seconds<600?3:1).padStart(4,'0');
+    return hours?`${hours}:${String(minutes).padStart(2,'0')}:${secs.padStart(4,'0')}`:`${minutes}:${secs}`;
+  }
+
+  function performanceTime(performance) {
+    const raw=performance?.raw;
+    if(raw&&/^\d+\.\d+$/.test(raw)) return `${raw}s`;
+    return raw||preciseDuration(performance?.seconds);
+  }
+
+  function resultAchievement(result) {
+    if(!result) return '';
+    if(result.medal) return `${medalIcon(result.medal)} ${result.medal}`;
+    if(Number.isFinite(result.place)) return `#${result.place}`;
+    return '';
+  }
+
+  function countrySocialPreviewHtml(country) {
+    const stats=countrySocialStats(country.countryIso),palette=countryPalette(country.countryIso),fastest=stats.fastestIndividual;
+    const metricItems=[country.athletes?`<span><strong>${num(country.athletes)}</strong> athletes</span>`:'',stats.teamCount?`<span><strong>${num(stats.teamCount)}</strong> teams</span>`:'',stats.categoryCount?`<span><strong>${num(stats.categoryCount)}</strong> categories</span>`:''].filter(Boolean).join('');
+    const medals=country.total?`<div class="country-social-medals"><strong>${num(country.total)} medal${country.total===1?'':'s'}</strong><span>${country.gold?`🥇 ${country.gold}`:''} ${country.silver?`🥈 ${country.silver}`:''} ${country.bronze?`🥉 ${country.bronze}`:''}</span></div>`:'';
+    const fastestHtml=fastest?`<div class="country-social-fastest"><small>Fastest individual performance</small><strong>${esc(performanceTime(fastest))}</strong><span>${esc(fastest.result.name)} · ${esc(fastest.result.event)}</span></div>`:'';
+    return `<article class="country-social-preview-card" style="--country-primary:${palette.primary};--country-secondary:${palette.secondary};--country-accent:${palette.accent}"><div class="country-social-preview-head"><div>${flagHtml(country.countryIso,country.country,'profile')}<span class="country-code">${esc(country.countryIso)}</span></div><div><h3>${esc(country.country)}</h3><p>Championship social cards</p></div></div>${medals}<div class="country-social-preview-metrics">${metricItems}</div>${fastestHtml}<a class="btn country-social-link" href="#country-cards/${esc(country.countryIso)}">Open social cards <span aria-hidden="true">→</span></a></article>`;
+  }
+
+  function drawCountrySocialBackground(ctx,palette,accent) {
+    const gradient=ctx.createLinearGradient(0,0,CAROUSEL_WIDTH,CAROUSEL_HEIGHT);
+    gradient.addColorStop(0,'#04110d');gradient.addColorStop(.58,'#0a2a20');gradient.addColorStop(1,palette.primary);
+    ctx.fillStyle=gradient;ctx.fillRect(0,0,CAROUSEL_WIDTH,CAROUSEL_HEIGHT);
+    ctx.save();ctx.globalAlpha=.16;ctx.fillStyle=palette.primary;ctx.beginPath();ctx.arc(930,180,340,0,Math.PI*2);ctx.fill();ctx.fillStyle=accent;ctx.beginPath();ctx.arc(80,1230,300,0,Math.PI*2);ctx.fill();ctx.restore();
+    ctx.save();ctx.globalAlpha=.1;ctx.fillStyle=palette.secondary;ctx.translate(0,170);ctx.rotate(-.14);for(let x=-250;x<1450;x+=260)ctx.fillRect(x,-240,76,1600);ctx.restore();
+    const top=ctx.createLinearGradient(0,0,CAROUSEL_WIDTH,0);top.addColorStop(0,palette.primary);top.addColorStop(.5,palette.secondary);top.addColorStop(1,palette.accent);ctx.fillStyle=top;ctx.fillRect(0,0,CAROUSEL_WIDTH,12);
+  }
+
+  function drawCountrySocialBrand(ctx,logo,country,page,total) {
+    if(logo){
+      const maxWidth=155,maxHeight=130,scale=Math.min(maxWidth/logo.naturalWidth,maxHeight/logo.naturalHeight),width=logo.naturalWidth*scale,height=logo.naturalHeight*scale;
+      ctx.drawImage(logo,1010-width,28,width,height);
+    }else{ctx.fillStyle='#f7fbf9';ctx.font='900 22px Inter, sans-serif';ctx.textAlign='right';ctx.fillText('OCRA ÉIREANN',1010,76);ctx.textAlign='left';}
+    ctx.fillStyle='rgba(255,255,255,.72)';ctx.font='700 21px Inter, sans-serif';ctx.fillText('OCR WORLD CHAMPIONSHIPS · IRELAND 2026',70,1292);
+    ctx.textAlign='right';ctx.fillText(`${country.countryIso} · ${page} / ${total}`,1010,1292);ctx.textAlign='left';
+  }
+
+  function drawCountryEyebrow(ctx,text,accent) {
+    ctx.fillStyle=accent;ctx.font='850 24px Inter, sans-serif';ctx.fillText(text.toUpperCase(),70,102);
+  }
+
+  function drawCountryPerformanceSlide(ctx,performance,title,kicker,accent) {
+    const result=performance.result,achievement=resultAchievement(result);
+    drawCountryEyebrow(ctx,kicker,accent);ctx.fillStyle='#f7fbf9';ctx.font='900 58px Inter, sans-serif';ctx.fillText(title,70,205);
+    canvasRoundRect(ctx,70,275,940,430,42,'rgba(2,15,11,.62)','rgba(255,255,255,.14)');
+    ctx.fillStyle=accent;ctx.font=`900 ${performanceTime(performance).length>10?94:116}px Inter, sans-serif`;ctx.fillText(performanceTime(performance),110,445);
+    ctx.fillStyle='#f7fbf9';ctx.font='900 43px Inter, sans-serif';canvasText(ctx,result.name,110,530,800,52,2);
+    ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';ctx.fillText(`${result.event} · ${result.category}`,110,636);
+    ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';ctx.fillText(performance.round,110,775);
+    ctx.fillStyle='#9eb7ac';ctx.font='650 22px Inter, sans-serif';ctx.fillText('Fastest supplied recorded attempt for this delegation',110,817);
+    if(achievement){canvasRoundRect(ctx,750,742,260,92,20,'rgba(255,255,255,.08)','rgba(255,255,255,.14)');ctx.fillStyle=accent;ctx.font='850 27px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(achievement,880,798);ctx.textAlign='left';}
+    canvasRoundRect(ctx,70,900,940,195,30,'rgba(2,15,11,.45)','rgba(255,255,255,.1)');ctx.fillStyle='#f7fbf9';ctx.font='850 29px Inter, sans-serif';ctx.fillText('Verified championship data',110,965);ctx.fillStyle='#b8cdc3';ctx.font='650 23px Inter, sans-serif';canvasText(ctx,'Time, round, event and category are taken from the supplied championship result record.',110,1015,820,32,3);
+  }
+
+  function buildCountrySocialSlides(country,stats) {
+    const palette=countryPalette(country.countryIso),accent=palette.accent,slides=[];
+    slides.push({label:'Country introduction',accent,draw(ctx,assets){
+      drawCountryEyebrow(ctx,'Championship country story',accent);drawCarouselFlag(ctx,assets.flag,country,70,172,180,135);
+      canvasRoundRect(ctx,280,204,112,62,18,'rgba(255,255,255,.1)','rgba(255,255,255,.15)');ctx.fillStyle='#f7fbf9';ctx.font='900 31px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(country.countryIso,336,245);ctx.textAlign='left';
+      ctx.fillStyle='#f7fbf9';ctx.font=`900 ${country.country.length>20?64:78}px Inter, sans-serif`;canvasText(ctx,country.country,70,430,930,country.country.length>20?72:88,2);
+      ctx.fillStyle='#b8cdc3';ctx.font='700 29px Inter, sans-serif';ctx.fillText('At the 2026 OCR World Championships',70,608);
+      const metrics=[country.athletes?{value:country.athletes,label:'linked athletes'}:null,stats.teamCount?{value:stats.teamCount,label:'relay teams'}:null,stats.categoryCount?{value:stats.categoryCount,label:'categories entered'}:null].filter(Boolean);
+      if(metrics.length<3&&stats.results.length)metrics.push({value:stats.results.length,label:'result records'});
+      const width=(940-(metrics.length-1)*34)/metrics.length;metrics.forEach((item,index)=>drawCarouselMetric(ctx,70+index*(width+34),740,width,item.value,item.label,accent));
+      ctx.fillStyle='#f7fbf9';ctx.font='850 31px Inter, sans-serif';canvasText(ctx,`${country.country} brought its championship story to Ireland.`,70,1035,870,42,3);
+    }});
+    if(country.total){slides.push({label:'Medal haul',accent:'#f2c94c',draw(ctx){
+      drawCountryEyebrow(ctx,'The medal haul','#f2c94c');ctx.fillStyle='#f7fbf9';ctx.font='900 61px Inter, sans-serif';ctx.fillText(`${country.country} on the podium`,70,205);
+      canvasRoundRect(ctx,70,285,940,330,42,'rgba(2,15,11,.62)','rgba(255,255,255,.14)');ctx.fillStyle='#f2c94c';ctx.font='900 142px Inter, sans-serif';ctx.fillText(country.total,110,478);ctx.fillStyle='#f7fbf9';ctx.font='850 34px Inter, sans-serif';ctx.fillText(`championship medal${country.total===1?'':'s'}`,110,548);
+      const medals=[country.gold?{value:country.gold,label:'gold',color:'#f2c94c'}:null,country.silver?{value:country.silver,label:'silver',color:'#dbe4ec'}:null,country.bronze?{value:country.bronze,label:'bronze',color:'#df9867'}:null].filter(Boolean);const width=(940-(medals.length-1)*34)/medals.length;
+      medals.forEach((item,index)=>drawCarouselMetric(ctx,70+index*(width+34),690,width,item.value,item.label,item.color));
+      ctx.fillStyle='#b8cdc3';ctx.font='650 24px Inter, sans-serif';canvasText(ctx,'Only official medals present in the verified championship medal records are included.',70,1008,900,34,3);
+    }});}
+    if(stats.fastestMale)slides.push({label:'Fastest male performance',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestMale,'Fastest male performance','Recorded speed',accent);}});
+    if(stats.fastestFemale)slides.push({label:'Fastest female performance',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestFemale,'Fastest female performance','Recorded speed',accent);}});
+    if(stats.fastestTeam)slides.push({label:'Fastest team attempt',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestTeam,'Fastest team attempt','Relay performance',accent);}});
+    if(stats.biggestImprovement)slides.push({label:'Biggest Q2 improvement',accent,draw(ctx){
+      const item=stats.biggestImprovement,result=item.result;
+      drawCountryEyebrow(ctx,'Q1 to Q2 improvement',accent);ctx.fillStyle='#f7fbf9';ctx.font='900 59px Inter, sans-serif';ctx.fillText('Faster the second time.',70,205);
+      ctx.fillStyle='#f7fbf9';ctx.font='900 48px Inter, sans-serif';canvasText(ctx,result.name,70,318,900,56,2);ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';ctx.fillText(`${result.event} · ${result.category}`,70,428);
+      drawCarouselMetric(ctx,70,530,280,result.qualification.attempt1,'Q1 recorded time','#f7fbf9');drawCarouselMetric(ctx,400,530,280,result.qualification.attempt2,'Q2 recorded time',accent);drawCarouselMetric(ctx,730,530,280,preciseDuration(item.difference),'time improved','#c5ff72');
+      canvasRoundRect(ctx,70,790,940,265,34,'rgba(2,15,11,.5)','rgba(255,255,255,.12)');ctx.fillStyle=accent;ctx.font='900 67px Inter, sans-serif';ctx.fillText(`${preciseDuration(item.difference)} faster`,110,900);ctx.fillStyle='#f7fbf9';ctx.font='800 28px Inter, sans-serif';canvasText(ctx,'The largest positive Q1-to-Q2 change in this country’s supplied qualifying records.',110,968,820,38,3);
+    }});
+    if(stats.eventSummaries.length)slides.push({label:'Categories and results',accent,draw(ctx){
+      drawCountryEyebrow(ctx,'Categories and results',accent);ctx.fillStyle='#f7fbf9';ctx.font='900 56px Inter, sans-serif';ctx.fillText('The delegation by event.',70,197);
+      let y=252;stats.eventSummaries.forEach((summary,index)=>{const featured=summary.featured,achievement=resultAchievement(featured);canvasRoundRect(ctx,70,y,940,124,22,index%2?'rgba(255,255,255,.06)':'rgba(2,15,11,.46)','rgba(255,255,255,.1)');ctx.fillStyle='#f7fbf9';ctx.font='850 26px Inter, sans-serif';ctx.fillText(summary.event,94,y+40);ctx.fillStyle='#a7beb3';ctx.font='650 19px Inter, sans-serif';ctx.fillText(`${summary.categories} categor${summary.categories===1?'y':'ies'} · ${summary.entries} result record${summary.entries===1?'':'s'}`,94,y+75);if(featured){ctx.fillStyle='#dce9e3';ctx.font='650 18px Inter, sans-serif';canvasText(ctx,featured.name,94,y+103,535,22,1);ctx.textAlign='right';ctx.fillStyle=accent;ctx.font='850 22px Inter, sans-serif';ctx.fillText(achievement||'Recorded result',984,y+42);ctx.fillStyle='#f7fbf9';ctx.font='800 22px Inter, sans-serif';ctx.fillText(featured.time||'—',984,y+78);ctx.textAlign='left';}else{ctx.textAlign='right';ctx.fillStyle='#b8cdc3';ctx.font='750 20px Inter, sans-serif';ctx.fillText('Participation recorded',984,y+63);ctx.textAlign='left';}y+=134;});
+    }});
+    slides.push({label:'Championship closing card',accent,draw(ctx,assets){
+      drawCountryEyebrow(ctx,'Ireland 2026',accent);drawCarouselFlag(ctx,assets.flag,country,70,174,160,120);ctx.fillStyle='#f7fbf9';ctx.font=`900 ${country.country.length>20?58:70}px Inter, sans-serif`;canvasText(ctx,country.country,270,225,700,country.country.length>20?65:78,2);
+      ctx.fillStyle='#f7fbf9';ctx.font='900 60px Inter, sans-serif';canvasText(ctx,'A championship story worth sharing.',70,440,900,70,3);
+      const closingMetrics=[country.athletes?{value:country.athletes,label:'athletes'}:null,stats.eventSummaries.length?{value:stats.eventSummaries.length,label:'event types contested'}:null,country.total?{value:country.total,label:'medals won'}:stats.results.length?{value:stats.results.length,label:'recorded results'}:null].filter(Boolean);const width=(940-(closingMetrics.length-1)*34)/closingMetrics.length;closingMetrics.forEach((item,index)=>drawCarouselMetric(ctx,70+index*(width+34),735,width,item.value,item.label,accent));
+      ctx.fillStyle=accent;ctx.font='900 34px Inter, sans-serif';ctx.fillText(`Proudly representing ${country.country}.`,70,1040);ctx.fillStyle='#f7fbf9';ctx.font='800 28px Inter, sans-serif';canvasText(ctx,'Every verified result is part of the championship record.',70,1095,880,40,2);
+    }});
+    return {palette,slides};
+  }
+
+  function renderCountrySocialCards(iso) {
+    const country=countryByIso[iso];if(!country)return renderNotFound();setTitle(`${country.country} social cards`);
+    const stats=countrySocialStats(iso),built=buildCountrySocialSlides(country,stats),slides=built.slides,palette=built.palette;
+    app.innerHTML=`${backLink(`#country/${esc(iso)}`,country.country)}<div class="section-head country-social-title"><div><div class="eyebrow">Country social cards</div><h1>${flagHtml(country.countryIso,country.country,'card')} ${esc(country.country)}</h1><p>A dynamic set of ${slides.length} verified, portrait-format championship cards.</p></div></div><section class="panel country-social-creator" style="--country-primary:${palette.primary};--country-secondary:${palette.secondary};--country-accent:${palette.accent}"><div class="carousel-workspace country-social-workspace"><div class="carousel-preview country-social-canvas-wrap"><canvas width="${CAROUSEL_WIDTH}" height="${CAROUSEL_HEIGHT}" aria-label="${esc(country.country)} social card preview"></canvas><div class="carousel-nav"><button class="btn country-social-prev">← Previous</button><div class="carousel-dots">${slides.map((_,index)=>`<button aria-label="Show card ${index+1}" data-slide="${index}"></button>`).join('')}</div><button class="btn country-social-next">Next →</button></div></div><aside class="carousel-actions"><div class="carousel-slide-label"></div><p class="muted">PNG · 1080 × 1350 · social portrait</p><button class="btn country-social-autoplay" aria-pressed="false">Pause autoplay</button><button class="btn primary country-social-download">Download this PNG</button><button class="btn country-social-download-all">Download all ${slides.length} PNGs</button><div class="notice country-social-notice"><strong>Verified statistics only</strong>Cards are adapted to the supplied results. Empty medal, team, gender and improvement cards are omitted automatically. Q2 improvement means the difference between supplied Q1 and Q2 times.</div><p class="carousel-feedback muted" aria-live="polite"></p></aside></div></section>`;
+    const canvas=app.querySelector('canvas'),ctx=canvas.getContext('2d'),feedback=app.querySelector('.carousel-feedback'),autoplayButton=app.querySelector('.country-social-autoplay');let current=0,logo=null,flag=null,timer=null,pointerStart=null;
+    const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;let playing=!reducedMotion;
+    const draw=()=>{drawCountrySocialBackground(ctx,palette,slides[current].accent);slides[current].draw(ctx,{logo,flag});drawCountrySocialBrand(ctx,logo,country,current+1,slides.length);app.querySelector('.carousel-slide-label').innerHTML=`<strong>Card ${current+1} of ${slides.length}</strong><span>${esc(slides[current].label)}</span>`;app.querySelectorAll('.carousel-dots button').forEach((dot,index)=>dot.classList.toggle('active',index===current));app.querySelector('.country-social-prev').disabled=current===0;app.querySelector('.country-social-next').disabled=current===slides.length-1;};
+    const go=index=>{current=Math.max(0,Math.min(slides.length-1,index));draw();};
+    const updateAutoplay=()=>{clearInterval(timer);timer=null;autoplayButton.textContent=playing?'Pause autoplay':'Start autoplay';autoplayButton.setAttribute('aria-pressed',String(playing));if(playing)timer=setInterval(()=>{current=(current+1)%slides.length;draw();},4800);};
+    const filename=index=>`${String(country.countryIso).toLowerCase()}-ocrwc2026-country-card-${String(index+1).padStart(2,'0')}.png`;
+    const download=async index=>{go(index);const blob=await carouselPngBlob(canvas);downloadCarouselBlob(blob,filename(index));};
+    app.querySelector('.country-social-prev').addEventListener('click',()=>go(current-1));app.querySelector('.country-social-next').addEventListener('click',()=>go(current+1));app.querySelectorAll('.carousel-dots button').forEach(dot=>dot.addEventListener('click',()=>go(+dot.dataset.slide)));
+    autoplayButton.addEventListener('click',()=>{playing=!playing;updateAutoplay();});
+    canvas.addEventListener('pointerdown',event=>{pointerStart=event.clientX;canvas.setPointerCapture?.(event.pointerId);});canvas.addEventListener('pointerup',event=>{if(pointerStart==null)return;const distance=event.clientX-pointerStart;pointerStart=null;if(Math.abs(distance)>45)go(current+(distance<0?1:-1));});canvas.addEventListener('pointercancel',()=>{pointerStart=null;});
+    app.querySelector('.country-social-download').addEventListener('click',async()=>{try{await download(current);feedback.textContent=`Card ${current+1} downloaded as a PNG.`;}catch{feedback.textContent='This browser could not create the PNG.';}});
+    app.querySelector('.country-social-download-all').addEventListener('click',async event=>{const button=event.currentTarget,original=current,defaultLabel=`Download all ${slides.length} PNGs`;button.disabled=true;button.textContent=`Preparing ${slides.length} PNGs…`;playing=false;updateAutoplay();try{const images=[];for(let index=0;index<slides.length;index++){go(index);images.push({blob:await carouselPngBlob(canvas),name:filename(index)});}images.forEach((image,index)=>setTimeout(()=>downloadCarouselBlob(image.blob,image.name),index*320));feedback.textContent=`${slides.length} separate PNG downloads started. If asked, allow multiple downloads.`;}catch{feedback.textContent='This browser could not create all of the PNGs.';}finally{go(original);button.disabled=false;button.textContent=defaultLabel;}});
+    draw();updateAutoplay();Promise.all([loadCarouselImage(CAROUSEL_LOGO),loadCarouselImage(`${FLAG_ASSET_BASE}/${String(country.countryIso).toLowerCase()}.svg`)]).then(images=>{[logo,flag]=images;draw();});
+    cleanupCurrentView=()=>{clearInterval(timer);timer=null;};
+  }
+
   function buildCarouselSlides(a,indiv,tms,am) {
     const nation=countryByIso[a.countryIso],distance=athleteDistanceStats(indiv);
     const entries=[
@@ -306,6 +492,12 @@
         ${metric('Result records', num(D.results.length), 'Individual + team records')}
         ${metric('Available medals', num(D.medals.length), 'Across all supplied events')}
       </div>
+      <section class="section country-social-section">
+        <div class="section-head"><div><div class="eyebrow">Made for sharing</div><h2>Country social cards</h2><p>Swipe through every delegation, then open its verified championship graphics.</p></div><div class="country-strip-controls"><button class="btn" id="country-strip-prev" aria-label="Previous countries">←</button><button class="btn" id="country-strip-next" aria-label="Next countries">→</button></div></div>
+        <div class="country-social-strip" id="country-social-strip" tabindex="0" aria-label="Country social card previews">
+          ${D.countries.map(countrySocialPreviewHtml).join('')}
+        </div>
+      </section>
       <section class="section">
         <div class="section-head"><div><h2>Events</h2><p>Open an event for its summary, facts, medal table and results.</p></div></div>
         <div class="event-grid">
@@ -335,7 +527,14 @@
           <div class="list">${D.largestCountries.slice(0,8).map(c=>`<div class="list-item"><div class="main"><strong>${countryLink(c.countryIso,c.country)}</strong><small>${c.total} available medals</small></div><span>${num(c.athletes)} athletes</span></div>`).join('')}</div>
         </div>
       </section>`;
-    bindGoButtons();
+    bindGoButtons();bindCountrySocialStrip();
+  }
+
+  function bindCountrySocialStrip() {
+    const strip=document.getElementById('country-social-strip');if(!strip)return;
+    const move=direction=>strip.scrollBy({left:direction*Math.max(300,strip.clientWidth*.82),behavior:'smooth'});
+    document.getElementById('country-strip-prev')?.addEventListener('click',()=>move(-1));document.getElementById('country-strip-next')?.addEventListener('click',()=>move(1));
+    strip.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();move(-1);}else if(event.key==='ArrowRight'){event.preventDefault();move(1);}});
   }
 
   function medalTableHtml(rows, includeHeader=true) {
@@ -464,7 +663,8 @@
     const ath=D.athletes.filter(a=>a.countryIso===iso).sort((a,b)=>b.medalCount-a.medalCount||b.eventCount-a.eventCount||a.name.localeCompare(b.name));
     const rr=D.results.filter(r=>r.countryIso===iso);
     const eventRows=eventOrder.map(eid=>{const x=D.medalTables[eid]?.find(x=>x.countryIso===iso);return {eid,name:eventName(eid),entries:rr.filter(r=>r.eventId===eid).length,gold:x?.gold||0,silver:x?.silver||0,bronze:x?.bronze||0,total:x?.total||0};});
-    app.innerHTML=`${backLink('#countries','Countries')}<div class="profile-head"><div class="profile-title"><div class="profile-flag">${flagHtml(c.countryIso,c.country,'profile')}</div><div><h1>${esc(c.country)}</h1><p>${c.athletes} linked athletes · ${c.resultEntries} result records</p></div></div><div class="medal-strip"><div class="medal-count"><strong>${c.gold}</strong><span>🥇 Gold</span></div><div class="medal-count"><strong>${c.silver}</strong><span>🥈 Silver</span></div><div class="medal-count"><strong>${c.bronze}</strong><span>🥉 Bronze</span></div><div class="medal-count"><strong>${c.total}</strong><span>Total</span></div></div></div>
+    const medalStrip=c.total?`<div class="medal-strip">${c.gold?`<div class="medal-count"><strong>${c.gold}</strong><span>🥇 Gold</span></div>`:''}${c.silver?`<div class="medal-count"><strong>${c.silver}</strong><span>🥈 Silver</span></div>`:''}${c.bronze?`<div class="medal-count"><strong>${c.bronze}</strong><span>🥉 Bronze</span></div>`:''}<div class="medal-count"><strong>${c.total}</strong><span>Total medals</span></div></div>`:'';
+    app.innerHTML=`${backLink('#countries','Countries')}<div class="profile-head"><div class="profile-title"><div class="profile-flag">${flagHtml(c.countryIso,c.country,'profile')}</div><div><h1>${esc(c.country)}</h1><p>${c.athletes} linked athletes · ${c.resultEntries} result records</p></div></div><div class="profile-actions"><a class="btn primary" href="#country-cards/${esc(c.countryIso)}">Open social cards</a>${medalStrip}</div></div>
       <section class="section"><div class="section-head"><div><h2>Event breakdown</h2><p>Available medals and result records by event.</p></div></div><div class="table-wrap"><table><thead><tr><th>Event</th><th class="num">Entries</th><th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">Total</th></tr></thead><tbody>${eventRows.map(x=>`<tr><td><a href="#event/${x.eid}">${esc(x.name)}</a></td><td class="num">${x.entries}</td><td class="num">${x.gold}</td><td class="num">${x.silver}</td><td class="num">${x.bronze}</td><td class="num"><strong>${x.total}</strong></td></tr>`).join('')}</tbody></table></div></section>
       <section class="section grid-2"><div class="panel"><div class="section-head"><div><h2>Athletes</h2><p>Sorted by medals, then event count.</p></div></div><div class="list">${ath.slice(0,35).map(a=>`<div class="list-item"><div class="main"><strong>${athleteLink(a.id,a.name)}</strong><small>${a.eventCount} events</small></div><span>${a.goldCount?`🥇 ${a.goldCount} `:''}${a.silverCount?`🥈 ${a.silverCount} `:''}${a.bronzeCount?`🥉 ${a.bronzeCount}`:''}</span></div>`).join('')}</div>${ath.length>35?`<p class="muted">Showing 35 of ${ath.length} linked athletes.</p>`:''}</div><div class="panel"><div class="section-head"><div><h2>Latest view of results</h2><p>First 35 records sorted by event and place/time.</p></div></div>${resultsTableHtml(rr.slice().sort((a,b)=>eventOrder.indexOf(a.eventId)-eventOrder.indexOf(b.eventId)||(a.place??999)-(b.place??999)||(a.timeSeconds??Infinity)-(b.timeSeconds??Infinity)).slice(0,35))}</div></section>`;
   }
@@ -492,8 +692,8 @@
   function renderNotFound(){setTitle('Not found');app.innerHTML=`<div class="empty"><h2>Nothing here</h2><p>That athlete, team, country or page could not be found.</p><a class="btn" href="#overview">Back to overview</a></div>`;}
 
   function bindGoButtons(){document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>routeTo(b.dataset.go)));}
-  function setNav(route){const parent=route==='athlete'?'athletes':route==='country'?'countries':route==='team'||route==='event'?'results':route;document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===parent));}
-  function router(){const raw=(location.hash||'#overview').slice(1);const [route,arg]=raw.split('/');setNav(route);document.getElementById('main-nav').classList.remove('open');document.getElementById('mobile-menu').setAttribute('aria-expanded','false');switch(route){case'overview':renderOverview();break;case'results':renderResults(arg||'');break;case'athletes':renderAthletes();break;case'athlete':renderAthlete(arg);break;case'team':renderTeam(arg);break;case'countries':renderCountries();break;case'country':renderCountry(arg);break;case'medals':renderMedals(arg||'combined');break;case'insights':renderInsights();break;case'notes':renderNotes();break;case'event':renderEvent(arg);break;default:renderNotFound();}window.scrollTo(0,0);app.focus({preventScroll:true});}
+  function setNav(route){const parent=route==='athlete'?'athletes':route==='country'||route==='country-cards'?'countries':route==='team'||route==='event'?'results':route;document.querySelectorAll('.main-nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===parent));}
+  function router(){cleanupCurrentView();cleanupCurrentView=()=>{};const raw=(location.hash||'#overview').slice(1);const [route,arg]=raw.split('/');setNav(route);document.getElementById('main-nav').classList.remove('open');document.getElementById('mobile-menu').setAttribute('aria-expanded','false');switch(route){case'overview':renderOverview();break;case'results':renderResults(arg||'');break;case'athletes':renderAthletes();break;case'athlete':renderAthlete(arg);break;case'team':renderTeam(arg);break;case'countries':renderCountries();break;case'country':renderCountry(arg);break;case'country-cards':renderCountrySocialCards(arg);break;case'medals':renderMedals(arg||'combined');break;case'insights':renderInsights();break;case'notes':renderNotes();break;case'event':renderEvent(arg);break;default:renderNotFound();}window.scrollTo(0,0);app.focus({preventScroll:true});}
 
   document.getElementById('mobile-menu').addEventListener('click',()=>{const nav=document.getElementById('main-nav');const open=nav.classList.toggle('open');document.getElementById('mobile-menu').setAttribute('aria-expanded',String(open));});
   window.addEventListener('hashchange',router);router();
