@@ -211,8 +211,10 @@
     const [primary,secondary,rawAccent]=COUNTRY_PALETTES[iso]||['#157a55','#f7fbf9','#65e6a5'];
     const rgb=rawAccent.match(/[a-f\d]{2}/gi)?.map(value=>parseInt(value,16))||[];
     const strongRed=rgb.length===3&&rgb[0]>150&&rgb[1]<95&&rgb[2]<105;
+    const luminance=rgb.length===3?(rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722)/255:1;
+    const darkAccent=luminance<.28;
     const secondaryIsColour=secondary.toLowerCase()!=='#ffffff'&&secondary.toLowerCase()!=='#f7fbf9';
-    const accent=strongRed?(secondaryIsColour?secondary:'#f29a92'):rawAccent;
+    const accent=strongRed?(secondaryIsColour?secondary:'#f29a92'):darkAccent?(secondaryIsColour?secondary:'#f7fbf9'):rawAccent;
     return {primary,secondary,accent};
   }
 
