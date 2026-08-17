@@ -230,6 +230,13 @@
     return results.flatMap(verifiedPerformances).sort((a,b)=>a.seconds-b.seconds)[0]||null;
   }
 
+  function bestPerformancesByEvent(results) {
+    return eventOrder.map(eventId=>{
+      const performance=bestPerformance(results.filter(result=>result.eventId===eventId));
+      return performance?{eventId,event:eventName(eventId),performance}:null;
+    }).filter(Boolean);
+  }
+
   function countrySocialStats(iso) {
     if(countrySocialStatsCache.has(iso)) return countrySocialStatsCache.get(iso);
     const country=countryByIso[iso];
@@ -237,10 +244,10 @@
     const individualResults=results.filter(result=>result.type==='individual');
     const teamResults=results.filter(result=>result.type==='team');
     const teams=D.teams.filter(team=>team.countryIso===iso);
-    const fastestMale=bestPerformance(individualResults.filter(result=>result.gender==='Male'));
-    const fastestFemale=bestPerformance(individualResults.filter(result=>result.gender==='Female'));
-    const fastestIndividual=[fastestMale,fastestFemale].filter(Boolean).sort((a,b)=>a.seconds-b.seconds)[0]||null;
-    const fastestTeam=bestPerformance(teamResults);
+    const fastestMaleByEvent=bestPerformancesByEvent(individualResults.filter(result=>result.gender==='Male'));
+    const fastestFemaleByEvent=bestPerformancesByEvent(individualResults.filter(result=>result.gender==='Female'));
+    const fastestIndividualByEvent=bestPerformancesByEvent(individualResults);
+    const fastestTeamByEvent=bestPerformancesByEvent(teamResults);
     const improvements=results.flatMap(result=>{
       if(!resultIsUsable(result)||!result.qualification) return [];
       const q1=recordedSeconds(result.qualification.attempt1),q2=recordedSeconds(result.qualification.attempt2);
@@ -257,7 +264,7 @@
     }).filter(Boolean);
     const categoryCount=new Set(results.map(result=>`${result.eventId}|${result.category}`).filter(value=>!value.endsWith('|undefined'))).size;
     const officialPlacings=results.filter(result=>resultIsUsable(result)&&Number.isFinite(result.place)).length;
-    const stats={country,results,individualResults,teamResults,teams,teamCount:teams.length,categoryCount,officialPlacings,fastestMale,fastestFemale,fastestIndividual,fastestTeam,biggestImprovement:improvements[0]||null,eventSummaries};
+    const stats={country,results,individualResults,teamResults,teams,teamCount:teams.length,categoryCount,officialPlacings,fastestMaleByEvent,fastestFemaleByEvent,fastestIndividualByEvent,fastestTeamByEvent,biggestImprovement:improvements[0]||null,eventSummaries};
     countrySocialStatsCache.set(iso,stats);
     return stats;
   }
@@ -283,11 +290,11 @@
   }
 
   function countrySocialPreviewHtml(country) {
-    const stats=countrySocialStats(country.countryIso),palette=countryPalette(country.countryIso),fastest=stats.fastestIndividual;
+    const stats=countrySocialStats(country.countryIso),palette=countryPalette(country.countryIso),fastest=stats.fastestIndividualByEvent;
     const metricItems=[country.athletes?`<span><strong>${num(country.athletes)}</strong> athletes</span>`:'',stats.teamCount?`<span><strong>${num(stats.teamCount)}</strong> teams</span>`:'',stats.categoryCount?`<span><strong>${num(stats.categoryCount)}</strong> categories</span>`:''].filter(Boolean).join('');
     const medals=country.total?`<div class="country-social-medals"><strong>${num(country.total)} medal${country.total===1?'':'s'}</strong><span>${country.gold?`🥇 ${country.gold}`:''} ${country.silver?`🥈 ${country.silver}`:''} ${country.bronze?`🥉 ${country.bronze}`:''}</span></div>`:'';
-    const fastestHtml=fastest?`<div class="country-social-fastest"><small>Fastest individual performance</small><strong>${esc(performanceTime(fastest))}</strong><span>${esc(fastest.result.name)} · ${esc(fastest.result.event)}</span></div>`:'';
-    return `<article class="country-social-preview-card" style="--country-primary:${palette.primary};--country-secondary:${palette.secondary};--country-accent:${palette.accent}"><div class="country-social-preview-head"><div>${flagHtml(country.countryIso,country.country,'profile')}<span class="country-code">${esc(country.countryIso)}</span></div><div><h3>${esc(country.country)}</h3><p>Championship social cards</p></div></div>${medals}<div class="country-social-preview-metrics">${metricItems}</div>${fastestHtml}<a class="btn country-social-link" href="#country-cards/${esc(country.countryIso)}">Open social cards <span aria-hidden="true">→</span></a></article>`;
+    const fastestHtml=fastest.length?`<div class="country-social-fastest"><small>Fastest individual by event</small><div class="country-social-fastest-list">${fastest.map(item=>`<div class="country-social-fastest-row"><span><b>${esc(item.event)}</b><small>${esc(item.performance.result.name)}</small></span><strong>${esc(performanceTime(item.performance))}</strong></div>`).join('')}</div></div>`:'';
+    return `<article class="country-social-preview-card" style="--country-primary:${palette.primary};--country-secondary:${palette.secondary};--country-accent:${palette.accent}"><div class="country-social-preview-head"><div>${flagHtml(country.countryIso,country.country,'profile')}<span class="country-code">${esc(country.countryIso)}</span></div><div><h3>${esc(country.country)}</h3><p>Championship social cards</p></div></div>${medals}<div class="country-social-preview-metrics">${metricItems}</div>${fastestHtml}<a class="btn country-social-link" href="#country-cards/${esc(country.countryIso)}">Create country graphics <span aria-hidden="true">→</span></a></article>`;
   }
 
   function drawCountrySocialBackground(ctx,palette,accent) {
@@ -312,17 +319,11 @@
     ctx.fillStyle=accent;ctx.font='850 24px Inter, sans-serif';ctx.fillText(text.toUpperCase(),70,102);
   }
 
-  function drawCountryPerformanceSlide(ctx,performance,title,kicker,accent) {
-    const result=performance.result,achievement=resultAchievement(result);
+  function drawCountryPerformanceListSlide(ctx,items,title,kicker,accent) {
     drawCountryEyebrow(ctx,kicker,accent);ctx.fillStyle='#f7fbf9';ctx.font='900 58px Inter, sans-serif';ctx.fillText(title,70,205);
-    canvasRoundRect(ctx,70,275,940,430,42,'rgba(2,15,11,.62)','rgba(255,255,255,.14)');
-    ctx.fillStyle=accent;ctx.font=`900 ${performanceTime(performance).length>10?94:116}px Inter, sans-serif`;ctx.fillText(performanceTime(performance),110,445);
-    ctx.fillStyle='#f7fbf9';ctx.font='900 43px Inter, sans-serif';canvasText(ctx,result.name,110,530,800,52,2);
-    ctx.fillStyle='#b8cdc3';ctx.font='700 25px Inter, sans-serif';ctx.fillText(`${result.event} · ${result.category}`,110,636);
-    ctx.fillStyle='#f7fbf9';ctx.font='800 29px Inter, sans-serif';ctx.fillText(performance.round,110,775);
-    ctx.fillStyle='#9eb7ac';ctx.font='650 22px Inter, sans-serif';ctx.fillText('Fastest supplied recorded attempt for this delegation',110,817);
-    if(achievement){canvasRoundRect(ctx,750,742,260,92,20,'rgba(255,255,255,.08)','rgba(255,255,255,.14)');ctx.fillStyle=accent;ctx.font='850 27px Inter, sans-serif';ctx.textAlign='center';ctx.fillText(achievement,880,798);ctx.textAlign='left';}
-    canvasRoundRect(ctx,70,900,940,195,30,'rgba(2,15,11,.45)','rgba(255,255,255,.1)');ctx.fillStyle='#f7fbf9';ctx.font='850 29px Inter, sans-serif';ctx.fillText('Verified championship data',110,965);ctx.fillStyle='#b8cdc3';ctx.font='650 23px Inter, sans-serif';canvasText(ctx,'Time, round, event and category are taken from the supplied championship result record.',110,1015,820,32,3);
+    const rowHeight=items.length>=4?190:items.length===3?225:270,gap=18;let y=270;
+    items.forEach((item,index)=>{const performance=item.performance,result=performance.result,achievement=resultAchievement(result);canvasRoundRect(ctx,70,y,940,rowHeight,30,index%2?'rgba(255,255,255,.06)':'rgba(2,15,11,.54)','rgba(255,255,255,.12)');ctx.fillStyle='#f7fbf9';ctx.font='900 31px Inter, sans-serif';ctx.fillText(item.event,104,y+49);ctx.fillStyle='#b8cdc3';ctx.font='650 21px Inter, sans-serif';canvasText(ctx,result.name,104,y+86,560,27,1);ctx.fillStyle='#91afa1';ctx.font='600 18px Inter, sans-serif';canvasText(ctx,`${result.category} · ${performance.round}${achievement?` · ${achievement}`:''}`,104,y+119,600,24,2);ctx.textAlign='right';ctx.fillStyle=accent;ctx.font=`900 ${performanceTime(performance).length>10?42:50}px Inter, sans-serif`;ctx.fillText(performanceTime(performance),976,y+67);ctx.fillStyle='#a7beb3';ctx.font='650 17px Inter, sans-serif';ctx.fillText('fastest supplied attempt',976,y+101);ctx.textAlign='left';y+=rowHeight+gap;});
+    ctx.fillStyle='#a7beb3';ctx.font='650 21px Inter, sans-serif';canvasText(ctx,'Each time is compared only with performances in the same event.',70,1160,900,31,2);
   }
 
   function buildCountrySocialSlides(country,stats) {
@@ -344,9 +345,9 @@
       medals.forEach((item,index)=>drawCarouselMetric(ctx,70+index*(width+34),690,width,item.value,item.label,item.color));
       ctx.fillStyle='#b8cdc3';ctx.font='650 24px Inter, sans-serif';canvasText(ctx,'Only official medals present in the verified championship medal records are included.',70,1008,900,34,3);
     }});}
-    if(stats.fastestMale)slides.push({label:'Fastest male performance',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestMale,'Fastest male performance','Recorded speed',accent);}});
-    if(stats.fastestFemale)slides.push({label:'Fastest female performance',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestFemale,'Fastest female performance','Recorded speed',accent);}});
-    if(stats.fastestTeam)slides.push({label:'Fastest team attempt',accent,draw(ctx){drawCountryPerformanceSlide(ctx,stats.fastestTeam,'Fastest team attempt','Relay performance',accent);}});
+    if(stats.fastestMaleByEvent.length)slides.push({label:'Fastest male by event',accent,draw(ctx){drawCountryPerformanceListSlide(ctx,stats.fastestMaleByEvent,'Fastest male by event','Recorded speed',accent);}});
+    if(stats.fastestFemaleByEvent.length)slides.push({label:'Fastest female by event',accent,draw(ctx){drawCountryPerformanceListSlide(ctx,stats.fastestFemaleByEvent,'Fastest female by event','Recorded speed',accent);}});
+    if(stats.fastestTeamByEvent.length)slides.push({label:'Fastest team by event',accent,draw(ctx){drawCountryPerformanceListSlide(ctx,stats.fastestTeamByEvent,'Fastest team by event','Relay performance',accent);}});
     if(stats.biggestImprovement)slides.push({label:'Biggest Q2 improvement',accent,draw(ctx){
       const item=stats.biggestImprovement,result=item.result;
       drawCountryEyebrow(ctx,'Q1 to Q2 improvement',accent);ctx.fillStyle='#f7fbf9';ctx.font='900 59px Inter, sans-serif';ctx.fillText('Faster the second time.',70,205);
@@ -664,7 +665,7 @@
     const rr=D.results.filter(r=>r.countryIso===iso);
     const eventRows=eventOrder.map(eid=>{const x=D.medalTables[eid]?.find(x=>x.countryIso===iso);return {eid,name:eventName(eid),entries:rr.filter(r=>r.eventId===eid).length,gold:x?.gold||0,silver:x?.silver||0,bronze:x?.bronze||0,total:x?.total||0};});
     const medalStrip=c.total?`<div class="medal-strip">${c.gold?`<div class="medal-count"><strong>${c.gold}</strong><span>🥇 Gold</span></div>`:''}${c.silver?`<div class="medal-count"><strong>${c.silver}</strong><span>🥈 Silver</span></div>`:''}${c.bronze?`<div class="medal-count"><strong>${c.bronze}</strong><span>🥉 Bronze</span></div>`:''}<div class="medal-count"><strong>${c.total}</strong><span>Total medals</span></div></div>`:'';
-    app.innerHTML=`${backLink('#countries','Countries')}<div class="profile-head"><div class="profile-title"><div class="profile-flag">${flagHtml(c.countryIso,c.country,'profile')}</div><div><h1>${esc(c.country)}</h1><p>${c.athletes} linked athletes · ${c.resultEntries} result records</p></div></div><div class="profile-actions"><a class="btn primary" href="#country-cards/${esc(c.countryIso)}">Open social cards</a>${medalStrip}</div></div>
+    app.innerHTML=`${backLink('#countries','Countries')}<div class="profile-head"><div class="profile-title"><div class="profile-flag">${flagHtml(c.countryIso,c.country,'profile')}</div><div><h1>${esc(c.country)}</h1><p>${c.athletes} linked athletes · ${c.resultEntries} result records</p></div></div><div class="profile-actions"><a class="btn primary" href="#country-cards/${esc(c.countryIso)}">Create country graphics</a>${medalStrip}</div></div>
       <section class="section"><div class="section-head"><div><h2>Event breakdown</h2><p>Available medals and result records by event.</p></div></div><div class="table-wrap"><table><thead><tr><th>Event</th><th class="num">Entries</th><th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">Total</th></tr></thead><tbody>${eventRows.map(x=>`<tr><td><a href="#event/${x.eid}">${esc(x.name)}</a></td><td class="num">${x.entries}</td><td class="num">${x.gold}</td><td class="num">${x.silver}</td><td class="num">${x.bronze}</td><td class="num"><strong>${x.total}</strong></td></tr>`).join('')}</tbody></table></div></section>
       <section class="section grid-2"><div class="panel"><div class="section-head"><div><h2>Athletes</h2><p>Sorted by medals, then event count.</p></div></div><div class="list">${ath.slice(0,35).map(a=>`<div class="list-item"><div class="main"><strong>${athleteLink(a.id,a.name)}</strong><small>${a.eventCount} events</small></div><span>${a.goldCount?`🥇 ${a.goldCount} `:''}${a.silverCount?`🥈 ${a.silverCount} `:''}${a.bronzeCount?`🥉 ${a.bronzeCount}`:''}</span></div>`).join('')}</div>${ath.length>35?`<p class="muted">Showing 35 of ${ath.length} linked athletes.</p>`:''}</div><div class="panel"><div class="section-head"><div><h2>Latest view of results</h2><p>First 35 records sorted by event and place/time.</p></div></div>${resultsTableHtml(rr.slice().sort((a,b)=>eventOrder.indexOf(a.eventId)-eventOrder.indexOf(b.eventId)||(a.place??999)-(b.place??999)||(a.timeSeconds??Infinity)-(b.timeSeconds??Infinity)).slice(0,35))}</div></section>`;
   }
