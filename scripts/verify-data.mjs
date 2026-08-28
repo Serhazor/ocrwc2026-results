@@ -277,6 +277,48 @@ const karenWiltinProfileMerged = Boolean(
   && !karenRelayTeam.memberIds.includes('a544')
 );
 
+const ronnieKihlman = data.athletes.find(athlete => athlete.id === 'a269');
+const ronnie400mResult = data.results.find(result => result.id === 'r614');
+const ronnie400mBronze = data.medals.find(medal => (
+  medal.eventId === '400m'
+  && medal.category === 'M50-54'
+  && medal.place === 3
+));
+const ronnieKihlmanCorrectionApplied = Boolean(
+  ronnieKihlman
+  && ronnieKihlman.name === 'Ronnie Kihlman'
+  && ronnieKihlman.aliases.includes('Ronnie Kilman')
+  && ronnieKihlman.medals.includes(ronnie400mBronze?.id)
+  && ronnieKihlman.medalCount === 3
+  && ronnieKihlman.goldCount === 2
+  && ronnieKihlman.bronzeCount === 1
+  && ronnie400mResult
+  && ronnie400mResult.name === 'Ronnie Kihlman'
+  && ronnie400mResult.place === 3
+  && ronnie400mResult.medal === 'Bronze'
+  && ronnie400mResult.stage === 'Final'
+  && ronnie400mResult.finalTime === '5:10.476'
+  && ronnie400mResult.time === '5:10.476'
+  && close(ronnie400mResult.timeSeconds, 310.476)
+  && ronnie400mResult.timeIsSynthetic === true
+  && ronnie400mResult.elimination?.Final?.synthetic === true
+  && ronnie400mBronze?.athleteId === 'a269'
+  && ronnie400mBronze?.name === 'Ronnie Kihlman'
+  && ronnie400mBronze?.time === '5:10.476'
+  && ronnie400mBronze?.timeIsSynthetic === true
+  && data.teams
+    .filter(team => team.memberIds?.includes('a269'))
+    .every(team => team.members[team.memberIds.indexOf('a269')] === 'Ronnie Kihlman')
+);
+const m5054PodiumCorrect = [
+  ['Martin Navarro Plazas', '3:29.655'],
+  ['Luca Antonelli', '5:09.476'],
+  ['Ronnie Kihlman', '5:10.476'],
+].every(([name, time], index) => {
+  const medal = data.medals.find(item => item.eventId === '400m' && item.category === 'M50-54' && item.place === index + 1);
+  return medal?.name === name && medal.time === time && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
+});
+
 const json = JSON.stringify(data);
 const directContext = { window: {} };
 vm.runInNewContext(fs.readFileSync('data/championship-data.js', 'utf8'), directContext);
@@ -313,6 +355,8 @@ const checks = {
   mixedU16PlacingsRecalculated,
   mixedU16PodiumCorrect,
   karenWiltinProfileMerged,
+  ronnieKihlmanCorrectionApplied,
+  m5054PodiumCorrect,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,
   splitPayload: splitPayload === json,

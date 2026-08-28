@@ -152,7 +152,7 @@
       },
       "roundOf12": 23,
       "roundOf6": 134,
-      "finalists": 98
+      "finalists": 99
     },
     "400m-team": {
       "entries": 60,
@@ -580,8 +580,8 @@
         "flag": "🇸🇪",
         "gold": 4,
         "silver": 0,
-        "bronze": 2,
-        "total": 6,
+        "bronze": 3,
+        "total": 7,
         "rank": 3
       },
       {
@@ -1510,8 +1510,8 @@
         "flag": "🇸🇪",
         "gold": 23,
         "silver": 5,
-        "bronze": 7,
-        "total": 35,
+        "bronze": 8,
+        "total": 36,
         "rank": 2
       },
       {
@@ -7936,6 +7936,23 @@
       "timeSeconds": 309.476,
       "athleteId": "a281",
       "id": "m410"
+    },
+    {
+      "id": "m420",
+      "eventId": "400m",
+      "event": "400m",
+      "category": "M50-54",
+      "place": 3,
+      "medal": "Bronze",
+      "country": "Sweden",
+      "countryIso": "SE",
+      "flag": "🇸🇪",
+      "name": "Ronnie Kihlman",
+      "time": "5:10.476",
+      "timeSeconds": 310.476,
+      "athleteId": "a269",
+      "timeIsSynthetic": true,
+      "correctionSource": "Swedish federation correction email (Christopher Holmstrom)"
     },
     {
       "eventId": "400m",
@@ -15718,8 +15735,10 @@
     },
     {
       "id": "a269",
-      "name": "Ronnie Kilman",
-      "aliases": [],
+      "name": "Ronnie Kihlman",
+      "aliases": [
+        "Ronnie Kilman"
+      ],
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
@@ -15734,7 +15753,8 @@
       ],
       "medals": [
         "m65",
-        "m276"
+        "m276",
+        "m420"
       ],
       "eventIds": [
         "100m",
@@ -15743,10 +15763,10 @@
         "xc-team"
       ],
       "eventCount": 4,
-      "medalCount": 2,
+      "medalCount": 3,
       "goldCount": 2,
       "silverCount": 0,
-      "bronzeCount": 0
+      "bronzeCount": 1
     },
     {
       "id": "a270",
@@ -37956,7 +37976,7 @@
       "flag": "🇸🇪",
       "category": "Adaptive VI",
       "members": [
-        "Ronnie Kilman",
+        "Ronnie Kihlman",
         "Hans Löfdahl",
         "Quân Tidblad",
         "Ronja Sjölander"
@@ -40414,7 +40434,7 @@
       "flag": "🇸🇪",
       "category": "Adaptive VI",
       "members": [
-        "Ronnie Kilman",
+        "Ronnie Kihlman",
         "Hans Löfdahl",
         "Aron Kindbom"
       ],
@@ -50283,7 +50303,7 @@
       "event": "100m",
       "type": "individual",
       "athleteId": "a269",
-      "name": "Ronnie Kilman",
+      "name": "Ronnie Kihlman",
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
@@ -61374,19 +61394,19 @@
       "event": "400m",
       "type": "individual",
       "athleteId": "a269",
-      "name": "Ronnie Kilman",
+      "name": "Ronnie Kihlman",
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
       "gender": "Male",
       "category": "M50-54",
       "status": "Ranked",
-      "time": "3:32.308",
-      "timeSeconds": 212.308,
+      "time": "5:10.476",
+      "timeSeconds": 310.476,
       "qualifyingRank": 2,
-      "place": null,
-      "medal": null,
-      "stage": "Round of 6",
+      "place": 3,
+      "medal": "Bronze",
+      "stage": "Final",
       "qualification": {
         "attempt1": "3:52.404",
         "attempt2": "104",
@@ -61399,11 +61419,23 @@
           "seconds": 212.308,
           "rank": 1,
           "outcome": "advances"
+        },
+        "Final": {
+          "raw": "5:10.476",
+          "seconds": 310.476,
+          "sourceRaw": "5:10.476",
+          "synthetic": true,
+          "note": "Synthetic placement time for the confirmed bronze-medal correction."
         }
       },
       "roundSources": {
-        "Round of 6": "400m Round of 6 RESULTS.xlsx"
-      }
+        "Round of 6": "400m Round of 6 RESULTS.xlsx",
+        "Final": "Swedish federation correction email (Christopher Holmstrom)"
+      },
+      "finalTime": "5:10.476",
+      "timeIsSynthetic": true,
+      "correctionSource": "Swedish federation correction email (Christopher Holmstrom)",
+      "note": "Bronze medal confirmed by the Swedish federation. A synthetic placement time was assigned because the athlete missed the final."
     },
     {
       "id": "r615",
@@ -96370,8 +96402,8 @@
       "resultEntries": 122,
       "gold": 23,
       "silver": 5,
-      "bronze": 7,
-      "total": 35,
+      "bronze": 8,
+      "total": 36,
       "eventEntries": {
         "100m": 5,
         "400m": 18,
@@ -96805,8 +96837,8 @@
       "resultEntries": 122,
       "gold": 23,
       "silver": 5,
-      "bronze": 7,
-      "total": 35,
+      "bronze": 8,
+      "total": 36,
       "eventEntries": {
         "100m": 5,
         "400m": 18,
@@ -96984,6 +97016,11 @@
       "level": "info",
       "title": "Karen Wiltin athlete identity correction",
       "text": "Karen Luebcke Wilton in the USA 400m Mixed 40+ Team NT roster was corrected to Karen Wiltin and linked to the same athlete profile as her individual 100m and 400m results."
+    },
+    {
+      "level": "info",
+      "title": "400m M50–54 bronze ceremony correction",
+      "text": "Sweden confirmed that Ronnie Kihlman was awarded bronze after missing the final because of a schedule misunderstanding. His name was corrected from “Ronnie Kilman”, and a clearly marked synthetic placement time of 5:10.476 was added—one second behind silver—to represent the confirmed third place."
     }
   ]
 }

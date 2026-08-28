@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14",
+  "generated": "2026-08-28",
   "methodology": [
     "100m knockout podiums follow bracket progression: semifinal winners contest gold/silver and semifinal losers contest bronze; divisions without semifinals use qualifying Best Time as direct finals.",
     "400m podiums use the Finals workbook, including parenthetical times for categories marked No Final.",
@@ -12,7 +12,7 @@
   "counts": {
     "100m": 41,
     "100m-team": 17,
-    "400m": 98,
+    "400m": 99,
     "400m-team": 30,
     "short": 104,
     "standard": 80,
@@ -1525,6 +1525,19 @@
       "timeSeconds": 309.476,
       "sourceFile": "400m Finals RESULTS.xlsx",
       "sourceRow": 95
+    },
+    {
+      "eventId": "400m",
+      "category": "M50-54",
+      "place": 3,
+      "medal": "Bronze",
+      "name": "Ronnie Kihlman",
+      "time": "5:10.476",
+      "timeSeconds": 310.476,
+      "sourceFile": "Swedish federation correction email (Christopher Holmstrom)",
+      "sourceRow": null,
+      "timeIsSynthetic": true,
+      "note": "Ceremony-awarded bronze; synthetic placement time added at the app owner's request because no final was run."
     },
     {
       "eventId": "400m",
