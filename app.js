@@ -97,7 +97,7 @@
 
   const CAROUSEL_WIDTH = 1080;
   const CAROUSEL_HEIGHT = 1350;
-  const CAROUSEL_LOGO = '/assets/ocra-eireann-logo-provided.png';
+  const CAROUSEL_LOGO = '/assets/ocra-eireann-logo-2026.png';
 
   function recordedSeconds(value) {
     const raw=String(value??'').trim();
