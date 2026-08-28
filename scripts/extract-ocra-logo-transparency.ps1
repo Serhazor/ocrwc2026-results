@@ -1,6 +1,6 @@
 param(
   [string]$InputPath = (Join-Path $PSScriptRoot '..\assets\ocra-eireann-logo-2026.png'),
-  [string]$OutputPath = (Join-Path $PSScriptRoot '..\assets\ocra-eireann-logo-2026-transparent.png')
+  [string]$OutputPath = (Join-Path $PSScriptRoot '..\assets\ocra-eireann-logo-2026-transparent-v2.png')
 )
 
 Add-Type -AssemblyName System.Drawing
@@ -17,6 +17,7 @@ $working = [System.Drawing.Bitmap]::new(
 $background = [double[]](27, 62, 47)
 $targets = @(
   [double[]](243, 242, 236),
+  [double[]](255, 255, 255),
   [double[]](15, 123, 63),
   [double[]](244, 82, 11)
 )
