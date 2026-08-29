@@ -11,8 +11,8 @@ const podiumSource = JSON.parse(await fs.readFile(podiumSourcePath, 'utf8'));
 
 const athleteId = 'a269';
 const resultId = 'r614';
-const correctedName = 'Ronnie Kihlman';
-const sourceSpelling = 'Ronnie Kilman';
+const correctedName = 'Ronnie Kilman';
+const incorrectSpelling = 'Ronnie Kihlman';
 const eventId = '400m';
 const category = 'M50-54';
 const correctionSource = 'Swedish federation correction email (Christopher Holmstrom)';
@@ -70,11 +70,14 @@ async function writePayloads(payload) {
 const athlete = data.athletes.find(item => item.id === athleteId);
 const result = data.results.find(item => item.id === resultId && item.athleteId === athleteId);
 if (!athlete || !result || result.eventId !== eventId || result.category !== category) {
-  throw new Error('Ronnie Kihlman\'s 400m M50-54 result could not be resolved.');
+  throw new Error('Ronnie Kilman\'s 400m M50-54 result could not be resolved.');
 }
 
 athlete.name = correctedName;
-athlete.aliases = [...new Set([...(athlete.aliases ?? []), sourceSpelling])];
+athlete.aliases = [...new Set([
+  ...(athlete.aliases ?? []).filter(alias => alias !== correctedName),
+  incorrectSpelling,
+])];
 
 for (const athleteResult of data.results.filter(item => item.athleteId === athleteId)) {
   athleteResult.name = correctedName;
@@ -165,7 +168,7 @@ Object.assign(sourcedBronze, {
   note: 'Ceremony-awarded bronze; synthetic placement time added at the app owner\'s request because no final was run.',
 });
 podiumSource.counts[eventId] = podiumSource.medals.filter(item => item.eventId === eventId).length;
-podiumSource.generated = '2026-08-28';
+podiumSource.generated = '2026-08-29';
 
 for (const event of data.events) {
   data.medalTables[event.id] = buildMedalTable(data.medals.filter(medal => medal.eventId === event.id));
@@ -251,7 +254,7 @@ data.summaries[eventId].medalLeader = data.medalTables[eventId][0];
 const correctionNote = {
   level: 'info',
   title: '400m M50–54 bronze ceremony correction',
-  text: 'Sweden confirmed that Ronnie Kihlman was awarded bronze after missing the final because of a schedule misunderstanding. His name was corrected from “Ronnie Kilman”, and a clearly marked synthetic placement time of 5:10.476 was added—one second behind silver—to represent the confirmed third place.',
+  text: 'Sweden confirmed that Ronnie Kilman was awarded bronze after missing the final because of a schedule misunderstanding. A follow-up clarified that Kilman is the correct surname spelling; “Ronnie Kihlman” is retained only as a searchable alias. A clearly marked synthetic placement time of 5:10.476 was added—one second behind silver—to represent the confirmed third place.',
 };
 const existingNote = data.dataNotes.find(note => note.title === correctionNote.title);
 if (existingNote) Object.assign(existingNote, correctionNote);

@@ -277,23 +277,24 @@ const karenWiltinProfileMerged = Boolean(
   && !karenRelayTeam.memberIds.includes('a544')
 );
 
-const ronnieKihlman = data.athletes.find(athlete => athlete.id === 'a269');
+const ronnieKilman = data.athletes.find(athlete => athlete.id === 'a269');
 const ronnie400mResult = data.results.find(result => result.id === 'r614');
 const ronnie400mBronze = data.medals.find(medal => (
   medal.eventId === '400m'
   && medal.category === 'M50-54'
   && medal.place === 3
 ));
-const ronnieKihlmanCorrectionApplied = Boolean(
-  ronnieKihlman
-  && ronnieKihlman.name === 'Ronnie Kihlman'
-  && ronnieKihlman.aliases.includes('Ronnie Kilman')
-  && ronnieKihlman.medals.includes(ronnie400mBronze?.id)
-  && ronnieKihlman.medalCount === 3
-  && ronnieKihlman.goldCount === 2
-  && ronnieKihlman.bronzeCount === 1
+const ronnieKilmanCorrectionApplied = Boolean(
+  ronnieKilman
+  && ronnieKilman.name === 'Ronnie Kilman'
+  && ronnieKilman.aliases.includes('Ronnie Kihlman')
+  && !ronnieKilman.aliases.includes('Ronnie Kilman')
+  && ronnieKilman.medals.includes(ronnie400mBronze?.id)
+  && ronnieKilman.medalCount === 3
+  && ronnieKilman.goldCount === 2
+  && ronnieKilman.bronzeCount === 1
   && ronnie400mResult
-  && ronnie400mResult.name === 'Ronnie Kihlman'
+  && ronnie400mResult.name === 'Ronnie Kilman'
   && ronnie400mResult.place === 3
   && ronnie400mResult.medal === 'Bronze'
   && ronnie400mResult.stage === 'Final'
@@ -303,17 +304,17 @@ const ronnieKihlmanCorrectionApplied = Boolean(
   && ronnie400mResult.timeIsSynthetic === true
   && ronnie400mResult.elimination?.Final?.synthetic === true
   && ronnie400mBronze?.athleteId === 'a269'
-  && ronnie400mBronze?.name === 'Ronnie Kihlman'
+  && ronnie400mBronze?.name === 'Ronnie Kilman'
   && ronnie400mBronze?.time === '5:10.476'
   && ronnie400mBronze?.timeIsSynthetic === true
   && data.teams
     .filter(team => team.memberIds?.includes('a269'))
-    .every(team => team.members[team.memberIds.indexOf('a269')] === 'Ronnie Kihlman')
+    .every(team => team.members[team.memberIds.indexOf('a269')] === 'Ronnie Kilman')
 );
 const m5054PodiumCorrect = [
   ['Martin Navarro Plazas', '3:29.655'],
   ['Luca Antonelli', '5:09.476'],
-  ['Ronnie Kihlman', '5:10.476'],
+  ['Ronnie Kilman', '5:10.476'],
 ].every(([name, time], index) => {
   const medal = data.medals.find(item => item.eventId === '400m' && item.category === 'M50-54' && item.place === index + 1);
   return medal?.name === name && medal.time === time && medal.medal === ['Gold', 'Silver', 'Bronze'][index];
@@ -355,7 +356,7 @@ const checks = {
   mixedU16PlacingsRecalculated,
   mixedU16PodiumCorrect,
   karenWiltinProfileMerged,
-  ronnieKihlmanCorrectionApplied,
+  ronnieKilmanCorrectionApplied,
   m5054PodiumCorrect,
   directPayload: JSON.stringify(directContext.window.OCR_DATA) === json,
   compressedPayload: decompressed === json,

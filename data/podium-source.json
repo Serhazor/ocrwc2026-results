@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-28",
+  "generated": "2026-08-29",
   "methodology": [
     "100m knockout podiums follow bracket progression: semifinal winners contest gold/silver and semifinal losers contest bronze; divisions without semifinals use qualifying Best Time as direct finals.",
     "400m podiums use the Finals workbook, including parenthetical times for categories marked No Final.",
@@ -1531,7 +1531,7 @@
       "category": "M50-54",
       "place": 3,
       "medal": "Bronze",
-      "name": "Ronnie Kihlman",
+      "name": "Ronnie Kilman",
       "time": "5:10.476",
       "timeSeconds": 310.476,
       "sourceFile": "Swedish federation correction email (Christopher Holmstrom)",

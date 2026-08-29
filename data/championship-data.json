@@ -7947,7 +7947,7 @@
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
-      "name": "Ronnie Kihlman",
+      "name": "Ronnie Kilman",
       "time": "5:10.476",
       "timeSeconds": 310.476,
       "athleteId": "a269",
@@ -15735,9 +15735,9 @@
     },
     {
       "id": "a269",
-      "name": "Ronnie Kihlman",
+      "name": "Ronnie Kilman",
       "aliases": [
-        "Ronnie Kilman"
+        "Ronnie Kihlman"
       ],
       "country": "Sweden",
       "countryIso": "SE",
@@ -37976,7 +37976,7 @@
       "flag": "🇸🇪",
       "category": "Adaptive VI",
       "members": [
-        "Ronnie Kihlman",
+        "Ronnie Kilman",
         "Hans Löfdahl",
         "Quân Tidblad",
         "Ronja Sjölander"
@@ -40434,7 +40434,7 @@
       "flag": "🇸🇪",
       "category": "Adaptive VI",
       "members": [
-        "Ronnie Kihlman",
+        "Ronnie Kilman",
         "Hans Löfdahl",
         "Aron Kindbom"
       ],
@@ -50303,7 +50303,7 @@
       "event": "100m",
       "type": "individual",
       "athleteId": "a269",
-      "name": "Ronnie Kihlman",
+      "name": "Ronnie Kilman",
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
@@ -61394,7 +61394,7 @@
       "event": "400m",
       "type": "individual",
       "athleteId": "a269",
-      "name": "Ronnie Kihlman",
+      "name": "Ronnie Kilman",
       "country": "Sweden",
       "countryIso": "SE",
       "flag": "🇸🇪",
@@ -97020,7 +97020,7 @@
     {
       "level": "info",
       "title": "400m M50–54 bronze ceremony correction",
-      "text": "Sweden confirmed that Ronnie Kihlman was awarded bronze after missing the final because of a schedule misunderstanding. His name was corrected from “Ronnie Kilman”, and a clearly marked synthetic placement time of 5:10.476 was added—one second behind silver—to represent the confirmed third place."
+      "text": "Sweden confirmed that Ronnie Kilman was awarded bronze after missing the final because of a schedule misunderstanding. A follow-up clarified that Kilman is the correct surname spelling; “Ronnie Kihlman” is retained only as a searchable alias. A clearly marked synthetic placement time of 5:10.476 was added—one second behind silver—to represent the confirmed third place."
     }
   ]
 }
